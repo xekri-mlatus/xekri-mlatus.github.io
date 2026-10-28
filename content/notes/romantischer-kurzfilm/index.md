@@ -2,6 +2,10 @@
 title: "Romantischer Kurzfilm"
 date: 2025-12-19T04:57:35+03:00
 tags: [movies]
+cover:
+  image: video.jpg
+  alt: "Постер короткометражного фильма «Bring mich nach Hause»: два парня обнимаются"
+  hiddenInSingle: true  # the video is embedded in the text
 ---
 
 {{< youtube qq0F8iLCwIQ >}}

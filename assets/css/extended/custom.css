@@ -11,3 +11,13 @@
     font-size: 16px;
     -webkit-line-clamp: 5;
 }
+
+/* Same-height preview images on note lists: crop each cover to 16:9,
+   keeping its top (where memes usually have their caption). Note pages
+   still show the full image. */
+.post-entry .entry-cover img,
+.first-entry .entry-cover img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top;
+}

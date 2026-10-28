@@ -4,8 +4,8 @@ slug: best-erotic-scene
 date: 2025-11-17T01:22:57+03:00
 tags: [anime]
 cover:
-  image: hikaru-1.jpg
-  alt: "Кадр из «Лето, когда умер Хикару»: Ёсики держит руку внутри Хикару — «Uh, it kinda feels like marinated raw chicken.»"
+  image: collage.jpg
+  alt: "Коллаж из 4 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

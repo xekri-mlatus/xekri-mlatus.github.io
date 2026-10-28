@@ -4,8 +4,8 @@ slug: kado-the-right-answer
 date: 2025-05-04T19:40:32+03:00
 tags: [anime]
 cover:
-  image: peak-concept.png
-  alt: "Meme: “peak concept / look inside / worst execution on the face of the Earth” over a cat staring into the camera"
+  image: collage.jpg
+  alt: "Collage of the 2 images in this note"
   hiddenInSingle: true  # already shown in the text
 ---
 

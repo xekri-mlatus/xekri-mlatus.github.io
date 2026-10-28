@@ -4,8 +4,8 @@ slug: cats-to-start
 date: 2025-11-16T23:47:41+03:00
 tags: [memes, cats]
 cover:
-  image: acceptable-morning.jpg
-  alt: "Кот со сложенными человеческими ручками: «приемлемое утро, коллеги, всем терпимого дня»"
+  image: collage.jpg
+  alt: "Коллаж из 5 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

@@ -4,8 +4,8 @@ slug: german-thematic-dictionary
 date: 2025-11-23T19:44:45+03:00
 tags: [languages]
 cover:
-  image: cover.jpg
-  alt: "Книга «Mastering German Vocabulary: A Thematic Approach»"
+  image: collage.jpg
+  alt: "Коллаж из 3 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

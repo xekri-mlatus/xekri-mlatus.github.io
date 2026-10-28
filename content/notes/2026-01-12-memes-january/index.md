@@ -4,8 +4,8 @@ slug: memes-january
 date: 2026-01-12T17:46:12+03:00
 tags: [memes]
 cover:
-  image: meowing.jpg
-  alt: "Аниме-персонаж: «lets normalize meowing randomly»"
+  image: collage.jpg
+  alt: "Коллаж из 10 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

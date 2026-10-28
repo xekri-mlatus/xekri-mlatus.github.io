@@ -4,8 +4,8 @@ slug: yes-man
 date: 2025-04-25T02:46:59+03:00
 tags: [movies]
 cover:
-  image: playground-1.jpg
-  alt: "Allison to Carl: “You know, who cares? The world's a playground.”"
+  image: collage.jpg
+  alt: "Collage of the 3 images in this note"
   hiddenInSingle: true  # already shown in the text
 ---
 

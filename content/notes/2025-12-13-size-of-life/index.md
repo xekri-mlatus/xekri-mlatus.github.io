@@ -4,8 +4,8 @@ slug: size-of-life
 date: 2025-12-13T07:28:32+03:00
 tags: [science]
 cover:
-  image: pando-clone.jpg
-  alt: "Pando на сайте Size of Life: одно растение площадью 108 акров"
+  image: collage.jpg
+  alt: "Коллаж из 2 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

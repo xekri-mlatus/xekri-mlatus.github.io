@@ -4,8 +4,8 @@ slug: autumn-memes
 date: 2026-10-20T16:00:50+03:00
 tags: [memes, cats, languages]
 cover:
-  image: skull.jpg
-  alt: "Череп кошки, чудовище, каким его восстановили бы инопланетяне, и настоящий белый кот"
+  image: collage.jpg
+  alt: "Коллаж из 4 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

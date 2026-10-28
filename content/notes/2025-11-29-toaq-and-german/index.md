@@ -4,8 +4,8 @@ slug: toaq-and-german
 date: 2025-11-29T06:13:49+03:00
 tags: [languages]
 cover:
-  image: vocabulary.jpg
-  alt: "Таблица слов на тоаке с английскими и немецкими переводами: person, human, woman, man, child и другие"
+  image: collage.jpg
+  alt: "Коллаж из 2 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

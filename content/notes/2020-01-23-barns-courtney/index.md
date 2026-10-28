@@ -4,8 +4,8 @@ slug: barns-courtney
 date: 2020-01-23T01:10:07+03:00
 tags: ["Old posts"]
 cover:
-  image: barns-courtney-1.jpg
-  alt: "Barns Courtney"
+  image: collage.jpg
+  alt: "Коллаж из 3 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

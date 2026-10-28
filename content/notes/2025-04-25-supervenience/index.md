@@ -4,8 +4,8 @@ slug: supervenience
 date: 2025-04-25T04:20:42+03:00
 tags: [philosophy, art]
 cover:
-  image: sep-supervenience.jpg
-  alt: "The opening of the Stanford Encyclopedia of Philosophy entry on supervenience"
+  image: collage.jpg
+  alt: "Collage of the 2 images in this note"
   hiddenInSingle: true  # already shown in the text
 ---
 

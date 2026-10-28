@@ -4,8 +4,8 @@ slug: math-memes
 date: 2026-03-21T15:27:27+03:00
 tags: [memes, math]
 cover:
-  image: measure-theory.jpg
-  alt: "Мем с маской: под маской вероятности — теория меры"
+  image: collage.jpg
+  alt: "Коллаж из 12 картинок заметки"
   hiddenInSingle: true  # already shown in the text
 ---
 

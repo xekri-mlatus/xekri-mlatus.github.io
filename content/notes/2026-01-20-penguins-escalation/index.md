@@ -16,5 +16,3 @@ cover:
 {{< youtube PWMnNoHshRA >}}
 
 (А кто назовет это AI слопом - пусть отправляется на 🍆)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

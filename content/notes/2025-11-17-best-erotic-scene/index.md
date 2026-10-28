@@ -15,5 +15,3 @@ cover:
 ![Рука Ёсики внутри Хикару: «It’s been a while since I felt somethin’ alive inside me.»](hikaru-2.jpg)
 ![Хикару улыбается](hikaru-3.jpg)
 ![Хикару обнимает Ёсики: «Yeah, that’s the spot!»](hikaru-4.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

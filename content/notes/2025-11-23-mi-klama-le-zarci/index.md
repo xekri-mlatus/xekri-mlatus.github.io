@@ -12,5 +12,3 @@ cover:
 mi klama le zarci, только на тоанге. Йей.
 
 ![Разбор фразы «fa jí jéaríaq» на тоаке: go — me — the market](fa-ji-jeariaq.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

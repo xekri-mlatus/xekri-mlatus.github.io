@@ -12,5 +12,3 @@ cover:
 Well, kinda
 
 ![Парень в наушниках: «My sexual fantasy is to have someone notice my absence and wonder about me»](absence.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

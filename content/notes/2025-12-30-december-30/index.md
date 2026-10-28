@@ -10,5 +10,3 @@ cover:
 ---
 
 ![Рыжий кот: «Damn its December 30th already? Whats next? December 31st? Fuck everything»](december-30.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

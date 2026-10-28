@@ -12,5 +12,3 @@ cover:
 Скоро
 
 ![Дисковод с наклейкой «Works, but makes Sad Noises»: «Got my performance review.»](performance-review.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

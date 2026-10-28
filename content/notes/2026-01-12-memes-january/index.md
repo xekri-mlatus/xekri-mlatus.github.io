@@ -19,5 +19,3 @@ cover:
 ![«Why do we say ‘slept like a baby’? … I want to sleep like my cat»](slept-like-a-baby.jpg)
 ![Комикс: Анубис взвешивает отданное ему сердце — «Last Christmas, I gave you my heart»](last-christmas.jpg)
 ![Календарь: «Prepping for A CALL», «A CALL», «recovering from A CALL»](a-call.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

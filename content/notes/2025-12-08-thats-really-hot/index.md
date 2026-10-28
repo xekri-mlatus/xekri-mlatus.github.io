@@ -12,5 +12,3 @@ cover:
 That's really hot
 
 ![Переписка: «That’s so hot» — «Huh?» — «You knew the difference between there, their, and they’re»](there-their.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

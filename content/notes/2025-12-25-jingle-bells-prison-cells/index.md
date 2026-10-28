@@ -15,5 +15,3 @@ cover:
 Santa's doing time!"
 
 (MAGAs are disgusting btw)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

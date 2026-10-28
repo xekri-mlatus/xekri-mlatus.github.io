@@ -12,5 +12,3 @@ cover:
 Das ist amüsant. Another idiosyncrasy of natural languages.
 
 ![Учебник немецкого о рамочной конструкции и о том, как Марк Твен жаловался на глагол в конце предложения](verbal-bracket.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

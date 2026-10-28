@@ -16,5 +16,3 @@ cover:
 ![Кот: «Lets play hide and seek, I’ll hide and you seek professional help»](hide-and-seek.jpg)
 ![Испуганный котенок с поднятой шерстью: «when i go out in public and the public is there»](public.jpg)
 ![Кот пожимает руку человеку, а потом моет лапу: «Don’t forget to wash your hands after touching a filthy animal»](wash-hands.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

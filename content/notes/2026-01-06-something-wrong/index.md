@@ -12,5 +12,3 @@ cover:
 А что с этим не так? 😳
 
 ![«me, borderline, waiting for you to show up at my house after I blocked you on all platforms bc that’s what you’d do if you really loved me»](borderline.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

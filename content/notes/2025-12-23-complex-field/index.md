@@ -10,5 +10,3 @@ cover:
 ---
 
 ![Твит: «what the entire fuck» подразумевает дробные, «absolute» — положительные и отрицательные, а «actual» — мнимые; вывод: это изоморфно полю комплексных чисел](fractional-fucks.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

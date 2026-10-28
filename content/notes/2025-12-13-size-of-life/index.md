@@ -17,5 +17,3 @@ OMG, мы живем на Вертумне?
 ![Статья «Пандо (дерево)» в Википедии](pando-wikipedia.jpg)
 
 [The confusing language of Pando: Rhizome, Trunk, Stem, Ramets, Suckers and Branches](https://www.friendsofpando.org/faqhowpandoworks/)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

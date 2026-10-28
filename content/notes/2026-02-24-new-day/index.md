@@ -10,5 +10,3 @@ cover:
 ---
 
 ![Девушка с кофе: «New day — New Mental Issues»](new-day.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

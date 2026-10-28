@@ -12,5 +12,3 @@ cover:
 The human race in a nutshell.
 
 ![Комикс: две зебры играют в людей и спорят, белые они в черную полоску или черные в белую](zebras.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

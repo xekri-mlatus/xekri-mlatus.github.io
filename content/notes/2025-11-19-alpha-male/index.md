@@ -12,5 +12,3 @@ cover:
 Вспоминаю почему-то сегодня этот мем
 
 ![Схема проникающей способности альфа-, бета-, гамма- и нейтронного излучения: «MFers be like “I’m an alpha male” — Ok bro, tell me more about your low penetration power»](penetration-power.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

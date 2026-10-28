@@ -10,5 +10,3 @@ cover:
 ---
 
 ![Довольный кот: «Not to brag, but I have enough money to not work for the rest of 2025.»](enough-money.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

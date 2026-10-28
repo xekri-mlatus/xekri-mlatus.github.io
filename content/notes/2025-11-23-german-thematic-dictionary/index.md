@@ -16,5 +16,3 @@ cover:
 ![Книга «Mastering German Vocabulary: A Thematic Approach»](cover.jpg)
 ![Оглавление словаря](contents.jpg)
 ![Страница словаря «Identification Papers»](identification-papers.jpg)
-
-*Впервые опубликовано в Telegram-канале «rompita spegulo».*

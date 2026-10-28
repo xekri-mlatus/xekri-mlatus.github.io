@@ -1,7 +1,7 @@
 /* Wider page content (PaperMod's default is 720px), with the header
    (site title and menu) kept at the same width so they line up. */
 :root {
-    --main-width: 860px;
+    --main-width: 720px;
     --nav-width: var(--main-width);
 }
 

@@ -1,0 +1,7 @@
+{{- /* PaperMod's slot after a note's text: a disclaimer on notes from before 2025. */ -}}
+{{- if and (eq .Section "notes") (lt .Date.Year 2025) }}
+<aside class="old-note">
+  <p lang="en">This is an old note. It may not reflect what I think and feel now.</p>
+  <p lang="ru">Это старая заметка. Она может не отражать того, что я думаю и чувствую сейчас.</p>
+</aside>
+{{- end }}

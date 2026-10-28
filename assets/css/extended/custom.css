@@ -5,6 +5,21 @@
     --nav-width: var(--main-width);
 }
 
+/* Disclaimer under notes from before 2025
+   (layouts/_partials/extend_post_content.html). */
+.old-note {
+    margin-top: var(--content-gap);
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.old-note p {
+    margin: 0;
+}
+
 /* Larger, longer preview text on note lists (PaperMod's default is 14px,
    cut off after 2 lines). */
 .post-entry .entry-content {

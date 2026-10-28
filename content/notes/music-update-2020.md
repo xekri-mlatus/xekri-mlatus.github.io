@@ -1,0 +1,11 @@
+---
+title: "Music update: февраль–сентябрь 2020"
+date: 2020-10-19T01:21:14+03:00
+tags: ["Old posts"]
+---
+
+Music update за февраль-сентябрь 2020. Значительная часть из него нравится лишь с оговорками. Исключение - To Be Human by Marina, эта песня смело идет в плейлист Best. В верхней части списка - самые старые треки, в нижней - самые свежие.
+
+<https://open.spotify.com/playlist/4dZTauE1n6XsTJuxgXySsM?si=Z3_TR9tiTvK0V_E7pxJTDQ>
+
+*Впервые опубликовано в Telegram-канале «Walls inside us».*

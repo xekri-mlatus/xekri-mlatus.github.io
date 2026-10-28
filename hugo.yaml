@@ -1,0 +1,93 @@
+baseURL: https://example.org/
+locale: en-us
+title: Neko in the Sky
+theme: PaperMod
+
+enableRobotsTXT: true
+pagination:
+  pagerSize: 8
+
+# Only tags — PaperMod doesn't display categories anywhere.
+taxonomies:
+  tag: tags
+
+# JSON on the home page is the index the search page reads.
+outputs:
+  home: [HTML, RSS, JSON]
+
+markup:
+  highlight:
+    noClasses: false  # PaperMod ships its own syntax colours for light and dark
+  goldmark:
+    renderHooks:
+      link:
+        # Resolve links like /notes/foo/ to the page's real URL, so they keep
+        # working when the site is served from a subfolder (as on GitHub Pages).
+        useEmbedded: fallback
+
+menu:
+  main:
+    - name: Notes
+      pageRef: /notes
+      weight: 10
+    - name: Archive
+      pageRef: /archives
+      weight: 20
+    - name: Tags
+      pageRef: /tags
+      weight: 30
+    - name: Search
+      pageRef: /search
+      weight: 40
+    - name: About
+      pageRef: /about
+      weight: 50
+
+params:
+  description: "Notes on code, writing, walks and books."
+  author: Neko in the Sky
+  mainSections: [notes]
+  defaultTheme: auto
+
+  homeInfoParams:
+    Title: "Hi, I'm Neko 👋"
+    Content: >-
+      This is where I keep my notes — on code, writing, long walks and the books
+      I'm reading. Some are finished, most are still growing. Start with the latest
+      below, browse by [tag](/tags/), or [search](/search/) for something specific.
+
+  socialIcons:
+    - name: github
+      url: https://github.com/neko-in-the-sky
+    - name: rss
+      url: index.xml
+
+  # Post pages
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowShareButtons: true
+  ShareButtons: [x, linkedin, reddit, ycombinator]
+  ShowToc: false  # turned on per note for the longer ones
+  TocOpen: false
+
+  cover:
+    linkFullImages: true  # clicking a cover opens the full-size image
+
+  editPost:
+    URL: https://github.com/neko-in-the-sky/xekri-mlatus.github.io/tree/main/content
+    Text: Suggest a change
+    appendFilePath: true
+
+  # Search tuning. A low threshold keeps results close to what was typed
+  # (0.4, the default, matches "lake" to "like", "make" and "take").
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    ignoreLocation: true
+    threshold: 0.2
+    minMatchCharLength: 2
+    limit: 10
+    keys: [title, summary, content]

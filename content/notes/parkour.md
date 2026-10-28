@@ -1,0 +1,10 @@
+---
+title: "Паркур"
+date: 2017-06-10T01:07:00+03:00
+tags: ["Old posts"]
+---
+
+- [Как быстро пересесть на другое место: урок от паркурщика](https://meduza.io/shapito/2016/11/21/kak-bystro-peresest-na-drugoe-mesto-urok-ot-parkurschika)
+- [В Китае установили 300-метровую трассу для паркура. На нее даже смотреть страшно](https://meduza.io/shapito/2017/06/09/v-kitae-ustanovili-300-metrovuyu-trassu-dlya-parkura-na-nee-dazhe-smotret-strashno)
+
+*Впервые опубликовано в сообществе ВКонтакте «Coalescent Storm».*

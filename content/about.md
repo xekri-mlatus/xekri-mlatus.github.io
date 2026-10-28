@@ -17,3 +17,5 @@ Hi, I'm Mlatus.
 This site is my personal collection of notes, memes, random thoughts, art and everything I find interesting or valuable. Some posts are in English, some in Russian.
 
 Этот сайт - моя личная коллекция заметок, мемов, случайных мыслей, искусства и всего, что я нахожу интересным или ценным. Некоторые посты на английском, некоторые на русском.
+
+Telegram: [@zeit_und_raum](https://t.me/zeit_und_raum)

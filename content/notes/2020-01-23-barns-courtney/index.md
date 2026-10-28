@@ -2,7 +2,7 @@
 title: "Barns Courtney"
 slug: barns-courtney
 date: 2020-01-23T01:10:07+03:00
-tags: ["Old posts"]
+tags: ["Old posts", "Long reads"]
 cover:
   image: collage.jpg
   alt: "Коллаж из 3 картинок заметки"

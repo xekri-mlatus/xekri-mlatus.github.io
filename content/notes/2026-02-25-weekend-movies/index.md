@@ -2,7 +2,7 @@
 title: "Киновыходные"
 slug: weekend-movies
 date: 2026-02-25T17:05:27+03:00
-tags: [movies]
+tags: [movies, "Long reads"]
 cover:
   image: still.jpg
   alt: "Кадр из фильма: заплаканная женщина говорит «You didn’t do anything.»"

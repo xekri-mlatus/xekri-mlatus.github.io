@@ -2,7 +2,7 @@
 title: "Дневник Стивена Ардента"
 slug: steven-ardent
 date: 2019-10-06T17:17:25+03:00
-tags: ["Old posts"]
+tags: ["Old posts", "Long reads"]
 ---
 
 13 июля, год 5.

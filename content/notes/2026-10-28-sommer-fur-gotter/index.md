@@ -2,7 +2,7 @@
 title: "Боги не ведают боли"
 slug: sommer-fur-gotter
 date: 2026-10-28T00:00:00+03:00
-tags: [art]
+tags: [art, "Long reads"]
 description: "Wie gut, wenn die Menschen entschlafen."
 cover:
   image: violets-and-ruins.png

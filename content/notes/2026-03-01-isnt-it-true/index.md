@@ -9,6 +9,4 @@ cover:
   hiddenInSingle: true  # already shown in the text
 ---
 
-Ну правда же
-
 ![Твит о BDSM как идеальном социальном взаимодействии для нейроотличных людей](tweet.jpg)

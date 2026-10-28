@@ -9,6 +9,4 @@ cover:
   hiddenInSingle: true  # already shown in the text
 ---
 
-That's really hot
-
 ![Переписка: «That’s so hot» — «Huh?» — «You knew the difference between there, their, and they’re»](there-their.jpg)

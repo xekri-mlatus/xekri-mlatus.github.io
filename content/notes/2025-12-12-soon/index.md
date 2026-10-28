@@ -9,6 +9,4 @@ cover:
   hiddenInSingle: true  # already shown in the text
 ---
 
-Скоро
-
 ![Дисковод с наклейкой «Works, but makes Sad Noises»: «Got my performance review.»](performance-review.jpg)

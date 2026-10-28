@@ -9,6 +9,4 @@ cover:
   hiddenInSingle: true  # already shown in the text
 ---
 
-I'm possessed by an owl
-
 ![Мем с Дуэйном Джонсоном в машине: «Someone we know is possessed by an owl!» — «Who»](owl.jpg)

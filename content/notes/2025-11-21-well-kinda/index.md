@@ -9,6 +9,4 @@ cover:
   hiddenInSingle: true  # already shown in the text
 ---
 
-Well, kinda
-
 ![Парень в наушниках: «My sexual fantasy is to have someone notice my absence and wonder about me»](absence.jpg)

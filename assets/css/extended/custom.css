@@ -27,12 +27,14 @@
     -webkit-line-clamp: 5;
 }
 
-/* Same-height preview images on note lists: crop each cover to 16:9,
-   keeping its top (where memes usually have their caption). Note pages
-   still show the full image. */
+/* Preview images on note lists: whole, at most 400px tall, centred. The
+   image box shrinks to the picture (instead of PaperMod's full width) so
+   its rounded corners fall on the picture itself. Note pages still show
+   the full image. */
 .post-entry .entry-cover img,
 .first-entry .entry-cover img {
+    width: auto;
+    max-width: 100%;
     max-height: 400px;
-    object-fit: scale-down;
-    object-position: bottom;
+    align-self: center;
 }

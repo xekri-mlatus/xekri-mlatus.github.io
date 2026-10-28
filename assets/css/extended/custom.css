@@ -17,7 +17,7 @@
    still show the full image. */
 .post-entry .entry-cover img,
 .first-entry .entry-cover img {
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: top;
+    max-height: 400px;
+    object-fit: scale-down;
+    object-position: bottom;
 }

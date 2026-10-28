@@ -1,6 +1,6 @@
 baseURL: https://xekri-mlatus.github.io/
 locale: en-us
-title: Neko in the Sky
+title: Mlatus' notes
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -44,23 +44,15 @@ menu:
       weight: 50
 
 params:
-  description: "Notes on code, writing, walks and books."
-  author: Neko in the Sky
+  description: "Notes of Mlatus"
+  author: Mlatus
   mainSections: [notes]
   defaultTheme: auto
 
-  homeInfoParams:
-    Title: "Hi, I'm Neko 👋"
-    Content: >-
-      This is where I keep my notes — on code, writing, long walks and the books
-      I'm reading. Some are finished, most are still growing. Start with the latest
-      below, browse by [tag](/tags/), or [search](/search/) for something specific.
-
-  socialIcons:
-    - name: github
-      url: https://github.com/neko-in-the-sky
-    - name: rss
-      url: index.xml
+  # homeInfoParams:
+    # Title: "Welcome to the online home of Mlatus"
+    # Content: >-
+      # This site is my personal collection of notes, memes, random thoughts, art and everything I find interesting or valuable.
 
   # Post pages
   ShowReadingTime: true
@@ -69,17 +61,12 @@ params:
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
   ShowShareButtons: true
-  ShareButtons: [x, linkedin, reddit, ycombinator]
+  ShareButtons: [x, reddit, telegram]
   ShowToc: false  # turned on per note for the longer ones
   TocOpen: false
 
   cover:
     linkFullImages: true  # clicking a cover opens the full-size image
-
-  editPost:
-    URL: https://github.com/xekri-mlatus/xekri-mlatus.github.io/tree/main/content
-    Text: Suggest a change
-    appendFilePath: true
 
   # Search tuning. A low threshold keeps results close to what was typed
   # (0.4, the default, matches "lake" to "like", "make" and "take").

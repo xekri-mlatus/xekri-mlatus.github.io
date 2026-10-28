@@ -2,6 +2,10 @@
 title: "Supervenience"
 date: 2025-04-25T04:20:42+03:00
 tags: [philosophy, art]
+cover:
+  image: sep-supervenience.jpg
+  alt: "The opening of the Stanford Encyclopedia of Philosophy entry on supervenience"
+  hiddenInSingle: true  # already shown in the text
 ---
 
 SEP provides a neat illustrative example that helps to grasp the notion of supervenience.

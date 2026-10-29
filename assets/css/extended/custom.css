@@ -20,6 +20,12 @@
     margin: 0;
 }
 
+/* Centre images shown at a set width with the figure shortcode, such as
+   phone screenshots ({{< figure src="1.jpg" width="300" >}}). */
+.post-content figure img {
+    margin-inline: auto;
+}
+
 /* Larger, longer preview text on note lists (PaperMod's default is 14px,
    cut off after 2 lines). */
 .post-entry .entry-content {

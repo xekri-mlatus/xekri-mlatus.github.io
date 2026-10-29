@@ -46,7 +46,10 @@ def layout(count):
 
 
 def tile(path, size):
-    """The image cropped to fill `size`, keeping its top (memes have captions there)."""
+    """The image cropped to fill `size`, keeping its top (memes have captions there).
+
+    Phone screenshots, much taller than wide, keep their middle instead: their top is
+    just the app's status and menu bars."""
     img = Image.open(path)
     img = ImageOps.exif_transpose(img)
     if img.mode != 'RGB':
@@ -54,7 +57,8 @@ def tile(path, size):
         flat = Image.new('RGB', img.size, (255, 255, 255))
         flat.paste(img, mask=img.getchannel('A'))
         img = flat
-    return ImageOps.fit(img, size, Image.Resampling.LANCZOS, centering=(0.5, 0.0))
+    top = 0.5 if img.height > 1.8 * img.width else 0.0
+    return ImageOps.fit(img, size, Image.Resampling.LANCZOS, centering=(0.5, top))
 
 
 def font(size):
@@ -83,9 +87,10 @@ def make_collage(images, out):
 
 
 def note_images(note_dir, body):
-    """Local images in the order the note's text shows them."""
+    """Local images in the order the note's text shows them, as Markdown images or figure shortcodes."""
     names = []
-    for name in re.findall(r'!\[[^\]]*\]\(([^)\s]+)\)', body):
+    for name in re.findall(r'!\[[^\]]*\]\(([^)\s]+)\)|\{\{<\s*figure\s[^>]*?src="([^"]+)"', body):
+        name = name[0] or name[1]
         if '://' not in name and name not in names and (note_dir / name).is_file():
             names.append(name)
     return [note_dir / n for n in names]

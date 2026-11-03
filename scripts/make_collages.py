@@ -6,6 +6,11 @@ last tile shows "+N") and points the note's cover at it, so note lists show
 all of the pictures at once. Note pages are unaffected: they show the
 images themselves.
 
+Tiles keep the top of each picture. To keep the middle of some instead
+(a book cover, say), list them in the note's front matter:
+
+    collageCentre: [dictionary.jpg]
+
 Run it from the repository root after adding or changing a note's images:
 
     python scripts/make_collages.py
@@ -45,11 +50,11 @@ def layout(count):
     return row(0, half_h, top) + row(half_h + GAP, half_h, count - top)
 
 
-def tile(path, size):
+def tile(path, size, centre=False):
     """The image cropped to fill `size`, keeping its top (memes have captions there).
 
     Phone screenshots, much taller than wide, keep their middle instead: their top is
-    just the app's status and menu bars."""
+    just the app's status and menu bars. So does any image with `centre` set."""
     img = Image.open(path)
     img = ImageOps.exif_transpose(img)
     if img.mode != 'RGB':
@@ -57,7 +62,7 @@ def tile(path, size):
         flat = Image.new('RGB', img.size, (255, 255, 255))
         flat.paste(img, mask=img.getchannel('A'))
         img = flat
-    top = 0.5 if img.height > 1.8 * img.width else 0.0
+    top = 0.5 if centre or img.height > 1.8 * img.width else 0.0
     return ImageOps.fit(img, size, Image.Resampling.LANCZOS, centering=(0.5, top))
 
 
@@ -70,12 +75,12 @@ def font(size):
     return ImageFont.load_default(size)
 
 
-def make_collage(images, out):
+def make_collage(images, out, centred=()):
     shown = images[:MAX_TILES]
     canvas = Image.new('RGB', (WIDTH, HEIGHT), BACKGROUND)
     boxes = layout(len(shown))
     for path, (x, y, w, h) in zip(shown, boxes):
-        canvas.paste(tile(path, (w, h)), (x, y))
+        canvas.paste(tile(path, (w, h), path.name in centred), (x, y))
     hidden = len(images) - len(shown)
     if hidden:
         x, y, w, h = boxes[-1]
@@ -94,6 +99,12 @@ def note_images(note_dir, body):
         if '://' not in name and name not in names and (note_dir / name).is_file():
             names.append(name)
     return [note_dir / n for n in names]
+
+
+def centred_images(front):
+    """Names in the front matter's `collageCentre: [a.jpg, b.jpg]` list."""
+    m = re.search(r'^collageCentre: \[(.*)\]', front, re.M)
+    return {n.strip().strip('"\'') for n in m.group(1).split(',')} if m else set()
 
 
 def collage_alt(front, body, count):
@@ -125,7 +136,7 @@ def main():
         images = note_images(index.parent, body)
         if not sep or len(images) < 2:
             continue
-        make_collage(images, index.parent / COLLAGE)
+        make_collage(images, index.parent / COLLAGE, centred_images(front))
         if set_cover(index, front, body, len(images)):
             made += 1
             print(f'{index.parent.name}: {len(images)} images')

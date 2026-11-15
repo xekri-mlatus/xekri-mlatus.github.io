@@ -2,9 +2,9 @@
 
 For each note folder in content/notes with two or more images in its text,
 this writes collage.jpg next to them (up to six pictures; with more, the
-last tile shows "+N") and points the note's cover at it, so note lists show
-all of the pictures at once. Note pages are unaffected: they show the
-images themselves.
+last tile shows "+N") and points the note's cover at it, so link previews
+and the small pictures in search results show all of the pictures at once.
+The wall and note pages are unaffected: they show the images themselves.
 
 Tiles keep the top of each picture. To keep the middle of some instead
 (a book cover, say), list them in the note's front matter:

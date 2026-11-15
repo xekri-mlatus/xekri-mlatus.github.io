@@ -10,7 +10,7 @@
     {
       "name": "hugo-test-content",
       "runtimeExecutable": "hugo",
-      "runtimeArgs": ["server", "--contentDir", "content_test", "--port", "1314", "--bind", "127.0.0.1"],
+      "runtimeArgs": ["server", "--contentDir", "content_test", "--renderToMemory", "--port", "1314", "--bind", "127.0.0.1"],
       "port": 1314
     },
     {

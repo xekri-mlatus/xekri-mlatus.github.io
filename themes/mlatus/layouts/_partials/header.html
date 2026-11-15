@@ -1,0 +1,22 @@
+{{- /* The header on every page: avatar and name (to the wall), the menu, and the
+       light / dark switch. The current section's link is bold. */ -}}
+{{- $current := "" -}}
+{{- if or .IsHome (eq .Section "notes") }}{{ $current = "Notes" }}
+{{- else if in (slice "taxonomy" "term") .Kind }}{{ $current = "Tags" }}
+{{- else if eq .Layout "search" }}{{ $current = "Search" }}
+{{- else if eq .Layout "about" }}{{ $current = "About" }}
+{{- end -}}
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="{{ "" | relURL }}">
+      <span class="avatar" aria-hidden="true">M</span>
+      <span><span class="name">{{ site.Title }}</span><span class="sub">{{ len (partial "notes.html" .) }} notes</span></span>
+    </a>
+    <nav>
+      {{- range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if eq .Name $current }} class="cur" aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+    <button class="theme" type="button" title="Switch light / dark" aria-label="Switch light / dark"></button>
+  </div>
+</header>

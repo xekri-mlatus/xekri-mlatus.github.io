@@ -1,0 +1,3 @@
+{{- /* A tag as a hashtag: "Long reads" -> "longreads" (shown after a #). */ -}}
+{{- $tag := . | lower | replaceRE `\s+` "" -}}
+{{- return $tag -}}

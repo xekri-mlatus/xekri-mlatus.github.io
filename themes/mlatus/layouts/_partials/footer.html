@@ -1,0 +1,4 @@
+<footer class="site-foot">
+  <a href="{{ "about/" | relURL }}">{{ site.Params.author }}</a> ·
+  {{- with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }} <a href="{{ .RelPermalink }}">RSS</a>{{ end }}{{ end }}
+</footer>

@@ -1,0 +1,6 @@
+{{- /* {{< collapse summary="…" >}}…{{< /collapse >}}: text hidden until its summary
+       is clicked. Kept from PaperMod, which content_test's field guide uses. */ -}}
+<details{{ if eq (.Get "openByDefault") true }} open{{ end }}>
+  <summary>{{ .Get "summary" | markdownify }}</summary>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</details>

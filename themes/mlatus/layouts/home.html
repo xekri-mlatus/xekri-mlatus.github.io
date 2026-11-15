@@ -1,0 +1,3 @@
+{{ define "main" }}
+{{- partial "wall.html" (dict "page" . "pages" (partial "notes.html" .)) -}}
+{{ end }}

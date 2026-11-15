@@ -1,23 +1,29 @@
 baseURL: https://xekri-mlatus.github.io/
 locale: en-us
 title: Mlatus' notes
-theme: PaperMod
+theme: mlatus  # themes/mlatus, described in SPEC.md
 
 enableRobotsTXT: true
-pagination:
-  pagerSize: 8
 
-# Only tags — PaperMod doesn't display categories anywhere.
+# The wall and tag pages show 24 notes at a time; "Load older notes" fetches
+# the next page. See params.oldPagerSize for the page numbers this retired.
+pagination:
+  pagerSize: 24
+
 taxonomies:
   tag: tags
 
-# JSON on the home page is the index the search page reads.
+# The home page's JSON is the index the search page reads. The notes section
+# has its own feed, the one the site links to.
 outputs:
   home: [HTML, RSS, JSON]
+  section: [HTML, RSS]
+  taxonomy: [HTML, RSS]
+  term: [HTML, RSS]
 
 markup:
   highlight:
-    noClasses: false  # PaperMod ships its own syntax colours for light and dark
+    noClasses: false  # code colours come from the theme's CSS, for light and dark
   goldmark:
     renderHooks:
       link:
@@ -28,53 +34,24 @@ markup:
 menu:
   main:
     - name: Notes
-      pageRef: /notes
+      pageRef: /
       weight: 10
-    - name: Archive
-      pageRef: /archives
-      weight: 20
     - name: Tags
       pageRef: /tags
-      weight: 30
+      weight: 20
     - name: Search
       pageRef: /search
-      weight: 40
+      weight: 30
     - name: About
       pageRef: /about
-      weight: 50
+      weight: 40
 
 params:
   description: "Notes of Mlatus"
   author: Mlatus
   mainSections: [notes]
-  defaultTheme: auto
-
-  # homeInfoParams:
-    # Title: "Welcome to the online home of Mlatus"
-    # Content: >-
-      # This site is my personal collection of notes, memes, random thoughts, art and everything I find interesting or valuable.
-
-  # Post pages
-  ShowReadingTime: true
-  ShowBreadCrumbs: true
-  ShowPostNavLinks: true
-  ShowCodeCopyButtons: true
-  ShowRssButtonInSectionTermList: true
-  ShowShareButtons: true
-  ShareButtons: [x, reddit, telegram]
-  ShowToc: false  # turned on per note for the longer ones
-  TocOpen: false
-
-  cover:
-    linkFullImages: true  # clicking a cover opens the full-size image
-
-  # Search tuning. A low threshold keeps results close to what was typed
-  # (0.4, the default, matches "lake" to "like", "make" and "take").
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    ignoreLocation: true
-    threshold: 0.2
-    minMatchCharLength: 2
-    limit: 10
-    keys: [title, summary, content]
+  # Pages used to hold 8 notes. Page numbers that existed then but not now
+  # (such as /page/9/) redirect to the first page, so old links keep working.
+  oldPagerSize: 8
+  # Notes written before this year end with the "old note" disclaimer.
+  oldNoteYear: 2025

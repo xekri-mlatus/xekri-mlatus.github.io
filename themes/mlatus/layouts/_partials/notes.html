@@ -1,0 +1,2 @@
+{{- /* Every note, newest first. */ -}}
+{{- return (where site.RegularPages "Section" "notes").ByDate.Reverse -}}

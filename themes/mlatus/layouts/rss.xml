@@ -1,0 +1,35 @@
+{{- /* Feeds: /index.xml and /notes/index.xml hold every note, /tags/<tag>/index.xml
+       a tag's notes, /tags/index.xml the tags. A note's item is named by its
+       label (titles are never shown) and carries the whole note. */ -}}
+{{- $items := .Pages -}}
+{{- if or .IsHome (eq .Kind "section") }}{{ $items = partial "notes.html" . }}{{ end -}}
+{{- $site := strings.TrimSuffix "/" site.BaseURL -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if eq .Kind "term" }}#{{ partial "hashtag.html" .Title }} · {{ end }}{{ site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ site.Params.description }}</description>
+    <language>{{ site.Language.Locale }}</language>
+    {{- with $items }}<lastBuildDate>{{ (index . 0).Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>{{ end }}
+    {{- with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $items }}
+    <item>
+      {{- if eq .Kind "term" }}
+      <title>#{{ partial "hashtag.html" .Title }}</title>
+      {{- else }}
+      <title>{{ partial "label.html" . }}</title>
+      {{- end }}
+      <link>{{ .Permalink }}</link>
+      <guid>{{ .Permalink }}</guid>
+      {{- if eq .Kind "page" }}
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      {{- /* Pictures and links need full addresses in feed readers. */}}
+      <description>{{ .Content | replaceRE `(src|href|data-full)="/` (printf "$1=\"%s/" $site) | transform.XMLEscape | safeHTML }}</description>
+      {{- end }}
+    </item>
+    {{- end }}
+  </channel>
+</rss>

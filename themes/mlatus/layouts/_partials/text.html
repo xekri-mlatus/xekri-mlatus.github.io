@@ -1,0 +1,3 @@
+{{- /* A note's text as one line of plain text. */ -}}
+{{- $text := .Plain | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+{{- return $text -}}

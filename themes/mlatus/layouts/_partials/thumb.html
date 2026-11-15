@@ -1,0 +1,17 @@
+{{- /* A note's picture for previews and small squares: its cover (the collage
+       or only picture), else the first picture in its text. A raster image
+       resource, or nothing. */ -}}
+{{- $img := "" -}}
+{{- with .Params.cover.image -}}{{- $img = $.Resources.Get . -}}{{- end -}}
+{{- if not $img -}}
+  {{- range findRESubmatch `!\[[^\]]*\]\(([^)\s]+)|src="([^"]+)"` .RawContent -}}
+    {{- if not $img -}}
+      {{- $name := or (index . 1) (index . 2) -}}
+      {{- with $.Resources.Get $name -}}{{- $img = . -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if and $img (eq $img.ResourceType "image") (ne $img.MediaType.SubType "svg") -}}
+  {{- return $img -}}
+{{- end -}}
+{{- return "" -}}

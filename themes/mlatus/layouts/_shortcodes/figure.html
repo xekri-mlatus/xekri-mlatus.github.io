@@ -1,0 +1,6 @@
+{{- /* {{< figure src="1.jpg" alt="…" width="300" >}}: a centred picture shown at a
+       set width, for tall pictures such as phone screenshots and book covers. */ -}}
+<figure>
+  {{- partial "img.html" (dict "page" .Page "src" (.Get "src") "alt" (.Get "alt") "width" (.Get "width")) -}}
+  {{- with .Get "caption" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
+</figure>

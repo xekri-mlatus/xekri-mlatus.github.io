@@ -1,0 +1,7 @@
+{{- /* "ru" when a note's text (or, without text, its picture descriptions) is
+       mostly Cyrillic, otherwise "en". Lets browsers hyphenate and read it right. */ -}}
+{{- $text := partial "text.html" . -}}
+{{- if not $text -}}{{- $text = delimit (partial "alts.html" .) " " -}}{{- end -}}
+{{- $cyr := len (findRE `[А-Яа-яЁё]` $text) -}}
+{{- $lat := len (findRE `[A-Za-z]` $text) -}}
+{{- return cond (gt $cyr $lat) "ru" "en" -}}

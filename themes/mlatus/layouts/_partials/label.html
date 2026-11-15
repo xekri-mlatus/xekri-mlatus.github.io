@@ -1,0 +1,10 @@
+{{- /* What names a note wherever a title would (tabs, link previews, feeds),
+       since titles are never shown: the start of its text, else its first
+       picture's description, else its date. About 60 characters, cut at a word. */ -}}
+{{- $label := partial "text.html" . -}}
+{{- if not $label -}}{{- range first 1 (partial "alts.html" .) -}}{{- $label = . -}}{{- end -}}{{- end -}}
+{{- if not $label -}}{{- $label = partial "date-long.html" . -}}{{- end -}}
+{{- if gt (strings.RuneCount $label) 60 -}}
+  {{- $label = printf "%s…" (substr $label 0 60 | replaceRE `[\s,.;:—–-]*\s+\S*$` "") -}}
+{{- end -}}
+{{- return $label -}}

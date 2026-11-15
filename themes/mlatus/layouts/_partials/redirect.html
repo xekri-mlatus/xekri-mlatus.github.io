@@ -1,0 +1,12 @@
+{{- /* A page that sends the visitor (and search engines) to another address,
+       like the ones Hugo makes for aliases. Takes the target address. */ -}}
+{{- return printf `<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>%s</title>
+<link rel="canonical" href="%s">
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=%s">
+</head>
+</html>
+` . . . -}}

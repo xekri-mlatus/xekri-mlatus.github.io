@@ -1,0 +1,10 @@
+{{- /* A link to the next or previous note under a note: its picture, which way
+       and when, and the start of its text (or its picture's description). */ -}}
+{{- $p := .page -}}
+{{- $start := partial "text.html" $p -}}
+{{- if not $start -}}{{- range first 1 (partial "alts.html" $p) -}}{{- $start = . -}}{{- end -}}{{- end -}}
+<a class="{{ .class }}" href="{{ $p.RelPermalink }}">
+  {{- with partial "thumb.html" $p }}<img src="{{ (.Fill "104x104 top").RelPermalink }}" width="52" height="52" alt="">{{ end }}
+  <span class="txt"><span class="dir">{{ .dir }} · {{ partial "date-short.html" $p | replaceRE `, \d\d:\d\d$` "" }}</span>
+    <span class="t" lang="{{ partial "lang.html" $p }}">{{ substr $start 0 160 }}</span></span>
+</a>

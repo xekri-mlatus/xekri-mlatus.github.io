@@ -1,0 +1,11 @@
+{{- /* A note on the wall: the whole note, no title. Its date opens the note's
+       own page in a new tab; data-url is where an album's "+N" leads. */ -}}
+<article class="card tile" data-url="{{ .RelPermalink }}">
+  <div class="body" lang="{{ partial "lang.html" . }}">{{ .Content }}</div>
+  <footer class="foot">
+    <div class="tags">
+      {{- range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ partial "hashtag.html" .Title }}</a>{{ end -}}
+    </div>
+    <a class="when" href="{{ .RelPermalink }}" target="_blank" rel="noopener" title="Open the note in a new tab">{{ partial "date-short.html" . }}</a>
+  </footer>
+</article>

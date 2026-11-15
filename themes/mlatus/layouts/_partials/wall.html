@@ -1,0 +1,23 @@
+{{- /* The wall of tiles for a list page (the home page, /notes/, a tag).
+       Takes: page, pages (every note the list holds, newest first). */ -}}
+{{- $page := .page -}}
+{{- $pager := $page.Paginate .pages -}}
+<main class="wall" id="wall">
+  {{- range $pager.Pages }}{{ partial "tile.html" . }}{{ end -}}
+</main>
+{{- with $pager.Next }}
+<div class="older-wrap"><a class="older" href="{{ .URL }}">Load older notes</a></div>
+{{- end }}
+
+{{- /* Page numbers that held notes when pages had params.oldPagerSize notes, but
+       no longer exist, redirect to the list's first page (SPEC.md, "Page numbers"). */ -}}
+{{- if eq $pager.PageNumber 1 -}}
+  {{- $old := int (math.Ceil (div (float (len .pages)) site.Params.oldPagerSize)) -}}
+  {{- if gt $old $pager.TotalPages -}}
+    {{- range seq (add $pager.TotalPages 1) $old -}}
+      {{- $path := printf "%spage/%d/index.html" (strings.TrimPrefix "/" $page.RelPermalink) . -}}
+      {{- $html := partial "redirect.html" $page.Permalink -}}
+      {{- (resources.FromString $path $html).Publish -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

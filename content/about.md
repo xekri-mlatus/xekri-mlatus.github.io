@@ -1,13 +1,7 @@
 ---
 title: About
 date: 2026-10-28
-hidemeta: true
-ShowBreadCrumbs: false
-ShowPostNavLinks: false
-ShowReadingTime: false
-disableShare: true
-editPost:
-  disabled: true
+layout: about  # themes/mlatus/layouts/about.html
 ---
 
 Hi, I'm Mlatus.

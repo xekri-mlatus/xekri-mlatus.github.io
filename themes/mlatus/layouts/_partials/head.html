@@ -1,0 +1,43 @@
+{{- /* <head>: tab name, link previews, feeds, styles, and the remembered theme. */ -}}
+{{- $isNote := and .IsPage (eq .Section "notes") -}}
+{{- $name := .Title -}}
+{{- if $isNote }}{{ $name = partial "label.html" . }}
+{{- else if eq .Kind "term" }}{{ $name = printf "#%s" (partial "hashtag.html" .Title) }}
+{{- else if eq .Kind "404" }}{{ $name = "Not found" }}
+{{- end -}}
+{{- $tab := cond (or .IsHome (eq .Kind "section")) site.Title (printf "%s · %s" $name site.Title) -}}
+{{- $desc := site.Params.description -}}
+{{- if $isNote }}{{ with partial "text.html" . }}{{ $desc = . | truncate 200 "…" | string | htmlUnescape }}{{ end }}{{ end -}}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ $tab }}</title>
+<meta name="description" content="{{ $desc }}">
+{{- /* /notes/ shows the same wall as the home page: point search engines to the home page. */}}
+<link rel="canonical" href="{{ if eq .Kind "section" }}{{ site.Home.Permalink }}{{ else }}{{ .Permalink }}{{ end }}">
+<meta name="color-scheme" content="light dark">
+{{- with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">
+{{- end }}{{ end }}
+
+{{- /* Link previews (Telegram, messengers, social sites). */}}
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ cond $isNote $name $tab }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ cond $isNote "article" "website" }}">
+{{- if $isNote }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+{{- with partial "thumb.html" . }}
+  {{- $img := cond (gt .Width 1200) (.Resize "1200x") . }}
+<meta property="og:image" content="{{ $img.Permalink }}">
+<meta name="twitter:card" content="summary_large_image">
+{{- end }}
+{{- end }}
+
+{{- /* Before anything is drawn, so a chosen theme never flashes the other one. */}}
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+{{- $css := slice (resources.Get "css/main.css") (resources.Get "css/chroma.css") | resources.Concat "css/site.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $js := resources.Get "js/main.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

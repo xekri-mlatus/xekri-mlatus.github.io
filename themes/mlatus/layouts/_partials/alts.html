@@ -1,0 +1,6 @@
+{{- /* The descriptions (alt texts) of a note's pictures, in order. */ -}}
+{{- $alts := slice -}}
+{{- range findRESubmatch `<img[^>]*?\salt="([^"]*)"` .Content -}}
+  {{- with index . 1 | htmlUnescape | strings.TrimSpace -}}{{- $alts = $alts | append . -}}{{- end -}}
+{{- end -}}
+{{- return $alts -}}

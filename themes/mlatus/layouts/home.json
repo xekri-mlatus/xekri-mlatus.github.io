@@ -1,0 +1,14 @@
+{{- /* /index.json, what the search page reads: every note's address, date, text,
+       picture descriptions and small picture. No titles: search doesn't use them. */ -}}
+{{- $items := slice -}}
+{{- range partial "notes.html" . -}}
+  {{- $thumb := "" -}}
+  {{- with partial "thumb.html" . }}{{ $thumb = (.Fill "128x128 top").RelPermalink }}{{ end -}}
+  {{- $items = $items | append (dict
+      "url" .RelPermalink
+      "date" (partial "date-short.html" . | replaceRE `, \d\d:\d\d$` "")
+      "text" (partial "text.html" .)
+      "alts" (partial "alts.html" .)
+      "thumb" $thumb) -}}
+{{- end -}}
+{{- $items | jsonify -}}

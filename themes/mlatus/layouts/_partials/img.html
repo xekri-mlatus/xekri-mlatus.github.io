@@ -1,0 +1,16 @@
+{{- /* One picture of a note, for the image render hook and the figure shortcode.
+       Takes: page, src, alt, and optionally width (shown width, in px).
+       Pictures from the note's folder get their real width and height (so tiles
+       don't jump while they load) and are served at most 1200px wide; the
+       original opens when the picture is enlarged (data-full). */ -}}
+{{- $r := "" -}}
+{{- if not (urls.Parse .src).IsAbs -}}{{- $r = .page.Resources.Get .src -}}{{- end -}}
+{{- $style := "" -}}
+{{- with .width -}}{{- $style = printf "width: %spx" (string .) -}}{{- end -}}
+{{- if and $r (eq $r.ResourceType "image") (ne $r.MediaType.SubType "svg") -}}
+  {{- $show := $r -}}
+  {{- if and (ne $r.MediaType.SubType "gif") (gt $r.Width 1200) -}}{{- $show = $r.Resize "1200x" -}}{{- end -}}
+  <img src="{{ $show.RelPermalink }}" width="{{ $show.Width }}" height="{{ $show.Height }}" alt="{{ .alt }}" loading="lazy" decoding="async" data-full="{{ $r.RelPermalink }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+{{- else -}}
+  <img src="{{ with $r }}{{ .RelPermalink }}{{ else }}{{ .src }}{{ end }}" alt="{{ .alt }}" loading="lazy" decoding="async"{{ with $style }} style="{{ . | safeCSS }}"{{ end }}>
+{{- end -}}

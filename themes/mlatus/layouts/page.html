@@ -1,0 +1,34 @@
+{{- /* A note's own page: one wide tile with the whole note, no title, then the
+       neighbouring notes. Other plain pages get just a tile with their text. */ -}}
+{{ define "main" }}
+<main class="page">
+{{- if eq .Section "notes" }}
+  <article class="card note">
+    <div class="note-meta">
+      <span>{{ partial "date-long.html" . }}</span>
+      <span class="tags">{{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ partial "hashtag.html" .Title }}</a>{{ end }}</span>
+    </div>
+    <div class="body" lang="{{ partial "lang.html" . }}">{{ .Content }}</div>
+    {{- if lt .Date.Year site.Params.oldNoteYear }}
+    <aside class="old-note">
+      <p lang="en">This is an old note. It may not reflect what I think and feel now.</p>
+      <p lang="ru">Это старая заметка. Она может не отражать того, что я думаю и чувствую сейчас.</p>
+    </aside>
+    {{- end }}
+  </article>
+  {{- $notes := partial "notes.html" . }}
+  {{- /* In Hugo, Next is the page before this one in the list, which is newest first. */}}
+  {{- $newer := $notes.Next . }}
+  {{- $older := $notes.Prev . }}
+  {{- if or $newer $older }}
+  <nav class="pager">
+    {{- with $newer }}{{ partial "neighbour.html" (dict "page" . "class" "newer" "dir" "← Newer") }}{{ end }}
+    {{- with $older }}{{ partial "neighbour.html" (dict "page" . "class" "older" "dir" "Older →") }}{{ end }}
+  </nav>
+  {{- end }}
+  <a class="back" href="{{ "" | relURL }}">All notes</a>
+{{- else }}
+  <article class="card"><div class="body">{{ .Content }}</div></article>
+{{- end }}
+</main>
+{{ end }}

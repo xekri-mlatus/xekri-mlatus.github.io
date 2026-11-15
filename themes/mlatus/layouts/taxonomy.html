@@ -1,0 +1,12 @@
+{{- /* /tags/: every tag as a chip with its count, most used first. */ -}}
+{{ define "main" }}
+<main class="page">
+  <h1>Tags</h1>
+  <p class="lead">{{ len .Data.Terms }} tags, most used first</p>
+  <div class="chips">
+    {{- range .Data.Terms.ByCount }}
+    <a class="chip" href="{{ .Page.RelPermalink }}">#{{ partial "hashtag.html" .Page.Title }}<span class="n">{{ .Count }}</span></a>
+    {{- end }}
+  </div>
+</main>
+{{ end }}

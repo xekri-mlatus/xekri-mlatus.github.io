@@ -1,0 +1,8 @@
+{{- /* One tag: its notes on the same wall as the home page. */ -}}
+{{ define "main" }}
+<div class="wall-head">
+  <h1>#{{ partial "hashtag.html" .Title }}</h1>
+  <p class="lead">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "note" "notes" }} · <a href="{{ "tags/" | relURL }}">all tags</a></p>
+</div>
+{{- partial "wall.html" (dict "page" . "pages" .Pages.ByDate.Reverse) -}}
+{{ end }}

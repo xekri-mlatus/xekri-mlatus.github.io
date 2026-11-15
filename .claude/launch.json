@@ -8,6 +8,12 @@
       "port": 1313
     },
     {
+      "name": "hugo-test-content",
+      "runtimeExecutable": "hugo",
+      "runtimeArgs": ["server", "--contentDir", "content_test", "--port", "1314", "--bind", "127.0.0.1"],
+      "port": 1314
+    },
+    {
       "name": "mockups",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1"],

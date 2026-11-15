@@ -1,0 +1,4 @@
+{{- /* /notes/ is the same wall as the home page, so its old links keep working. */ -}}
+{{ define "main" }}
+{{- partial "wall.html" (dict "page" . "pages" (partial "notes.html" .)) -}}
+{{ end }}

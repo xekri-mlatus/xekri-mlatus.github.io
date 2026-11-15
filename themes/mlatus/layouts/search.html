@@ -1,0 +1,9 @@
+{{- /* Search (content/search.md, layout: search). The script fills in the results
+       from /index.json; without JavaScript there's only the note below. */ -}}
+{{ define "main" }}
+<main class="page search" data-index="{{ "index.json" | relURL }}">
+  <div class="box"><input id="q" type="search" placeholder="Search notes…" autocomplete="off" aria-label="Search notes" autofocus></div>
+  <p class="status" id="status"><noscript>Search needs JavaScript. You can browse notes by <a href="{{ "tags/" | relURL }}">tag</a> instead.</noscript></p>
+  <div id="hits"></div>
+</main>
+{{ end }}

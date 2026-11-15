@@ -1,5 +1,6 @@
 {{- /* A note on the wall: the whole note, no title. Its date opens the note's
-       own page in a new tab; data-url is where an album's "+N" leads. */ -}}
+       own page in a new tab. data-url names the note (scripts/check_site.py
+       finds tiles by it). */ -}}
 <article class="card tile" data-url="{{ .RelPermalink }}">
   <div class="body" lang="{{ partial "lang.html" . }}">{{ .Content }}</div>
   <footer class="foot">

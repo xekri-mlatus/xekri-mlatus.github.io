@@ -89,11 +89,11 @@ works, every page matches the mockups, and no note title shows anywhere.
   `<!--more-->`. Long reads are ordinary tiles.
 - **Pictures** fill the tile's width, at most 380px tall (narrower for tall
   ones); a figure with a set width (phone screenshots) keeps that width.
-  Two or more pictures in a row with nothing between them become an
-  **album**: 2 side by side, 3 as one large and two small, 4 or more as a
-  2×2 grid where the fourth shows "+N" and leads to the note's page.
-  Clicking any other picture enlarges it over the page; a click or Esc
-  closes it.
+  Two or more pictures in a row with nothing between them form a
+  **gallery**: every one of them, two to a row, uncropped, as on the note's
+  page. (Changed 2026-11-15: an earlier album showed at most four, cropped,
+  with "+N" for the rest, which hid most of a meme collection.)
+  Clicking a picture enlarges it over the page; a click or Esc closes it.
 - **YouTube** videos play inside the tile.
 - **Tile footer**, small and grey: the hashtags on the left (each leads to
   its tag page) and the date on the right. The date leads to the note's own
@@ -209,7 +209,7 @@ works, every page matches the mockups, and no note title shows anywhere.
 - Hugo extended 0.169.0, the same version as the deploy workflow. No Node,
   no npm, no CDN, no web fonts, no new dependencies.
 - One CSS file and one small JavaScript file of our own (theme switch,
-  masonry, albums, enlarged pictures, "Load older notes", search, the `/`
+  masonry, galleries, enlarged pictures, "Load older notes", search, the `/`
   key), processed with Hugo Pipes (minified, fingerprinted).
 
 ## Project structure
@@ -263,7 +263,7 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - every `<img>` has a width, a height and an `alt`;
   - `/index.xml` holds exactly the 73 notes.
 - **In the browser** (`hugo server`, the `hugo` entry in `launch.json`), at
-  1440px, 1100px and 375px, light and dark: the wall, a note with an album
+  1440px, 1100px and 375px, light and dark: the wall, a note with a gallery
   (`mob-control`), an old note (`welcome`), a note with a video
   (`penguins-escalation`), `/tags/`, `/tags/memes/`, search for "кот" and
   "Падме", About, an unknown address. Compare with the mockups; check there's

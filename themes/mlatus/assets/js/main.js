@@ -1,4 +1,4 @@
-// Mlatus' notes: light / dark switch, "/" for search, enlarged pictures, albums,
+// Mlatus' notes: light / dark switch, "/" for search, enlarged pictures, galleries,
 // the masonry wall with "Load older notes", and search. See SPEC.md.
 (() => {
   "use strict";
@@ -68,39 +68,24 @@
     }
     flush();
   }
-  // On the wall: an album of up to four, the fourth showing "+N" and leading to the note.
-  function albums(tile) {
-    groupPictures(tile.querySelector(".body"), imgs => {
-      const n = imgs.length, album = document.createElement("div");
-      album.className = "album " + (n === 2 ? "n2" : n === 3 ? "n3" : "n4");
-      imgs.slice(0, 4).forEach((img, i) => {
-        img.removeAttribute("style");
-        if (i === 3 && n > 4) {
-          const more = Object.assign(document.createElement("a"), {
-            className: "plus", href: tile.dataset.url, target: "_blank", rel: "noopener",
-            title: "Open the note in a new tab",
-          });
-          more.append(img, Object.assign(document.createElement("span"), { textContent: `+${n - 4}` }));
-          album.append(more);
-        } else album.append(img);
-      });
-      return album;
+  // On the wall and on a note's page alike: every picture, two to a row,
+  // uncropped, so nothing is hidden (memes keep their text).
+  function galleries(body) {
+    groupPictures(body, imgs => {
+      const gallery = document.createElement("div");
+      gallery.className = "gallery";
+      imgs.forEach(img => img.removeAttribute("style"));
+      gallery.append(...imgs);
+      return gallery;
     });
   }
-  // On a note's page: every picture, two to a row, uncropped.
-  document.querySelectorAll(".note .body").forEach(body => groupPictures(body, imgs => {
-    const gallery = document.createElement("div");
-    gallery.className = "gallery";
-    imgs.forEach(img => img.removeAttribute("style"));
-    gallery.append(...imgs);
-    return gallery;
-  }));
+  document.querySelectorAll(".note .body").forEach(galleries);
 
   // ---------- the wall: masonry, at most three columns of 420px or wider ----------
   const wall = document.getElementById("wall");
   if (wall) {
     const MIN_WIDTH = 420, MAX_COLUMNS = 3;
-    wall.querySelectorAll(".tile").forEach(albums);
+    wall.querySelectorAll(".tile .body").forEach(galleries);
     wall.classList.add("masonry");
 
     // Each tile goes where it sits highest, leftmost on a tie, so the order
@@ -141,7 +126,7 @@
         if (!res.ok) throw new Error(res.status);
         const doc = new DOMParser().parseFromString(await res.text(), "text/html");
         const tiles = [...doc.querySelectorAll("#wall .tile")];
-        tiles.forEach(t => { albums(t); wall.append(t); });
+        tiles.forEach(t => { galleries(t.querySelector(".body")); wall.append(t); });
         tiles.forEach(watch);
         layout();
         const next = doc.querySelector(".older");

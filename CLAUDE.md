@@ -53,7 +53,7 @@ note:
   `![alt](name.jpg)`, or `{{< figure src="name.jpg" alt="…" width="300" >}}`
   for tall pictures such as phone screenshots and book covers (the figure is
   centred). Place each image next to the text it belongs to. Images with no
-  text between them become an album on the wall and show two to a row on the
+  text between them show two to a row, all of them, on the wall and on the
   note's page.
 - **Collage.** Notes with two or more images get a collage as their cover.
   After adding or changing images, run from the repository root:

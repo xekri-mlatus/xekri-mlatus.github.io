@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Mlatus' notes</title>
+<link rel="stylesheet" href="site.css">
+<style>
+.profile { text-align: center; padding-top: 30px !important; }
+.profile .avatar { width: 96px; height: 96px; font-size: 40px; margin: 0 auto 12px; }
+.profile h1 { font-size: 24px; margin: 0; }
+.profile .stats { color: var(--meta); font-size: 13.5px; margin: 4px 0 22px; }
+.profile .body { text-align: left; font-size: 16px; line-height: 1.6; }
+.profile .body p { margin: 0 0 12px; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0 6px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="card profile">
+    <div class="avatar">M</div>
+    <h1>Mlatus' notes</h1>
+    <div class="stats" id="stats"></div>
+    <div class="body">
+      <p lang="en">Hi, I'm Mlatus.</p>
+      <p lang="ru">Привет, я Млатус.</p>
+      <p lang="en">This site is my personal collection of notes, memes, random thoughts, art and everything I find interesting or valuable. Some posts are in English, some in Russian.</p>
+      <p lang="ru">Этот сайт — моя личная коллекция заметок, мемов, случайных мыслей, искусства и всего, что я нахожу интересным или ценным. Некоторые посты на английском, некоторые на русском.</p>
+    </div>
+    <div class="links">
+      <a class="chip" href="https://t.me/zeit_und_raum" target="_blank" rel="noopener">Telegram · @zeit_und_raum</a>
+      <a class="chip" id="rss" href="#">RSS</a>
+    </div>
+  </section>
+</main>
+<script src="notes.js"></script>
+<script src="common.js"></script>
+<script>
+renderHeader("About");
+document.getElementById("rss").href = RSS;
+const first = parts(NOTES[NOTES.length - 1].date).y;
+document.getElementById("stats").textContent =
+  `${NOTES.length} notes since ${first} · ${tagCounts().length} tags`;
+</script>
+</body>
+</html>

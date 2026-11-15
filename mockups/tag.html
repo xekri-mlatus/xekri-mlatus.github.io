@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tag · Mlatus' notes</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="wall-head"><h1 id="h"></h1><p class="lead" id="lead"></p></div>
+<main class="wall" id="wall"></main>
+<script src="notes.js"></script>
+<script src="common.js"></script>
+<script>
+renderHeader("Tags");
+const t = new URLSearchParams(location.search).get("t") || "memes";
+const notes = NOTES.filter(n => n.tags.includes(t));
+document.title = `#${t} · ${SITE_NAME}`;
+document.getElementById("h").textContent = `#${t}`;
+document.getElementById("lead").innerHTML = notes.length
+  ? `${plural(notes.length, "note", "notes")} · <a href="tags.html">all tags</a>`
+  : `No notes with this tag. <a href="tags.html">All tags</a>`;
+masonry(document.getElementById("wall"), notes.map(tile));
+</script>
+</body>
+</html>

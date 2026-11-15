@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feed mockup</title>
+<base href="../content/notes/">
+<style>
+:root {
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Telegram look ---------- */
+body.tg {
+  --bg: #d6e2c8;
+  --bg-img: radial-gradient(circle at 15% 20%, #e3ebc9 0, transparent 40%),
+            radial-gradient(circle at 85% 60%, #bcd3b0 0, transparent 45%),
+            radial-gradient(circle at 40% 90%, #c9dcc0 0, transparent 40%);
+  --card: #ffffff;
+  --text: #0f1419;
+  --muted: #8a9399;
+  --link: #168acd;
+  --line: transparent;
+  --pill: rgba(0,0,0,.22);
+  --pill-text: #fff;
+  --header: #ffffff;
+  --shadow: 0 1px 1px rgba(0,0,0,.12);
+}
+body.tg.dark {
+  --bg: #0e1621;
+  --bg-img: radial-gradient(circle at 15% 20%, #142232 0, transparent 40%),
+            radial-gradient(circle at 85% 60%, #0b1520 0, transparent 45%);
+  --card: #182533;
+  --text: #e8eef3;
+  --muted: #6d8297;
+  --link: #6ab3f3;
+  --pill: rgba(255,255,255,.08);
+  --pill-text: #c9d4de;
+  --header: #17212b;
+  --shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+
+/* ---------- Twitter look ---------- */
+body.tw {
+  --bg: #ffffff;
+  --bg-img: none;
+  --card: #ffffff;
+  --text: #0f1419;
+  --muted: #536471;
+  --link: #1d9bf0;
+  --line: #eff3f4;
+  --header: rgba(255,255,255,.85);
+  --shadow: none;
+}
+body.tw.dark {
+  --bg: #000;
+  --card: #000;
+  --text: #e7e9ea;
+  --muted: #71767b;
+  --link: #1d9bf0;
+  --line: #2f3336;
+  --header: rgba(0,0,0,.75);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font);
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg-img), var(--bg);
+  background-attachment: fixed;
+  transition: background-color .2s, color .2s;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- mockup controls (not part of the design) ---------- */
+.controls {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center;
+  background: #222; color: #eee; padding: 10px 12px;
+  font: 12.5px/1.2 var(--font); box-shadow: 0 4px 18px rgba(0,0,0,.35);
+}
+.controls .row { display: flex; align-items: center; gap: 6px; }
+.controls .label { color: #aaa; }
+.controls button {
+  font: inherit; color: #ddd; background: #333; border: 0; border-radius: 6px;
+  padding: 5px 9px; cursor: pointer;
+}
+.controls button.on { background: #e5e5e5; color: #111; }
+.controls .hint { color: #888; font-size: 11px; }
+
+/* ---------- header ---------- */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--header);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.top-inner {
+  max-width: 600px; margin: 0 auto; padding: 8px 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.avatar {
+  flex: none; width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, #7b6cf6, #e46fa7);
+  color: #fff; display: grid; place-items: center;
+  font-weight: 700; font-size: 18px;
+}
+.top .who { flex: 1; min-width: 0; }
+.top .name { font-weight: 700; font-size: 16px; }
+.top .sub { color: var(--muted); font-size: 13px; }
+.top nav { display: flex; gap: 14px; font-size: 14px; }
+.top nav a { color: var(--muted); }
+.top nav a.cur { color: var(--text); font-weight: 600; }
+
+/* ---------- feed ---------- */
+.feed { max-width: 600px; margin: 0 auto; padding: 8px 16px 120px; }
+body.tw .feed {
+  padding: 0; border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+  min-height: 100vh;
+}
+
+.day { text-align: center; margin: 14px 0 8px; }
+.day span {
+  display: inline-block; background: var(--pill); color: var(--pill-text);
+  font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 12px;
+}
+body.tw .day { display: none; }
+
+.post { display: flex; gap: 10px; margin: 8px 0; align-items: flex-end; }
+.post .avatar.small { width: 36px; height: 36px; font-size: 15px; }
+body.tg .post > .avatar { display: none; }
+
+.card {
+  position: relative; flex: 1; min-width: 0;
+  background: var(--card); box-shadow: var(--shadow);
+}
+body.tg .card {
+  border-radius: 14px; padding: 8px 12px 6px; max-width: 520px;
+  margin-right: 44px;  /* room for the share button */
+}
+body.tw .post {
+  margin: 0; padding: 12px 16px 6px; border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+body.tw .card { background: none; }
+
+.meta { display: none; font-size: 15px; margin-bottom: 2px; }
+body.tw .meta { display: block; }
+.meta .name { font-weight: 700; }
+.meta .handle, .meta time { color: var(--muted); }
+
+.title { margin: 2px 0 4px; font-size: 16px; font-weight: 700; line-height: 1.3; }
+body.titles-small .title { font-size: 13px; font-weight: 500; color: var(--muted); }
+body.titles-hide .title { display: none; }
+
+.body p { margin: 0 0 8px; }
+.body blockquote {
+  margin: 0 0 8px; padding: 2px 0 2px 10px;
+  border-left: 3px solid var(--link); color: var(--text);
+}
+.body img { display: block; cursor: zoom-in; }
+.media { margin: 6px 0 8px; }
+.media img {
+  max-width: 100%; max-height: 460px; border-radius: 10px;
+  border: 1px solid var(--line);
+}
+body.tw .media img { border-radius: 16px; }
+.media.tall img { max-height: 420px; }
+
+/* consecutive images become an album */
+.album {
+  display: grid; gap: 3px; margin: 6px 0 8px; border-radius: 10px; overflow: hidden;
+}
+body.tw .album { border-radius: 16px; border: 1px solid var(--line); }
+.album img, .album .tile { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.album.n2 { grid-template-columns: 1fr 1fr; aspect-ratio: 1 / 1; }
+.album.n4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; aspect-ratio: 4 / 3; }
+
+.video {
+  aspect-ratio: 16 / 9; border-radius: 10px; background: #111; color: #fff;
+  display: grid; place-items: center; margin: 6px 0 8px; font-size: 13px;
+}
+.video::before {
+  content: ""; width: 60px; height: 42px; border-radius: 12px; background: #e33;
+  -webkit-mask: none;
+}
+
+/* long posts are cut */
+.body.clamped { max-height: 640px; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent);
+          mask-image: linear-gradient(to bottom, #000 80%, transparent); }
+.more {
+  display: none; background: none; border: 0; padding: 0; margin: 0 0 6px;
+  color: var(--link); font: inherit; font-weight: 500; cursor: pointer;
+}
+.body.clamped + .more, .body.cut + .more { display: block; }
+.rest { display: none; }
+
+.foot { display: flex; align-items: flex-end; gap: 10px; font-size: 13.5px; }
+.tags { flex: 1; display: flex; flex-wrap: wrap; gap: 0 8px; }
+.when { color: var(--muted); font-size: 12px; white-space: nowrap; }
+body.tw .foot { display: none; }
+
+.acts { display: none; }
+body.tw .acts {
+  display: flex; gap: 22px; margin: 4px 0 2px; color: var(--muted); font-size: 13px;
+}
+.acts span { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+.acts span:hover { color: var(--link); }
+.acts svg { width: 17px; height: 17px; }
+
+.share {
+  position: absolute; right: -42px; bottom: 0;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(0,0,0,.25); color: #fff; display: grid; place-items: center; cursor: pointer;
+}
+body.tg.dark .share { background: rgba(255,255,255,.1); }
+.share svg { width: 16px; height: 16px; }
+body.tw .share { display: none; }
+
+.older { text-align: center; padding: 18px 0; }
+.older button {
+  font: inherit; font-weight: 500; color: var(--link); background: var(--card);
+  border: 1px solid var(--line); border-radius: 18px; padding: 7px 18px; cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+/* lightbox */
+.lb { position: fixed; inset: 0; background: rgba(0,0,0,.88); display: none;
+  place-items: center; z-index: 100; cursor: zoom-out; }
+.lb.on { display: grid; }
+.lb img { max-width: 94vw; max-height: 92vh; }
+
+@media (max-width: 560px) {
+  .top nav { display: none; }
+  body.tg .card { margin-right: 40px; }
+}
+</style>
+</head>
+<body class="tg">
+<div class="controls" id="controls">
+  <div class="row"><span class="label">Style</span>
+    <button data-k="style" data-v="tg" class="on">Telegram</button>
+    <button data-k="style" data-v="tw">Twitter</button></div>
+  <div class="row"><span class="label">Titles</span>
+    <button data-k="titles" data-v="show" class="on">Bold</button>
+    <button data-k="titles" data-v="small">Small</button>
+    <button data-k="titles" data-v="hide">Hidden</button></div>
+  <div class="row"><span class="label">Theme</span>
+    <button data-k="theme" data-v="light" class="on">Light</button>
+    <button data-k="theme" data-v="dark">Dark</button></div>
+  <div class="hint">Mockup controls, not part of the design. Click an image to enlarge.</div>
+</div>
+
+
+<header class="top">
+  <div class="top-inner">
+    <div class="avatar">M</div>
+    <div class="who">
+      <div class="name">Mlatus' notes</div>
+      <div class="sub">74 posts</div>
+    </div>
+    <nav>
+      <a class="cur">Notes</a><a>Tags</a><a>Archive</a><a>Search</a><a>About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="feed">
+
+<!-- ======================= -->
+<div class="day"><span>3 November</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 3 Nov</span></div>
+    <h2 class="title">Колода Anki для немецкого</h2>
+    <div class="body">
+      <p>Навайбкодили с Клодом набор карточек Anki для изучения немецкого. Колода основана на втором издании частотного словаря "A Frequency Dictionary of German", а транскрипции взяты с Wiktionary. Слова, их переводы на английский и примеры перекочевали из книги в карточки без изменений. Предлоги, союзы, местоимения и т. п. я включать не стал — оставил только существительные, прилагательные, глаголы и наречия.</p>
+      <div class="media tall"><img src="2026-11-03-anki-deutsch/dictionary.jpg" alt="Обложка A Frequency Dictionary of German"></div>
+      <p>Также важное ограничение by design: колода однонаправленная, рассчитана на прокачку навыка распознавания немецких слов, но не на развитие воспроизведения. На лицевой стороне находится немецкое слово с примером, а на обратной — его значение на английском и перевод примера; reverse карточек нет.</p>
+      <div class="album n4">
+        <img src="2026-11-03-anki-deutsch/gehen.jpg" alt="Карточка gehen">
+        <img src="2026-11-03-anki-deutsch/wort.jpg" alt="Карточка das Wort">
+        <img src="2026-11-03-anki-deutsch/mond.jpg" alt="Карточка der Mond">
+        <img src="2026-11-03-anki-deutsch/ewigkeit.jpg" alt="Карточка die Ewigkeit">
+      </div>
+      <p>Результатом в целом доволен, получилось симпатично, хотя по мере использования наверняка обнаружатся какие-нибудь недоработки. Я рассчитываю, что эта колода пригодится мне для того, чтобы продолжать изучение языка, даже когда нет сил на то, чтобы заниматься развитием активных навыков.</p>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#languages</a><a>#learning</a></div>
+      <span class="when">04:45</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span class="tagline">#languages #learning</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>29 October</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 29 Oct</span></div>
+    <h2 class="title">Mob Control</h2>
+    <div class="body">
+      <p>Получил необычный геймерский опыт. Я поиграл около недели в Mob Control — мобильный казуальный экшн с элементами tower defense. Поддался рекламе в Twitter, которую он мне подсовывал на протяжении длительного времени. У игры более 100 миллионов скачиваний и рейтинг 4.5 в Google Play.</p>
+      <div class="media tall"><img src="2026-10-29-mob-control/1.jpg" alt="Главный экран Mob Control"></div>
+      <p>В Mob Control основной геймплей заключается в штурме крепостей (которые, если я верно понял, чаще всего являются базами других игроков). Нужно стрелять из пушки мобами через специальные ворота с мультипликатором, которые умножают их количество. Мобы сражаются с аналогичной толпой защитников крепости и башнями, после успешного уничтожения которых начинается сбор лута в крепости. Есть разные перки, доступные во время битвы. Например, увеличение скорости стрельбы пушки или появление ворот с повышенным множителем. Мобы и пушки бывают разных типов с разными характеристиками, их можно и нужно прокачивать за счет блоков и золота, собранных с крепостей. Еще имеются бонусные уровни вроде пиньяты с ресурсами или прокладывания маршрута через сад, можно также контратаковать крепости игроков, нападавших на тебя (revenge).</p>
+      <div class="album n2">
+        <img src="2026-10-29-mob-control/2.jpg" alt="Бой: пушка стреляет мобами через ворота ×2">
+        <img src="2026-10-29-mob-control/3.jpg" alt="Победа: толпа мобов собирает лут">
+      </div>
+      <p>Понравилась яркая и симпатичная графика и анимации, простой и интуитивно понятный геймплей, быстрый дофамин от легких побед (хотя последнее — сомнительный плюс).</p>
+      <p>Не понравилось то, что игра слишком легкая даже для меня. Фактически, проиграть почти невозможно, а если такое происходит, то можно повторить попытку, взять перки и тогда точно пройдешь.</p>
+      <p>Один раз поймал забавный баг, из-за которого на садовой локации мобы стали умножаться явно в большем количестве, чем было задумано, из-за чего даже начало зависать приложение. Хотя в целом никаких багов я не заметил.</p>
+      <div class="media tall"><img src="2026-10-29-mob-control/4.jpg" alt="Садовая локация, залитая синими мобами"></div>
+      <p>Но окончательным шоу-стоппером стала реклама. Ее ОЧЕНЬ много. К счастью, обязательная реклама после каждой катки отключается любой покупкой в игре, даже самой минимальной. Но остается реклама, которую нужно посмотреть за те самые перки, которые могут помочь при проигрыше. И эту рекламу можно было бы потерпеть, будь это короткая реклама обычных товаров и услуг. Но Mob Control снова и снова показывает рекламу других мобильных игр — чаще всего не очень качественную ИИ-шную. Но даже это я терпел какое-то время, пока он не стал показывать рекламу некой игры Unscrew Frenzy, где от игрока требуется выкручивать винты из разных предметов и разбирать их. Эта игра выглядит просто отвратительно. Посмотрев пару дней на этот ночной кошмар трипофоба, я снес Mob Control.</p>
+      <p><strong>Итог:</strong> было интересно попробовать, но не рекомендую.</p>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#games</a><a>#longreads</a></div>
+      <span class="when">03:37</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#games #longreads</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>28 October</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 28 Oct</span></div>
+    <h2 class="title">Боги не ведают боли</h2>
+    <div class="body cut">
+      <div class="media"><img src="2026-10-28-sommer-fur-gotter/violets-and-ruins.png" alt="An abandoned post-apocalyptic city at sunset"></div>
+      <p>Сегодня я впервые опубликовал видео на YouTube, хотя канал завел очень много лет назад. Изначально предполагалось, что он будет на социальную тематику, но в итоге первым опубликованным видео стала песня. Музыка для нее была создана еще летом с помощью Suno, а текст — это немецкий перевод одного из стихов научно-фантастической поэмы Aniara шведского писателя Харри Мартинсона, который я нашел в книге 1961 года.</p>
+      <div class="rest">
+        <p>Текст:</p>
+        <blockquote lang="de">Die Tage der Rosen sind hier,<br>den Rosengott eben wir trafen.<br>Die Göttin der Lilien ist da.<br>Wie gut, wenn die Menschen entschlafen.<br><br>Schau, Feen besonderer Art,<br>sie mischen die Farben in Särgen.<br>Jetzt wünscht sich der Veilchengott Blau.<br>Denn Veilchen blühn bald in den Bergen.<br><br>…</blockquote>
+        <div class="video">YouTube</div>
+        <p>Существующий русский перевод мне нравится меньше. Мне кажется, немецкий лучше передает смысл. …</p>
+      </div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#art</a><a>#longreads</a></div>
+      <span class="when">00:00</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#art #longreads</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>20 October</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 20 Oct</span></div>
+    <h2 class="title">Осенние мемы</h2>
+    <div class="body">
+      <div class="media"><img src="2026-10-20-autumn-memes/skull.jpg" alt="Череп кошки, чудовище и настоящий белый кот"></div>
+      <p>"Сегодня был день, и завтра будет еще один день (о боже)". Небольшая игра слов, т.к. Today has been a day означает, что день был тяжелый, но буквально — просто "был день".</p>
+      <div class="media"><img src="2026-10-20-autumn-memes/dolphins.jpg" alt="Дельфины и радуга"></div>
+      <p>— Я без трусиков...<br>— Завтра куплю тебе.</p>
+      <div class="media"><img src="2026-10-20-autumn-memes/panties.jpg" alt="Рисунок с диалогом"></div>
+      <p>Спасибо, я пополнил словарный запас</p>
+      <div class="media"><img src="2026-10-20-autumn-memes/fishing.jpg" alt="Средневековая миниатюра с котом" style="width:240px"></div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#memes</a><a>#cats</a><a>#languages</a></div>
+      <span class="when">16:00</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#memes #cats #languages</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>30 March</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 30 Mar</span></div>
+    <h2 class="title">Вспомнился один баян</h2>
+    <div class="body">
+      <p>Вспомнился один баян. Одобряю!</p>
+      <div class="media"><img src="2026-03-30-bayan/sweatshirts.jpg" alt="Свитшоты — лучшая одежда в мире"></div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#memes</a></div>
+      <span class="when">03:46</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#memes</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>27 March</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 27 Mar</span></div>
+    <h2 class="title">Эа-Насир</h2>
+    <div class="body">
+      <p>Время от времени мне попадается на глаза история Эа-Насира, торговца медью из славного города Ур. Многие люди трудились и мечтали о славе, но дела их затерялись в веках, и никто больше не вспомнит их имена. Но судьба уготовила Эа-Насиру другую участь. Забытый на 3700 лет, он обрел новую жизнь после перевода адресованного ему письма с жалобой клиента, недовольного качеством поставленной меди и низким уровнем обслуживания. Благодаря этой неурядице, Эа-Насир обрел (не)заслуженное бессмертие как человек и <s>пароход</s> интернет-мем. И даже храм сжигать не потребовалось (учись, Герострат).</p>
+      <div class="media tall"><img src="2026-03-27-ea-nasir/tablet.jpg" alt="Глиняная табличка с клинописью"></div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#history</a></div>
+      <span class="when">16:29</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#history</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>25 March</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 25 Mar</span></div>
+    <h2 class="title">О наболевшем</h2>
+    <div class="body">
+      <div class="media"><img src="2026-03-25-sore-subject/first-message.jpg" alt="Мем с Энакином и Падме"></div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#memes</a></div>
+      <span class="when">22:56</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#memes</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>23 March</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 23 Mar</span></div>
+    <h2 class="title">ODF в Германии</h2>
+    <div class="body">
+      <p>Good news everyone. Госорганы в Германии теперь будут должны использовать формат ODF для документов. Пинок под Arsch Мелкомягким с их монополией Office. Как вы думаете, что будет если прислать файл ODF нашим госструктурам? Рад бы ошибиться, но чувствую, что будет разгадка этого ребуса: 👀🐑🆕🚪.</p>
+      <div class="media"><img src="2026-03-23-odf-in-germany/odf.jpg" alt="Статья Dear Europe: Germany has shown the way forward"></div>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#tech</a></div>
+      <span class="when">23:41</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#tech</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<!-- ======================= -->
+<div class="day"><span>11 January</span></div>
+<article class="post">
+  <div class="avatar small">M</div>
+  <div class="card">
+    <div class="meta"><span class="name">Mlatus</span> <span class="handle">· 11 Jan</span></div>
+    <h2 class="title">Sounds American</h2>
+    <div class="body">
+      <p><a>https://soundsamerican.net/</a> — сайт для изучения фонетики и произношения американского английского</p>
+    </div>
+    <button class="more">Show more</button>
+    <div class="foot">
+      <div class="tags"><a>#languages</a></div>
+      <span class="when">04:18</span>
+    </div>
+    <div class="acts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Link</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 3v13M7 8l5-5 5 5"/></svg>Share</span>
+      <span>#languages</span>
+    </div>
+    <div class="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 5v4C7 10 4 15 3 20c2.5-3.5 6-5.1 11-5.1V19l7-7-7-7z"/></svg></div>
+  </div>
+</article>
+
+<div class="older"><button>Load older posts</button></div>
+</main>
+
+<div class="lb" id="lb"><img alt=""></div>
+
+<script>
+const state = { style: "tg", titles: "show", theme: "light" };
+function apply() {
+  document.body.className = [state.style, "titles-" + state.titles, state.theme === "dark" ? "dark" : ""].join(" ");
+  document.querySelectorAll("#controls button").forEach(b =>
+    b.classList.toggle("on", state[b.dataset.k] === b.dataset.v));
+}
+document.getElementById("controls").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  state[b.dataset.k] = b.dataset.v; apply();
+});
+apply();
+
+// Cut long posts: anything taller than ~800px gets a fade and "Show more".
+function clampAll() {
+  document.querySelectorAll(".body").forEach(body => {
+    if (body.dataset.open || body.classList.contains("cut")) return;
+    body.classList.remove("clamped");
+    if (body.scrollHeight > 800) body.classList.add("clamped");
+  });
+}
+window.addEventListener("load", clampAll);
+document.querySelectorAll(".more").forEach(btn => btn.addEventListener("click", () => {
+  const body = btn.previousElementSibling;
+  body.dataset.open = "1";
+  body.classList.remove("clamped", "cut");
+  body.querySelectorAll(".rest").forEach(r => r.style.display = "block");
+  btn.style.display = "none";
+}));
+
+const lb = document.getElementById("lb");
+document.addEventListener("click", e => {
+  const img = e.target.closest(".body img");
+  if (img) { lb.querySelector("img").src = img.src; lb.classList.add("on"); }
+});
+lb.addEventListener("click", () => lb.classList.remove("on"));
+</script>
+</body>
+</html>

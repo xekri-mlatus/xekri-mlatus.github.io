@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiles mockup</title>
+<base href="../content/notes/">
+<style>
+:root { --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --gap: 12px; --tile: 340px; }
+body {
+  --bg: #d6e2c8;
+  --bg-img: radial-gradient(circle at 15% 20%, #e3ebc9 0, transparent 40%),
+            radial-gradient(circle at 85% 60%, #bcd3b0 0, transparent 45%),
+            radial-gradient(circle at 40% 90%, #c9dcc0 0, transparent 40%);
+  --card: #fff; --text: #0f1419; --muted: #8a9399; --link: #168acd;
+  --header: #fff; --shadow: 0 1px 2px rgba(0,0,0,.14);
+}
+body.dark {
+  --bg: #0e1621;
+  --bg-img: radial-gradient(circle at 15% 20%, #142232 0, transparent 40%),
+            radial-gradient(circle at 85% 60%, #0b1520 0, transparent 45%);
+  --card: #182533; --text: #e8eef3; --muted: #6d8297; --link: #6ab3f3;
+  --header: #17212b; --shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { overflow-y: scroll; }  /* a scrollbar appearing later would change the column widths */
+body {
+  font-family: var(--font); font-size: 15px; line-height: 1.45; color: var(--text);
+  background: var(--bg-img), var(--bg); background-attachment: fixed; min-height: 100vh;
+}
+a { color: var(--link); text-decoration: none; }
+
+/* ---------- mockup controls (not part of the design) ---------- */
+.controls {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; align-items: center;
+  background: #222; color: #eee; padding: 9px 12px; font: 12.5px/1.2 var(--font);
+}
+.controls .row { display: flex; align-items: center; gap: 5px; }
+.controls .label { color: #aaa; margin-right: 2px; }
+.controls button { font: inherit; color: #ddd; background: #333; border: 0; border-radius: 6px; padding: 5px 9px; cursor: pointer; }
+.controls button.on { background: #e5e5e5; color: #111; }
+.controls a { color: #9cf; }
+
+/* ---------- header ---------- */
+.top { position: sticky; top: 0; z-index: 10; background: var(--header); box-shadow: var(--shadow); }
+.top-inner { padding: 8px 16px; display: flex; align-items: center; gap: 12px; }
+.avatar { flex: none; width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, #7b6cf6, #e46fa7); color: #fff;
+  display: grid; place-items: center; font-weight: 700; font-size: 18px; }
+.who { flex: 1; min-width: 0; }
+.who .name { font-weight: 700; font-size: 16px; }
+.who .sub { color: var(--muted); font-size: 13px; }
+.top nav { display: flex; gap: 14px; font-size: 14px; }
+.top nav a { color: var(--muted); }
+.top nav a.cur { color: var(--text); font-weight: 600; }
+
+/* ---------- the wall of tiles ---------- */
+.wall { padding: 16px; }
+.wall.grid {
+  display: grid; gap: var(--gap);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--tile)), 1fr));
+}
+.wall.grid.fixed { grid-auto-rows: 460px; }
+/* Masonry: script positions each tile; long reads may span two columns. */
+.wall.masonry { position: relative; }
+.wall.masonry .card { position: absolute; }
+/* A wide tile reads like a newspaper: two columns, so lines stay short. */
+.card.wide .body { column-count: 2; column-gap: 22px; }
+.card.wide .body > * { break-inside: avoid; }
+.card.wide .body > :first-child { margin-top: 0; }
+
+.card {
+  background: var(--card); box-shadow: var(--shadow); border-radius: 14px;
+  padding: 9px 12px 7px; display: flex; flex-direction: column; min-width: 0;
+}
+.wall.grid .card { height: 100%; }
+
+.body { flex: 1; min-height: 0; overflow: hidden; }
+.wall:not(.fixed) .body { max-height: 520px; }
+body.full .wall:not(.fixed) .body { max-height: none; }  /* every post at its full length */
+.body.clamped {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 90px), transparent);
+          mask-image: linear-gradient(to bottom, #000 calc(100% - 90px), transparent);
+}
+.body p { margin: 0 0 8px; }
+.body blockquote { margin: 0 0 8px; padding: 2px 0 2px 10px; border-left: 3px solid var(--link); }
+.media { margin: 4px 0 8px; }
+.media img { display: block; max-width: 100%; max-height: 380px; border-radius: 10px; cursor: zoom-in; }
+.media.tall img { max-height: 340px; }
+.album { display: grid; gap: 3px; margin: 4px 0 8px; border-radius: 10px; overflow: hidden; }
+.album img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; cursor: zoom-in; }
+.album.n2 { grid-template-columns: 1fr 1fr; aspect-ratio: 1 / 1; }
+.album.n4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; aspect-ratio: 4 / 3; }
+.album .plus { position: relative; overflow: hidden; }
+.album .plus span { position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(0,0,0,.5); color: #fff; font-size: 26px; font-weight: 600; cursor: pointer; }
+.video { aspect-ratio: 16 / 9; border-radius: 10px; background: #111; margin: 4px 0 8px;
+  display: grid; place-items: center; }
+.video::before { content: "▶"; width: 58px; height: 40px; border-radius: 11px; background: #e33;
+  color: #fff; display: grid; place-items: center; font-size: 18px; }
+
+.more { display: none; align-self: flex-start; background: none; border: 0; padding: 0; margin: 2px 0 4px;
+  color: var(--link); font: inherit; font-weight: 500; cursor: pointer; }
+.body.clamped + .more { display: block; }
+.foot { display: flex; align-items: flex-end; gap: 10px; font-size: 13px; margin-top: 2px; }
+.tags { flex: 1; display: flex; flex-wrap: wrap; gap: 0 8px; }
+.when { color: var(--muted); font-size: 12px; white-space: nowrap; }
+/* The date opens the note's own page in a new tab: quiet grey, blue and underlined on hover. */
+a.when:hover, body.calm a.when:hover { color: var(--link); text-decoration: underline; }
+
+/* ---------- a post opened on its own ---------- */
+.modal { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.55);
+  display: none; overflow-y: auto; padding: 40px 16px; }
+.modal.on { display: block; }
+.modal .card { max-width: 640px; margin: 0 auto; padding: 12px 16px 9px; }
+.modal .body { max-height: none; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.modal .more { display: none !important; }
+.modal .media img { max-height: 560px; }
+.modal .close { display: block; max-width: 640px; margin: 0 auto 8px; text-align: right; }
+.modal .close button { background: rgba(255,255,255,.15); color: #fff; border: 0; border-radius: 16px;
+  padding: 5px 12px; font: inherit; cursor: pointer; }
+
+.lb { position: fixed; inset: 0; background: rgba(0,0,0,.9); display: none; place-items: center;
+  z-index: 60; cursor: zoom-out; }
+.lb.on { display: grid; }
+.lb img { max-width: 94vw; max-height: 92vh; }
+
+/* Phones: the links move to their own row under the name, as on the other pages. */
+@media (max-width: 640px) {
+  .top-inner { flex-wrap: wrap; row-gap: 6px; }
+  .top nav { order: 3; width: 100%; justify-content: space-between; padding: 2px 2px 0; }
+}
+
+/* ---------- calm look ---------- */
+/* At most three columns, centred; wide gaps; a plain background; flat tiles; quiet tags and dates. */
+body.calm {
+  --bg: #f3f2ee; --bg-img: none;
+  --card: #fff; --border: rgba(0,0,0,.07); --shadow: none;
+  --header: #f3f2ee; --meta: #a3a6a9;
+  --gap: 32px; --pad: 32px;
+}
+body.calm.dark {
+  --bg: #11171e; --card: #19222c; --border: rgba(255,255,255,.06);
+  --header: #11171e; --meta: #5f6f7e;
+}
+body.calm .wall, body.calm .top-inner { max-width: 1440px; margin: 0 auto; }
+body.calm .wall { padding: var(--pad); }
+body.calm .top { box-shadow: none; border-bottom: 1px solid var(--border); }
+body.calm .top-inner { padding: 10px var(--pad); }
+body.calm .card { border: 1px solid var(--border); padding: 14px 18px 11px; border-radius: 16px; }
+body.calm .foot { margin-top: 6px; font-size: 12px; }
+body.calm .tags a, body.calm .when { color: var(--meta); }
+body.calm .tags a:hover { color: var(--link); }
+@media (max-width: 700px) { body.calm { --gap: 20px; --pad: 16px; } }</style>
+</head>
+<body class="titles-show">
+
+<div class="controls" id="controls">
+  <div class="row"><span class="label">Look</span>
+    <button data-k="look" data-v="calm">Calm</button>
+    <button data-k="look" data-v="busy">Busy</button></div>  <div class="row"><span class="label">Height</span>
+    <button data-k="mode" data-v="row">Tallest in row</button>
+    <button data-k="mode" data-v="masonry" class="on">Masonry</button>
+    <button data-k="mode" data-v="fixed">Fixed</button></div>
+  <div class="row" id="length-row"><span class="label">Long posts</span>
+    <button data-k="length" data-v="cut" class="on">Cut</button>
+    <button data-k="length" data-v="full">Full</button></div>
+  <div class="row" id="wide-row"><span class="label">Long reads</span>
+    <button data-k="wide" data-v="on" class="on">Wide</button>
+    <button data-k="wide" data-v="off">Normal</button></div>
+  <div class="row"><span class="label">Tile width</span>
+    <button data-k="tile" data-v="280">S</button>
+    <button data-k="tile" data-v="340" class="on">M</button>
+    <button data-k="tile" data-v="420">L</button></div>
+  <div class="row"><span class="label">Theme</span>
+    <button data-k="theme" data-v="light" class="on">Light</button>
+    <button data-k="theme" data-v="dark">Dark</button></div>
+  <a href="../../mockups/feed.html">Single-column demo →</a>
+</div>
+
+<header class="top"><div class="top-inner">
+  <a href="../../mockups/tiles.html" class="avatar" style="color:#fff;text-decoration:none">M</a>
+  <div class="who"><div class="name">Mlatus' notes</div><div class="sub">73 notes</div></div>
+  <nav><a class="cur" href="../../mockups/tiles.html">Notes</a><a href="../../mockups/tags.html">Tags</a><a href="../../mockups/search.html">Search</a><a href="../../mockups/about.html">About</a></nav>
+</div></header>
+
+<main class="wall grid" id="wall"></main>
+
+<div class="modal" id="modal"><div class="close"><button>Close ✕</button></div><div class="slot"></div></div>
+<div class="lb" id="lb"><img alt=""></div>
+
+<script>
+const img = (dir, f, alt, cls = "") => `<div class="media ${cls}"><img src="${dir}/${f}" alt="${alt}"></div>`;
+const album = (dir, files) => {
+  const n = files.length, shown = n === 2 ? files : files.slice(0, 4);
+  const cls = n === 2 ? "n2" : "n4";
+  return `<div class="album ${cls}">` + shown.map((f, i) =>
+    (i === 3 && n > 4)
+      ? `<div class="plus"><img src="${dir}/${f}" alt=""><span data-open>+${n - 4}</span></div>`
+      : `<img src="${dir}/${f}" alt="">`).join("") + `</div>`;
+};
+
+const posts = [
+ { t: "Колода Anki для немецкого", d: "3 Nov", h: "04:45", tags: ["languages", "learning"], b: () => { const D = "2026-11-03-anki-deutsch"; return `
+  <p>Навайбкодили с Клодом набор карточек Anki для изучения немецкого. Колода основана на втором издании частотного словаря "A Frequency Dictionary of German", а транскрипции взяты с Wiktionary. Слова, их переводы на английский и примеры перекочевали из книги в карточки без изменений. Предлоги, союзы, местоимения и т. п. я включать не стал — оставил только существительные, прилагательные, глаголы и наречия.</p>
+  ${img(D, "dictionary.jpg", "Обложка словаря", "tall")}
+  <p>Также важное ограничение by design: колода однонаправленная, рассчитана на прокачку навыка распознавания немецких слов, но не на развитие воспроизведения. На лицевой стороне находится немецкое слово с примером, а на обратной — его значение на английском и перевод примера; reverse карточек нет.</p>
+  ${album(D, ["gehen.jpg", "wort.jpg", "mond.jpg", "ewigkeit.jpg"])}
+  <p>Результатом в целом доволен, получилось симпатично, хотя по мере использования наверняка обнаружатся какие-нибудь недоработки. Я рассчитываю, что эта колода пригодится мне для того, чтобы продолжать изучение языка, даже когда нет сил на то, чтобы заниматься развитием активных навыков.</p>`; } },
+
+ { t: "Mob Control", d: "29 Oct", h: "03:37", tags: ["games", "longreads"], b: () => { const D = "2026-10-29-mob-control"; return `
+  <p>Получил необычный геймерский опыт. Я поиграл около недели в Mob Control — мобильный казуальный экшн с элементами tower defense. Поддался рекламе в Twitter, которую он мне подсовывал на протяжении длительного времени. У игры более 100 миллионов скачиваний и рейтинг 4.5 в Google Play.</p>
+  ${img(D, "1.jpg", "Главный экран Mob Control", "tall")}
+  <p>В Mob Control основной геймплей заключается в штурме крепостей (которые, если я верно понял, чаще всего являются базами других игроков). Нужно стрелять из пушки мобами через специальные ворота с мультипликатором, которые умножают их количество. Мобы сражаются с аналогичной толпой защитников крепости и башнями, после успешного уничтожения которых начинается сбор лута в крепости. Есть разные перки, доступные во время битвы. Например, увеличение скорости стрельбы пушки или появление ворот с повышенным множителем. Мобы и пушки бывают разных типов с разными характеристиками, их можно и нужно прокачивать за счет блоков и золота, собранных с крепостей. Еще имеются бонусные уровни вроде пиньяты с ресурсами или прокладывания маршрута через сад, можно также контратаковать крепости игроков, нападавших на тебя (revenge).</p>
+  ${album(D, ["2.jpg", "3.jpg"])}
+  <p>Понравилась яркая и симпатичная графика и анимации, простой и интуитивно понятный геймплей, быстрый дофамин от легких побед (хотя последнее — сомнительный плюс).</p>
+  <p>Не понравилось то, что игра слишком легкая даже для меня. Фактически, проиграть почти невозможно, а если такое происходит, то можно повторить попытку, взять перки и тогда точно пройдешь.</p>
+  ${img(D, "4.jpg", "Садовая локация, залитая мобами", "tall")}
+  <p>Но окончательным шоу-стоппером стала реклама. Ее ОЧЕНЬ много. К счастью, обязательная реклама после каждой катки отключается любой покупкой в игре, даже самой минимальной. Но остается реклама, которую нужно посмотреть за те самые перки, которые могут помочь при проигрыше. И эту рекламу можно было бы потерпеть, будь это короткая реклама обычных товаров и услуг. Но Mob Control снова и снова показывает рекламу других мобильных игр — чаще всего не очень качественную ИИ-шную. Но даже это я терпел какое-то время, пока он не стал показывать рекламу некой игры Unscrew Frenzy, где от игрока требуется выкручивать винты из разных предметов и разбирать их. Эта игра выглядит просто отвратительно. Посмотрев пару дней на этот ночной кошмар трипофоба, я снес Mob Control.</p>
+  <p><strong>Итог:</strong> было интересно попробовать, но не рекомендую.</p>`; } },
+
+ { t: "Боги не ведают боли", d: "28 Oct", h: "00:00", tags: ["art", "longreads"], b: () => `
+  ${img("2026-10-28-sommer-fur-gotter", "violets-and-ruins.png", "An abandoned post-apocalyptic city at sunset")}
+  <p>Сегодня я впервые опубликовал видео на YouTube, хотя канал завел очень много лет назад. Изначально предполагалось, что он будет на социальную тематику, но в итоге первым опубликованным видео стала песня. Музыка для нее была создана еще летом с помощью Suno, а текст — это немецкий перевод одного из стихов научно-фантастической поэмы Aniara шведского писателя Харри Мартинсона, который я нашел в книге 1961 года.</p>
+  <p>Текст:</p>
+  <blockquote lang="de">Die Tage der Rosen sind hier,<br>den Rosengott eben wir trafen.<br>Die Göttin der Lilien ist da.<br>Wie gut, wenn die Menschen entschlafen.<br><br>Schau, Feen besonderer Art,<br>sie mischen die Farben in Särgen.<br>Jetzt wünscht sich der Veilchengott Blau.<br>Denn Veilchen blühn bald in den Bergen.<br><br>Im Götterhain sinken wir ein<br>als Erdreich, Staubfäden und Strahlen.<br>Der Grund unsere Fäulnis wird sein<br>für Blumen, die Götter bald malen.<br><br>Die Götter, sie fühlen kein Weh,<br>wenn sterbend wir schwinden von hinnen.<br>Das Leben zerschmilzt uns wie Schnee,<br>wenn Sommer für Götter beginnen.</blockquote>
+  <div class="video"></div>
+  <p>Существующий русский перевод мне нравится меньше. Мне кажется, немецкий лучше передает смысл. Шведского я не знаю, но сравнение машинного перевода оригинала с немецким и русским оставило такое впечатление. В частности, "Wie gut, wenn die Menschen entschlafen" — это не просто "спят люди, богам не мешая". Это "как хорошо, когда люди засыпают вечным сном". Тем не менее, привожу ниже русскую версию as is.</p>
+  <blockquote>Является бог среди роз,<br>о царствии роз возвещая.<br>Богиня средь лилий грядет.<br>Спят люди, богам не мешая.<br><br>Забавные феи снуют.<br>Готовятся краски из гнили.<br>Ждет красок фиалковый бог.<br>Фиалки на царство вступили.<br><br>Вот канем мы в рощу богов<br>и станем землицею черной,<br>и боги пучками цветов<br>распишут тот грунт животворный.<br><br>Чем меньше на свете людей,<br>тем пуще блаженствуют боги.<br>Мы таем, как снег от дождей, —<br>пролетье у них на пороге.</blockquote>` },
+
+ { t: "Осенние мемы", d: "20 Oct", h: "16:00", tags: ["memes", "cats", "languages"], b: () => { const D = "2026-10-20-autumn-memes"; return `
+  ${img(D, "skull.jpg", "Череп кошки")}
+  <p>"Сегодня был день, и завтра будет еще один день (о боже)". Небольшая игра слов, т.к. Today has been a day означает, что день был тяжелый, но буквально — просто "был день".</p>
+  ${img(D, "dolphins.jpg", "Дельфины и радуга")}
+  <p>— Я без трусиков...<br>— Завтра куплю тебе.</p>
+  ${img(D, "panties.jpg", "Рисунок с диалогом")}
+  <p>Спасибо, я пополнил словарный запас</p>
+  ${img(D, "fishing.jpg", "Средневековая миниатюра с котом")}`; } },
+
+ { t: "Вспомнился один баян", d: "30 Mar", h: "03:46", tags: ["memes"], b: () => `
+  <p>Вспомнился один баян. Одобряю!</p>${img("2026-03-30-bayan", "sweatshirts.jpg", "Свитшоты")}` },
+
+ { t: "Эа-Насир", d: "27 Mar", h: "16:29", tags: ["history"], b: () => `
+  <p>Время от времени мне попадается на глаза история Эа-Насира, торговца медью из славного города Ур. Многие люди трудились и мечтали о славе, но дела их затерялись в веках, и никто больше не вспомнит их имена. Но судьба уготовила Эа-Насиру другую участь. Забытый на 3700 лет, он обрел новую жизнь после перевода адресованного ему письма с жалобой клиента, недовольного качеством поставленной меди и низким уровнем обслуживания. Благодаря этой неурядице, Эа-Насир обрел (не)заслуженное бессмертие как человек и <s>пароход</s> интернет-мем. И даже храм сжигать не потребовалось (учись, Герострат).</p>
+  ${img("2026-03-27-ea-nasir", "tablet.jpg", "Глиняная табличка", "tall")}` },
+
+ { t: "О наболевшем", d: "25 Mar", h: "22:56", tags: ["memes"], b: () =>
+  img("2026-03-25-sore-subject", "first-message.jpg", "Мем с Энакином и Падме") },
+
+ { t: "ODF в Германии", d: "23 Mar", h: "23:41", tags: ["tech"], b: () => `
+  <p>Good news everyone. Госорганы в Германии теперь будут должны использовать формат ODF для документов. Пинок под Arsch Мелкомягким с их монополией Office. Как вы думаете, что будет если прислать файл ODF нашим госструктурам? Рад бы ошибиться, но чувствую, что будет разгадка этого ребуса: 👀🐑🆕🚪.</p>
+  ${img("2026-03-23-odf-in-germany", "odf.jpg", "Статья про ODF")}` },
+
+ { t: "(Около)математические мемы", d: "21 Mar", h: "15:27", tags: ["memes", "math"], b: () => `
+  <p>Небольшая подборка (около)математических мемов</p>
+  ${album("2026-03-21-math-memes", ["measure-theory.jpg", "seconds.jpg", "vector-space.jpg", "galois.jpg", "that-thing.jpg", "r2-to-r3.jpg", "base-10.jpg", "square.jpg", "pie.jpg", "derivative.jpg", "chinese-matrix.jpg", "hex.jpg"])}` },
+
+ { t: "Ну правда же", d: "1 Mar", h: "03:50", tags: ["memes"], b: () =>
+  img("2026-03-01-isnt-it-true", "tweet.jpg", "Твит") },
+
+ { t: "Киновыходные", d: "25 Feb", h: "17:05", tags: ["movies", "longreads"], b: () => `
+  <p>Устроил в выходные просмотр кино, что со мной бывает редко в последние годы.</p>
+  <p>Краткая сводка:</p>
+  <p>🟥 Resolution (2012). Попытка заставить друга-наркомана обратиться в rehab оборачивается мистическим хоррором. Начало показалось интересным, но концовку слили. Не понравилось.</p>
+  <p>🟨 Color Out of Space (2019). Экранизация Лавкрафта, которая по духу несколько напоминает мою любимую Аннигиляцию. Инопланетная хтонь устраивает биохоррор с мутациями на отдельно взятой ферме. В целом нейтрально-положительные впечатления, не жалею о потраченном времени, но Аннигиляция все равно осталась вне конкуренции. Аннигиляция ощущается как соприкосновение с чем-то чуждым человеческому разуму, как океан Соляриса, а здесь же больше ощущение, что зрителя просто стараются напугать.</p>
+  <p>🟨 Raw (2016). Про студентку-вегетарианку-ветеринара, которая пристрастилась к человеческому мясу. Если воспринимать историю буквально, то, имхо довольно скучновато и поверхностно. А если это "метафора взросления", как пишут в интернете, то сорян, но я ее не понял. Но один раз глянуть можно, если тема не вызывает отвращения. (Правда, наибольшее отвращение у меня вызвали не сцены с кровью, а все эти ритуалы инициации студентов с мощными вайбами дедовщины).</p>
+  <p>🟨 The Shining (1980). Наконец-то добрался до классики Кубрика. Вполне смотрибельно, хотя и несколько старомодно выглядит (что не удивительно, учитывая год выпуска). Но вот саундтрек... В лучших традициях 80-х и 90-х — громкий, дребезжащий, пронзительный, типа нагоняющий ужаса (у меня нагнал лишь раздражение).</p>
+  <p>🟩 Swallow (2019). Фильм очень понравился. История про девушку с реально существующим расстройством под названием "пика", которое заключается в навязчивом желании есть несъедобные предметы. Очень тронула история и вызвала большое сочувствие к героине. Хорошо могу понять ее желание ощутить хотя бы каплю контроля над своей жизнью. Затронуты социальные проблемы, токсичность в супружеских и детско-родительских отношениях, гендерные стереотипы и связанное с ними социальное давление. За эмоциями героини было реально интересно наблюдать (в отличие от Raw). Очень рекомендую.</p>
+  ${img("2026-02-25-weekend-movies", "still.jpg", "Кадр из фильма")}` },
+
+ { t: "New day, new mental issues", d: "24 Feb", h: "05:44", tags: ["memes"], b: () =>
+  img("2026-02-24-new-day", "new-day.jpg", "New day — New Mental Issues") },
+
+ { t: "Эскалация", d: "20 Jan", h: "15:50", tags: ["politics"], b: () => `
+  <p><em>В ответ на пост «<a>Пингвины за Гренландию</a>».</em></p>
+  <p>Вот это эскалация! DPR посылает войска на помощь Гренландии и начинает поставки оружия. Весь цивилизованный мир должен поддержать NADA.</p>
+  <div class="video"></div>
+  <p>(А кто назовет это AI слопом — пусть отправляется на 🍆)</p>` },
+
+ { t: "Sounds American", d: "11 Jan", h: "04:18", tags: ["languages"], b: () => `
+  <p><a>https://soundsamerican.net/</a> — сайт для изучения фонетики и произношения американского английского</p>` },
+
+ { t: "А что с этим не так?", d: "6 Jan", h: "19:00", tags: ["memes"], b: () => `
+  <p>А что с этим не так? 😳</p>${img("2026-01-06-something-wrong", "borderline.jpg", "Мем")}` },
+
+ { t: "Прощай, 2025", d: "1 Jan", h: "08:09", tags: ["memes", "cats"], b: () =>
+  img("2026-01-01-goodbye-2025", "push-2025.jpg", "Кот сталкивает 2025 со стола") },
+];
+
+// Each note's own page, in the page mockups next to this file.
+["anki-deutsch", "mob-control", "sommer-fur-gotter", "autumn-memes", "bayan", "ea-nasir", "sore-subject",
+ "odf-in-germany", "math-memes", "isnt-it-true", "weekend-movies", "new-day", "penguins-escalation",
+ "sounds-american", "something-wrong", "goodbye-2025"]
+  .forEach((slug, i) => posts[i].url = `../../mockups/note.html?slug=${slug}`);
+
+const wall = document.getElementById("wall");
+const tiles = posts.map((p, i) => {
+  const el = document.createElement("article");
+  el.className = "card";
+  el.dataset.i = i;
+  el.innerHTML = `
+    <div class="body">${p.b()}</div>
+    <button class="more">Show more</button>
+    <div class="foot"><div class="tags">${p.tags.map(t => `<a href="../../mockups/tag.html?t=${t}">#${t}</a>`).join("")}</div>
+      <a class="when" href="${p.url}" target="_blank" rel="noopener"
+         title="Open the note in a new tab">${p.d}, ${p.h}</a></div>`;
+  return el;
+});
+
+function savedTheme() { try { return localStorage.getItem("theme"); } catch { return null; } }
+// Defaults are the settings picked on 2026-11-15; the theme follows the system.
+const state = { look: "calm", mode: "masonry", length: "full", wide: "off", tile: "420", titles: "hide",
+  theme: savedTheme() || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") };
+
+function layout() {
+  document.body.className = `titles-${state.titles} ${state.theme === "dark" ? "dark" : ""} ${state.length === "full" ? "full" : ""} ${state.look}`;
+  document.documentElement.style.setProperty("--tile", state.tile + "px");
+  document.querySelectorAll("#controls button").forEach(b =>
+    b.classList.toggle("on", state[b.dataset.k] === b.dataset.v));
+  document.getElementById("wide-row").style.display = state.mode === "masonry" ? "" : "none";
+  // Fixed-height tiles always cut, so the switch has nothing to do there.
+  document.getElementById("length-row").style.display = state.mode === "fixed" ? "none" : "";
+
+  // Hold the page height while tiles are moved, so the scroll position doesn't jump.
+  wall.style.minHeight = wall.offsetHeight + "px";
+  wall.innerHTML = "";
+  wall.style.height = "";
+  tiles.forEach(t => { t.style.cssText = ""; t.classList.remove("wide"); });
+  if (state.mode === "masonry") {
+    wall.className = "wall masonry";
+    tiles.forEach(t => wall.appendChild(t));
+    masonry();
+  } else {
+    wall.className = "wall grid" + (state.mode === "fixed" ? " fixed" : "");
+    tiles.forEach(t => wall.appendChild(t));
+    requestAnimationFrame(markClamped);
+  }
+  wall.style.minHeight = "";
+}
+
+// Each post goes where it can sit highest, leftmost on a tie, so the order still
+// reads left to right, top to bottom. A long read takes the best pair of
+// neighbouring columns and starts below the taller of the two.
+function masonry() {
+  const cs = getComputedStyle(wall);
+  const gap = parseFloat(getComputedStyle(document.body).getPropertyValue("--gap")) || 12;
+  const pad = parseFloat(cs.paddingLeft), inner = wall.clientWidth - 2 * pad;
+  const maxCols = state.look === "calm" ? 3 : Infinity;
+  const n = Math.max(1, Math.min(maxCols, Math.floor((inner + gap) / (+state.tile + gap))));
+  const colW = (inner - gap * (n - 1)) / n;
+  const heights = new Array(n).fill(0);
+  tiles.forEach((t, i) => {
+    const span = state.wide === "on" && n > 1 && posts[i].tags.includes("longreads") ? 2 : 1;
+    t.classList.toggle("wide", span === 2);
+    t.style.width = colW * span + gap * (span - 1) + "px";
+    let best = 0, bestTop = Infinity;
+    for (let c = 0; c + span <= n; c++) {
+      const top = Math.max(...heights.slice(c, c + span));
+      if (top < bestTop) { best = c; bestTop = top; }
+    }
+    t.style.left = pad + best * (colW + gap) + "px";
+    t.style.top = pad + bestTop + "px";
+    markClamped(t);  // before measuring: the "Show more" link adds height
+    const bottom = bestTop + t.offsetHeight + gap;
+    for (let c = best; c < best + span; c++) heights[c] = bottom;
+  });
+  wall.style.height = Math.max(...heights) - gap + 2 * pad + "px";
+}
+
+function markClamped(only) {
+  (only instanceof Element ? [only] : tiles).forEach(t => {
+    const b = t.querySelector(".body");
+    // A two-column body overflows sideways into extra columns rather than downwards.
+    b.classList.toggle("clamped", b.scrollHeight > b.clientHeight + 2 || b.scrollWidth > b.clientWidth + 2);
+  });
+}
+
+document.getElementById("controls").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  state[b.dataset.k] = b.dataset.v; layout();
+  if (b.dataset.k === "theme") try { localStorage.setItem("theme", b.dataset.v); } catch {}
+});
+
+let timer;
+// Only masonry has to re-place tiles as images load; the grid just rechecks which posts are cut.
+const relayout = () => { clearTimeout(timer); timer = setTimeout(state.mode === "masonry" ? layout : markClamped, 120); };
+window.addEventListener("resize", relayout);
+tiles.forEach(t => t.querySelectorAll("img").forEach(i => i.complete || i.addEventListener("load", relayout)));
+
+// "Show more" and "+N" open the post on its own.
+const modal = document.getElementById("modal"), slot = modal.querySelector(".slot");
+function openPost(i) {
+  const p = posts[i];
+  const full = tiles[i].cloneNode(true);
+  full.style.cssText = "";
+  if (p.t.startsWith("(Около)")) {  // show the whole album when opened
+    full.querySelector(".body").innerHTML = `<p>Небольшая подборка (около)математических мемов</p>` +
+      ["measure-theory", "seconds", "vector-space", "galois", "that-thing", "r2-to-r3", "base-10", "square", "pie", "derivative", "chinese-matrix", "hex"]
+        .map(f => img("2026-03-21-math-memes", f + ".jpg", "")).join("");
+  }
+  slot.innerHTML = ""; slot.appendChild(full);
+  modal.classList.add("on"); modal.scrollTop = 0;
+}
+document.addEventListener("click", e => {
+  const more = e.target.closest(".more, [data-open]");
+  if (more) { openPost(more.closest(".card").dataset.i); return; }
+  const im = e.target.closest(".media img, .album img");
+  if (im) { const lb = document.getElementById("lb"); lb.querySelector("img").src = im.src; lb.classList.add("on"); }
+});
+modal.addEventListener("click", e => { if (e.target === modal || e.target.closest(".close")) modal.classList.remove("on"); });
+document.getElementById("lb").addEventListener("click", e => e.currentTarget.classList.remove("on"));
+document.addEventListener("keydown", e => { if (e.key === "Escape") { document.getElementById("lb").classList.remove("on"); modal.classList.remove("on"); } });
+
+layout();
+</script>
+</body>
+</html>

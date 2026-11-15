@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tags · Mlatus' notes</title>
+<link rel="stylesheet" href="site.css">
+<style>
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <h1>Tags</h1>
+  <p class="lead" id="lead"></p>
+  <div class="chips" id="chips"></div>
+</main>
+<script src="notes.js"></script>
+<script src="common.js"></script>
+<script>
+renderHeader("Tags");
+const counts = tagCounts();
+document.getElementById("lead").textContent = `${counts.length} tags, most used first`;
+document.getElementById("chips").innerHTML = counts.map(([t, k]) =>
+  `<a class="chip" href="${tagUrl(t)}">#${t}<span class="n">${k}</span></a>`).join("");
+</script>
+</body>
+</html>

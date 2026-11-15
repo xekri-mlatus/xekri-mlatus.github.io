@@ -1,0 +1,118 @@
+/* Shared look of the page mockups: the calm Telegram-ish style settled on for the wall. */
+
+:root {
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bg: #f3f2ee; --card: #fff; --border: rgba(0,0,0,.07);
+  --text: #0f1419; --muted: #6b7378; --meta: #a3a6a9; --link: #168acd;
+  --chip: rgba(0,0,0,.045); --mark: #fde68a; --mark-text: #0f1419;
+  --gap: 32px; --pad: 32px; --column: 680px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11171e; --card: #19222c; --border: rgba(255,255,255,.06);
+    --text: #e8eef3; --muted: #8b9aa8; --meta: #5f6f7e; --link: #6ab3f3;
+    --chip: rgba(255,255,255,.06); --mark: #6b5a1e; --mark-text: #fff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11171e; --card: #19222c; --border: rgba(255,255,255,.06);
+  --text: #e8eef3; --muted: #8b9aa8; --meta: #5f6f7e; --link: #6ab3f3;
+  --chip: rgba(255,255,255,.06); --mark: #6b5a1e; --mark-text: #fff;
+  color-scheme: dark;
+}
+@media (max-width: 700px) { :root { --gap: 20px; --pad: 16px; } }
+
+* { box-sizing: border-box; }
+html { overflow-y: scroll; }
+html, body { margin: 0; }
+body { font-family: var(--font); font-size: 15px; line-height: 1.5; color: var(--text); background: var(--bg); min-height: 100vh; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- header ---------- */
+.top { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--border); }
+.top-inner { max-width: 1440px; margin: 0 auto; padding: 10px var(--pad); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.avatar { flex: none; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #7b6cf6, #e46fa7);
+  color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 18px; }
+.brand .name { font-weight: 700; font-size: 16px; }
+.brand .sub { color: var(--muted); font-size: 13px; }
+.top nav { display: flex; gap: 16px; font-size: 14px; }
+.top nav a { color: var(--muted); }
+.top nav a.cur { color: var(--text); font-weight: 600; }
+.theme { background: none; border: 0; color: var(--muted); font-size: 17px; cursor: pointer; padding: 4px 6px; border-radius: 8px; }
+.theme:hover { color: var(--text); background: var(--chip); }
+/* Phones: the links move to their own row under the name. */
+@media (max-width: 640px) {
+  .top-inner { row-gap: 6px; }
+  .top nav { order: 3; width: 100%; justify-content: space-between; padding: 2px 2px 0; }
+}
+
+/* ---------- page column ---------- */
+.page { max-width: calc(var(--column) + 2 * var(--pad)); margin: 0 auto; padding: var(--pad); }
+.page > h1 { font-size: 26px; margin: 4px 0 4px; }
+.page > .lead { color: var(--muted); margin: 0 0 24px; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px 11px; min-width: 0; }
+.page > .card { padding: 22px 26px 16px; }
+@media (max-width: 700px) { .page > .card { padding: 16px 16px 12px; } }
+
+/* ---------- note text ---------- */
+.body { overflow-wrap: anywhere; }
+.body p { margin: 0 0 10px; }
+.body h2, .body h3 { margin: 18px 0 8px; line-height: 1.3; }
+.body blockquote { margin: 0 0 10px; padding: 2px 0 2px 12px; border-left: 3px solid var(--link); }
+.body ul, .body ol { margin: 0 0 10px; padding-left: 22px; }
+.body hr { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
+.body code { background: var(--chip); padding: 1px 5px; border-radius: 5px; font-size: .92em; }
+.body img { display: block; max-width: 100%; height: auto; max-height: 80vh; border-radius: 10px; cursor: zoom-in; margin: 4px 0 10px; }
+.body p img + img { margin-top: 10px; }
+.body figure { margin: 4px 0 10px; }
+.body figure img { margin: 0 auto; }
+.body iframe { border-radius: 10px; }
+.body > div[style*="padding-bottom"] { margin: 4px 0 12px; border-radius: 10px; overflow: hidden; }
+.body table { border-collapse: collapse; margin: 0 0 10px; }
+.body td, .body th { border: 1px solid var(--border); padding: 4px 8px; }
+
+/* Images that follow each other: an album on the wall, a gallery on a note's page. */
+.album { display: grid; gap: 3px; margin: 4px 0 10px; border-radius: 10px; overflow: hidden; grid-template-columns: 1fr 1fr; }
+.album.n2 { aspect-ratio: 1 / 1; }
+.album.n3, .album.n4 { grid-template-rows: 1fr 1fr; aspect-ratio: 4 / 3; }
+.album.n3 > :first-child { grid-row: span 2; }
+.album img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: top; margin: 0; border-radius: 0; }
+.album .plus { position: relative; overflow: hidden; }
+.album .plus span { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.5);
+  color: #fff; font-size: 26px; font-weight: 600; }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 12px; align-items: start; }
+.gallery img { margin: 0; width: 100%; max-height: none; }
+
+/* ---------- footer of a tile or note ---------- */
+.foot { display: flex; align-items: flex-end; gap: 10px; font-size: 12px; margin-top: 6px; }
+.tags { flex: 1; display: flex; flex-wrap: wrap; gap: 0 8px; }
+.tags a, .when { color: var(--meta); }
+.tags a:hover, a.when:hover { color: var(--link); text-decoration: underline; }
+.when { white-space: nowrap; }
+
+/* ---------- wall (tag pages) ---------- */
+.wall-head { max-width: 1440px; margin: 0 auto; padding: var(--pad) var(--pad) 0; }
+.wall-head h1 { font-size: 26px; margin: 0; }
+.wall-head .lead { color: var(--muted); margin: 2px 0 0; }
+.wall { position: relative; max-width: 1440px; margin: 0 auto; padding: var(--pad); }
+.wall .card { position: absolute; }
+
+/* ---------- small pieces ---------- */
+.chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--border); color: var(--text); font-size: 15px; }
+.chip:hover { border-color: var(--link); text-decoration: none; }
+.chip .n { color: var(--meta); font-size: 13px; }
+mark { background: var(--mark); color: var(--mark-text); border-radius: 3px; padding: 0 1px; }
+
+.lb { position: fixed; inset: 0; background: rgba(0,0,0,.9); display: none; place-items: center; z-index: 60; cursor: zoom-out; }
+.lb.on { display: grid; }
+.lb img { max-width: 94vw; max-height: 92vh; }
+
+.site-foot { text-align: center; color: var(--meta); font-size: 12.5px; padding: 8px 16px 36px; }
+.site-foot a { color: var(--meta); }

@@ -5,8 +5,11 @@
        original opens when the picture is enlarged (data-full). */ -}}
 {{- $r := "" -}}
 {{- if not (urls.Parse .src).IsAbs -}}{{- $r = .page.Resources.Get .src -}}{{- end -}}
+{{- /* A set width is a maximum, not a fixed width: with a fixed width the
+       height limits in main.css (380px on the wall) would squash tall pictures
+       instead of shrinking them evenly. */ -}}
 {{- $style := "" -}}
-{{- with .width -}}{{- $style = printf "width: %spx" (string .) -}}{{- end -}}
+{{- with .width -}}{{- $style = printf "max-width: min(%spx, 100%%)" (string .) -}}{{- end -}}
 {{- if and $r (eq $r.ResourceType "image") (ne $r.MediaType.SubType "svg") -}}
   {{- $show := $r -}}
   {{- if and (ne $r.MediaType.SubType "gif") (gt $r.Width 1200) -}}{{- $show = $r.Resize "1200x" -}}{{- end -}}

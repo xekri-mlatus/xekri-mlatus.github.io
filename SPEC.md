@@ -98,9 +98,14 @@ works, every page matches the mockups, and no note title shows anywhere.
 - **Tile footer**, small and grey: the hashtags on the left (each leads to
   its tag page) and the date on the right. The date leads to the note's own
   page **in a new tab**; it turns blue and underlined on hover.
-- **More notes:** 24 tiles per page. Under the wall a "Load older notes"
-  button adds the next 24 without leaving the page, and disappears after the
-  last one. Without JavaScript it's a link to `/page/2/` and so on.
+- **More notes:** 24 tiles per page. When the bottom of the wall comes
+  within about a screen (1200px), the next 24 are added by themselves,
+  without leaving the page; under the wall a "Load older notes" button does
+  the same on click and says "Loading older notes…" meanwhile. It disappears
+  after the last note. If loading fails, it stops loading by itself and the
+  button simply opens the next page. Without JavaScript it's a link to
+  `/page/2/` and so on. (Changed 2026-11-15: loading used to wait for the
+  click.)
 - `/notes/` shows the same wall (pointing search engines to `/` as the main
   copy), so its old links and pages keep working.
 
@@ -267,7 +272,7 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   (`mob-control`), an old note (`welcome`), a note with a video
   (`penguins-escalation`), `/tags/`, `/tags/memes/`, search for "кот" and
   "Падме", About, an unknown address. Compare with the mockups; check there's
-  no sideways scrolling and no console errors; "Load older notes" reaches the
+  no sideways scrolling and no console errors; scrolling down reaches the
   first note (2017).
 - **Formatting:** build once with `--contentDir content_test` and check its
   Markdown field guide (headings, lists, tables, code, quotes, footnotes)

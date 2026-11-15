@@ -116,26 +116,64 @@
     addEventListener("resize", later);
     layout();
 
-    // "Load older notes": fetch the next page and add its tiles here.
+    // Older notes: when the bottom of the wall comes within about a screen,
+    // fetch the next page and add its tiles here. The "Load older notes" link
+    // does the same when clicked; without JavaScript it opens the next page.
     const older = document.querySelector(".older");
-    older?.addEventListener("click", async e => {
-      e.preventDefault();
-      older.setAttribute("aria-busy", "true");
-      try {
-        const res = await fetch(older.href);
-        if (!res.ok) throw new Error(res.status);
-        const doc = new DOMParser().parseFromString(await res.text(), "text/html");
-        const tiles = [...doc.querySelectorAll("#wall .tile")];
-        tiles.forEach(t => { galleries(t.querySelector(".body")); wall.append(t); });
-        tiles.forEach(watch);
-        layout();
-        const next = doc.querySelector(".older");
-        if (next) { older.href = next.getAttribute("href"); older.removeAttribute("aria-busy"); }
-        else older.parentElement.remove();
-      } catch (err) {
-        location.href = older.href;  // fall back to opening the next page
-      }
-    });
+    if (older) {
+      const AHEAD = 1200;  // px below the screen at which loading starts
+      let busy = false, failed = false;
+      const near = () => older.isConnected && older.getBoundingClientRect().top < innerHeight + AHEAD;
+      const loadOlder = async () => {
+        if (busy || failed) return;
+        busy = true;
+        older.setAttribute("aria-busy", "true");
+        older.textContent = "Loading older notes…";
+        try {
+          const res = await fetch(older.href);
+          if (!res.ok) throw new Error(res.status);
+          const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+          const tiles = [...doc.querySelectorAll("#wall .tile")];
+          tiles.forEach(t => { galleries(t.querySelector(".body")); wall.append(t); });
+          tiles.forEach(watch);
+          layout();
+          const next = doc.querySelector(".older");
+          if (next) {
+            older.href = next.getAttribute("href");
+            older.textContent = "Load older notes";
+            older.removeAttribute("aria-busy");
+            busy = false;
+            if (near()) loadOlder();  // the new tiles didn't fill the screen
+          } else {
+            removeEventListener("scroll", check);
+            removeEventListener("resize", check);
+            older.parentElement.remove();
+          }
+        } catch (err) {
+          // Stop loading by itself; the link now simply opens the next page.
+          failed = true;
+          older.textContent = "Load older notes";
+          older.removeAttribute("aria-busy");
+        }
+      };
+      // Checked on scroll and resize, at most once a frame. (An IntersectionObserver
+      // missed the last page: it only reports changes, and the link can stay
+      // "in view" across a load.)
+      let queued = false;
+      const check = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => { queued = false; if (near()) loadOlder(); });
+      };
+      older.addEventListener("click", e => {
+        if (failed) return;
+        e.preventDefault();
+        loadOlder();
+      });
+      addEventListener("scroll", check, { passive: true });
+      addEventListener("resize", check);
+      check();
+    }
   }
 
   // ---------- search ----------

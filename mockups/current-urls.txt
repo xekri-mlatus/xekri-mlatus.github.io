@@ -4,6 +4,8 @@
 /404.html
 /about/
 /archives/
+/artifacts/
+/artifacts/academic-linking-words/
 /index.json
 /index.xml
 /notes/

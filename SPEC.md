@@ -23,7 +23,8 @@ works, every page matches the mockups, and no note title shows anywhere.
 ### In scope
 
 - A new Hugo theme in this repository, used in place of PaperMod.
-- Every page type: the wall, a note's page, tags, one tag, search, About, 404.
+- Every page type: the wall, a note's page, tags, one tag, artifacts, search,
+  About, 404.
 - Feeds, link previews, the search index, and redirects for removed pages.
 - Removing what the new design drops (listed under *Removed*).
 
@@ -70,9 +71,9 @@ works, every page matches the mockups, and no note title shows anywhere.
 
 - Sticky header with a thin line under it: avatar (the "M" circle, for now)
   and "Mlatus' notes" with "73 notes" under it, both leading to the wall. On
-  the right: **Notes · Tags · Search · About**, the current one in bold, and
-  the theme button.
-- Below 640px the four links move to their own row under the name.
+  the right: **Notes · Tags · Artifacts · Search · About**, the current one
+  in bold, and the theme button.
+- Below 640px the links move to their own row under the name.
 - Footer, centred and grey: `Mlatus · RSS`. "Mlatus" leads to About, "RSS"
   to `/notes/index.xml`.
 
@@ -160,6 +161,33 @@ works, every page matches the mockups, and no note title shows anywhere.
   "73 notes since 2017 · 22 tags" (counted at build time), then the text of
   `content/about.md` as written, then an RSS chip.
 
+### Artifacts: `/artifacts/` and `/artifacts/<name>/`
+
+(Added 2026-11-17.) Artifacts are interactive pages and references made
+elsewhere (such as "Academic Linking Words"), each a whole HTML page with its
+own design. Unlike notes, they have names, and the site shows them.
+
+- **The list**, `/artifacts/`: heading "Artifacts", the section's description
+  as the lead, then one card per artifact, newest first: its name in bold,
+  its description in grey, and the day it was added. The whole card leads to
+  the artifact. Tab: `Artifacts · Mlatus' notes`.
+- **An artifact**, `/artifacts/<name>/`: the page exactly as it was made, in
+  its own design, with no site header or footer. The site adds only:
+  - a thin bar at the very top, `← Mlatus' notes / Artifacts`, in the system
+    font, inheriting the page's colours, leading to the wall and the list;
+  - the visitor's light / dark choice from the site (`data-theme` on
+    `<html>`), for pages that honour it;
+  - a description, a canonical address and link previews (the artifact's
+    name and description).
+- **Self-contained.** Artifacts load nothing from other sites. Fonts from
+  Google Fonts are stored with the artifact (`scripts/localize_fonts.py`).
+- Artifacts are **not** on the wall, in any feed, or in search; the section
+  has no feed. They are in `/sitemap.xml`.
+- Each artifact is a folder, `content/artifacts/<name>/`: `index.md` with
+  `title`, `date` and `description`, the page's HTML file (any name), and
+  the files it loads (`fonts/`). Hugo's `security.allowContent` lets HTML
+  files into `content/` for this.
+
 ### Not found: `/404.html`
 
 - A tile with a large grey "404", "Nothing here", "There's no note at this
@@ -212,7 +240,8 @@ works, every page matches the mockups, and no note title shows anywhere.
 ## Tech stack
 
 - Hugo extended 0.169.0, the same version as the deploy workflow. No Node,
-  no npm, no CDN, no web fonts, no new dependencies.
+  no npm, no CDN, no web fonts, no new dependencies. (Artifacts may bring
+  their own fonts, stored with them.)
 - One CSS file and one small JavaScript file of our own (theme switch,
   masonry, galleries, enlarged pictures, "Load older notes", search, the `/`
   key), processed with Hugo Pipes (minified, fingerprinted).
@@ -227,6 +256,7 @@ themes/mlatus/                 the new theme (in this repo, not a submodule)
     page.html                  a note's page
     taxonomy.html, term.html   /tags/ and /tags/<tag>/
     search.html, about.html    special pages (chosen by layout in front matter)
+    artifacts/                 /artifacts/ (section.html) and an artifact (page.html)
     404.html
     home.rss.xml, …            feeds;  home.json for /index.json
     _partials/                 header, footer, tile, date, label, head/meta
@@ -266,7 +296,9 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - no note's title appears in any built page, feed or `index.json`, unless
     those words are also in the note's own text (as with "Mob Control");
   - every `<img>` has a width, a height and an `alt`;
-  - `/index.xml` holds exactly the 73 notes.
+  - `/index.xml` holds exactly the 73 notes, and `/index.json` the notes only;
+  - every artifact has its bar back to the site, loads nothing from another
+    site, and every file it loads is there.
 - **In the browser** (`hugo server`, the `hugo` entry in `launch.json`), at
   1440px, 1100px and 375px, light and dark: the wall, a note with a gallery
   (`mob-control`), an old note (`welcome`), a note with a video

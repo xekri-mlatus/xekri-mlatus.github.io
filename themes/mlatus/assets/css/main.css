@@ -155,6 +155,15 @@ a:hover { text-decoration: underline; }
 }
 
 /* Tags */
+/* ---------- /artifacts/: one card per artifact ---------- */
+.artifacts { display: grid; gap: 12px; }
+.artifact { display: grid; gap: 4px; padding: 16px 20px; color: var(--text); }
+.artifact:hover { border-color: var(--link); text-decoration: none; }
+.artifact .name { font-weight: 700; font-size: 17px; }
+.artifact:hover .name { color: var(--link); }
+.artifact .desc { color: var(--muted); }
+.artifact .when { color: var(--meta); font-size: 13px; }
+
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px;
   background: var(--card); border: 1px solid var(--border); color: var(--text); font-size: 15px; }

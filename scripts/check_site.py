@@ -11,7 +11,9 @@ temporary folder and checks that:
 - no note's title appears on its page, tile, feed item or search entry,
   unless those words are in the note itself;
 - every picture has a width, a height and an alt text;
-- the main feeds hold exactly the notes.
+- the main feeds and the search index hold exactly the notes;
+- every artifact has its page with the bar back to the site, loads nothing
+  from another site, and every file it loads is there.
 
 Exits with 1 and lists the problems if anything fails.
 """
@@ -126,7 +128,33 @@ def main():
             if len(items) != count or any("/notes/" not in link for link in items):
                 problems.append(f"/{feed} has {len(items)} items, expected the {count} notes")
 
-        print(f"Checked {checked} addresses, {count} notes' titles, every picture and the feeds.")
+        entries = json.loads((out / "index.json").read_text(encoding="utf-8"))
+        if len(entries) != count or any(not e["url"].startswith("/notes/") for e in entries):
+            problems.append(f"/index.json has {len(entries)} entries, expected the {count} notes")
+
+        # 5. Artifacts: served with the bar back to the site, and self-contained.
+        artifacts = sorted(p.parent.name for p in (ROOT / "content" / "artifacts").glob("*/index.md"))
+        for name in artifacts:
+            page = out / "artifacts" / name / "index.html"
+            if not page.exists():
+                problems.append(f"missing: /artifacts/{name}/")
+                continue
+            text = page.read_text(encoding="utf-8")
+            if "mlatus-bar" not in text:
+                problems.append(f"/artifacts/{name}/ has no bar back to the site")
+            refs = re.findall(r"""url\(\s*["']?([^"')\s]+)""", text)
+            for tag in re.findall(r"<(?:script|link|img|iframe|source|video|audio|embed)\b[^>]*>", text):
+                if not re.search(r"rel=\"?canonical", tag):
+                    refs += re.findall(r"""\b(?:src|href)=["']?([^"'\s>]+)""", tag)
+            refs += [f"@import {m}" for m in re.findall(r"@import\s+([^;]+)", text)]
+            for ref in refs:
+                if re.match(r"(https?:)?//|@import", ref):
+                    problems.append(f"/artifacts/{name}/ loads from another site: {ref[:100]}")
+                elif not ref.startswith(("#", "data:", "/")) and not (page.parent / ref.split("#")[0].split("?")[0]).exists():
+                    problems.append(f"/artifacts/{name}/ loads a missing file: {ref}")
+
+        print(f"Checked {checked} addresses, {count} notes' titles, every picture, the feeds "
+              f"and {len(artifacts)} artifact(s).")
     return report(problems)
 
 

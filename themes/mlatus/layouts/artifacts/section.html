@@ -1,0 +1,17 @@
+{{- /* /artifacts/: every artifact, newest first, by name with its description.
+       Artifacts are named (unlike notes); each opens in its own design. */ -}}
+{{ define "main" }}
+<main class="page">
+  <h1>{{ .Title }}</h1>
+  <p class="lead">{{ .Description }}</p>
+  <div class="artifacts">
+    {{- range .Pages.ByDate.Reverse }}
+    <a class="card artifact" href="{{ .RelPermalink }}">
+      <span class="name">{{ .Title }}</span>
+      <span class="desc">{{ .Description }}</span>
+      <span class="when">{{ partial "date-short.html" . | replaceRE `, \d\d:\d\d$` "" }}</span>
+    </a>
+    {{- end }}
+  </div>
+</main>
+{{ end }}

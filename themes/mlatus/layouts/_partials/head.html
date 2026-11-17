@@ -1,20 +1,22 @@
 {{- /* <head>: tab name, link previews, feeds, styles, and the remembered theme. */ -}}
 {{- $isNote := and .IsPage (eq .Section "notes") -}}
+{{- $isWall := or .IsHome (and (eq .Kind "section") (eq .Section "notes")) -}}
 {{- $name := .Title -}}
 {{- if $isNote }}{{ $name = partial "label.html" . }}
 {{- else if eq .Kind "term" }}{{ $name = printf "#%s" (partial "hashtag.html" .Title) }}
 {{- else if eq .Kind "404" }}{{ $name = "Not found" }}
 {{- end -}}
-{{- $tab := cond (or .IsHome (eq .Kind "section")) site.Title (printf "%s · %s" $name site.Title) -}}
+{{- $tab := cond $isWall site.Title (printf "%s · %s" $name site.Title) -}}
 {{- $desc := site.Params.description -}}
-{{- if $isNote }}{{ with partial "text.html" . }}{{ $desc = . | truncate 200 "…" | string | htmlUnescape }}{{ end }}{{ end -}}
+{{- if $isNote }}{{ with partial "text.html" . }}{{ $desc = . | truncate 200 "…" | string | htmlUnescape }}{{ end }}
+{{- else if eq .Section "artifacts" }}{{ with .Description }}{{ $desc = . }}{{ end }}{{ end -}}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $tab }}</title>
 <meta name="description" content="{{ $desc }}">
 {{- /* /notes/ shows the same wall as the home page: point search engines to the home page. */}}
-<link rel="canonical" href="{{ if eq .Kind "section" }}{{ site.Home.Permalink }}{{ else }}{{ .Permalink }}{{ end }}">
+<link rel="canonical" href="{{ if and $isWall (not .IsHome) }}{{ site.Home.Permalink }}{{ else }}{{ .Permalink }}{{ end }}">
 <meta name="color-scheme" content="light dark">
 {{- with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}
 <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">

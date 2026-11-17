@@ -3,6 +3,7 @@
 {{- $current := "" -}}
 {{- if or .IsHome (eq .Section "notes") }}{{ $current = "Notes" }}
 {{- else if in (slice "taxonomy" "term") .Kind }}{{ $current = "Tags" }}
+{{- else if eq .Section "artifacts" }}{{ $current = "Artifacts" }}
 {{- else if eq .Layout "search" }}{{ $current = "Search" }}
 {{- else if eq .Layout "about" }}{{ $current = "About" }}
 {{- end -}}

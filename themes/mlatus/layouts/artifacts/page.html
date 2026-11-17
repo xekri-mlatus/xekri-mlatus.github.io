@@ -1,0 +1,27 @@
+{{- /* An artifact (content/artifacts/<name>/): a page made elsewhere, served as it
+       is, in its own design. Its HTML file sits next to index.md. The site adds
+       only a description for link previews, the visitor's light / dark choice,
+       and a thin bar at the top leading back to the site. No baseof: the
+       artifact is a whole page of its own. */ -}}
+{{- $page := .Resources.GetMatch "*.html" -}}
+{{- if not $page }}{{ errorf "%s: the artifact's HTML file is missing" .File.Path }}{{ end -}}
+{{- $head := printf `<meta name="description" content="%s">
+<link rel="canonical" href="%s">
+<meta property="og:site_name" content="%s">
+<meta property="og:url" content="%s">
+<meta property="og:title" content="%s">
+<meta property="og:description" content="%s">
+<meta property="og:type" content="website">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+.mlatus-bar{display:flex;gap:8px;align-items:baseline;padding:8px 24px;font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;border-bottom:1px solid rgba(128,128,128,.25)}
+.mlatus-bar a{color:inherit;text-decoration:none;opacity:.75}
+.mlatus-bar a:hover{opacity:1;text-decoration:underline}
+.mlatus-bar span{opacity:.4}
+@media (max-width:700px){.mlatus-bar{padding:8px 16px}}
+</style>
+</head>` .Description .Permalink site.Title .Permalink .Title .Description -}}
+{{- $bar := printf `${0}
+<nav class="mlatus-bar" aria-label="%s"><a href="%s">← %s</a><span>/</span><a href="%s">Artifacts</a></nav>` site.Title ("" | relURL) site.Title (.Parent.RelPermalink) -}}
+{{- $html := replace $page.RawContent "</head>" $head 1 -}}
+{{- replaceRE `<body\b[^>]*>` $bar $html 1 | safeHTML -}}

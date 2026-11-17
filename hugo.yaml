@@ -39,6 +39,9 @@ menu:
     - name: Tags
       pageRef: /tags
       weight: 20
+    - name: Artifacts
+      pageRef: /artifacts
+      weight: 25
     - name: Search
       pageRef: /search
       weight: 30
@@ -55,3 +58,9 @@ params:
   oldPagerSize: 8
   # Notes written before this year end with the "old note" disclaimer.
   oldNoteYear: 2025
+
+# An artifact (content/artifacts/<name>/) is a whole HTML page next to its
+# index.md. Hugo refuses HTML content files by default; allow them, so the
+# artifact's layout can serve the file as it is.
+security:
+  allowContent: ['! ^text/org$']

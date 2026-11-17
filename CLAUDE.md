@@ -78,6 +78,31 @@ note:
   python scripts/check_site.py
   ```
 
+## Publishing an artifact
+
+Artifacts are whole HTML pages made elsewhere (interactive references and the
+like), shown at `/artifacts/` in their own design, not on the wall, in feeds
+or in search. To add one:
+
+- Make a folder `content/artifacts/<name>/` (lower case, hyphens) and put the
+  HTML file in it unchanged, renamed to `<name>.html`.
+- Add `index.md` next to it:
+
+  ```yaml
+  ---
+  title: "Academic Linking Words"   # shown on the list and in link previews
+  date: 2026-11-17T11:17:00+03:00   # when it was added, always +03:00
+  description: "One sentence on what it is, for the list and link previews."
+  ---
+  ```
+
+- Store its fonts with it: `python scripts/localize_fonts.py` downloads any
+  Google Fonts the page uses into its `fonts/` folder and points the page at
+  them. If the page loads anything else from another site (scripts from a
+  CDN, images), `check_site.py` says so; store those with the artifact too.
+- Check `/artifacts/` and the artifact's page in `hugo server`, then run
+  `python scripts/check_site.py`. Commit as `Add artifact "<title>"`.
+
 ## The theme
 
 - Templates, CSS and JavaScript are in `themes/mlatus/`; `SPEC.md` says how

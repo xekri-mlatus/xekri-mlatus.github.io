@@ -58,6 +58,8 @@ params:
   oldPagerSize: 8
   # Notes written before this year end with the "old note" disclaimer.
   oldNoteYear: 2025
+  # Proves to Google Search Console that the site is ours (on the home page).
+  googleSiteVerification: SBMB-afqmnzWFAevZrTahqDdsPS1jXz71Lt0dmbisgc
 
 # An artifact (content/artifacts/<name>/) is a whole HTML page next to its
 # index.md. Hugo refuses HTML content files by default; allow them, so the

@@ -18,6 +18,9 @@
 {{- /* /notes/ shows the same wall as the home page: point search engines to the home page. */}}
 <link rel="canonical" href="{{ if and $isWall (not .IsHome) }}{{ site.Home.Permalink }}{{ else }}{{ .Permalink }}{{ end }}">
 <meta name="color-scheme" content="light dark">
+{{- if .IsHome }}{{ with site.Params.googleSiteVerification }}
+<meta name="google-site-verification" content="{{ . }}">
+{{- end }}{{ end }}
 {{- with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}
 <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">
 {{- end }}{{ end }}

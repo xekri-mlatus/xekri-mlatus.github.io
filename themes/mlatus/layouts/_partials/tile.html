@@ -1,8 +1,12 @@
 {{- /* A note on the wall: the whole note, no title. Its date opens the note's
        own page in a new tab. data-url names the note (scripts/check_site.py
-       finds tiles by it). */ -}}
+       finds tiles by it). A note in a thread quotes the newer note that
+       continues it at the top and the older note it continues at the bottom
+       (newer above, as on the wall); those open in a new tab too. */ -}}
 <article class="card tile" data-url="{{ .RelPermalink }}">
+  {{- partial "quotes.html" (dict "page" . "where" "above" "newTab" true) }}
   <div class="body" lang="{{ partial "lang.html" . }}">{{ .Content }}</div>
+  {{- partial "quotes.html" (dict "page" . "where" "below" "newTab" true) }}
   <footer class="foot">
     <div class="tags">
       {{- range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ partial "hashtag.html" .Title }}</a>{{ end -}}

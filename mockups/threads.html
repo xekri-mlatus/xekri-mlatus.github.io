@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Threads · Mlatus' notes</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="threads.css">
+<style>
+/* Mockup only: a bar pointing at the example threads further down the wall. */
+.demo { max-width: 1440px; margin: 0 auto; padding: var(--pad) var(--pad) 0; color: var(--muted); font-size: 14px; }
+.demo a { white-space: nowrap; }
+.wall .card { scroll-margin-top: 90px; }
+.wall .card:target { outline: 2px solid var(--link); }
+</style>
+</head>
+<body>
+<p class="demo" lang="en">Threads mockup. Example threads further down the wall:
+  Toaq, 3 notes (<a href="#toaq">first</a> · <a href="#mi-klama-le-zarci">middle</a> · <a href="#toaq-and-german">last</a>),
+  and penguins, 2 notes (<a href="#penguins-for-greenland">first</a> · <a href="#penguins-escalation">second</a>).
+  The outline marks the tile you jumped to and is not part of the design.</p>
+<main class="wall" id="wall"></main>
+<script src="notes.js"></script>
+<script src="common.js"></script>
+<script src="threads.js"></script>
+<script>
+renderHeader("Notes");
+const tiles = NOTES.map(n => { const t = threadTile(n); t.id = n.slug; return t; });
+masonry(document.getElementById("wall"), tiles);
+// The tiles are placed by script, so jump to the one in the address once they are.
+const jump = () => document.getElementById(location.hash.slice(1))?.scrollIntoView();
+if (location.hash) setTimeout(jump, 300);
+</script>
+</body>
+</html>

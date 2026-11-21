@@ -1,0 +1,11 @@
+{{- /* The top of a note on its page: the long date and the hashtags. In the
+       whole-thread view (SPEC.md, "Threads") also which part it is ("2 of 3"),
+       and the date of every other part leads to that part's page.
+       Takes: page; part and here in the thread view. */ -}}
+{{- $p := .page -}}
+<div class="note-meta">
+  {{- if and .part (not .here) }}<a class="date" href="{{ $p.RelPermalink }}">{{ partial "date-long.html" $p }}</a>
+  {{- else }}<span>{{ partial "date-long.html" $p }}</span>{{ end }}
+  {{- with .part }}<span class="part">{{ . }}{{ if $.here }} · this note{{ end }}</span>{{ end }}
+  <span class="tags">{{ range $p.GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ partial "hashtag.html" .Title }}</a>{{ end }}</span>
+</div>

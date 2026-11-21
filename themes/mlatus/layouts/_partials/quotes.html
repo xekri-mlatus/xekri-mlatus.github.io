@@ -1,0 +1,10 @@
+{{- /* The quotes above or below a note. As on the wall, newer is above and
+       older below: above (where "above") are the notes that continue this one,
+       newest first; below (where "below") is the note it continues.
+       Takes: page, where, newTab. */ -}}
+{{- $ctx := . -}}
+{{- if eq .where "above" -}}
+  {{- range (partial "thread-next.html" .page).Reverse }}{{ partial "quote.html" (dict "page" . "dir" "next" "newTab" $ctx.newTab) }}{{ end -}}
+{{- else -}}
+  {{- with partial "thread-prev.html" .page }}{{ partial "quote.html" (dict "page" . "dir" "prev" "newTab" $ctx.newTab) }}{{ end -}}
+{{- end -}}

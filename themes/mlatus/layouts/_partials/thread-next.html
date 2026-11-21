@@ -1,0 +1,2 @@
+{{- /* The notes that continue this one, oldest first: usually one, or none. */ -}}
+{{- return (where (partial "notes.html" .) "Params.continues" .Slug).ByDate -}}

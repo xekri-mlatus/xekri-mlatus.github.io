@@ -1,0 +1,11 @@
+{{- /* A quote of another note of the thread, as in a Telegram reply: its small
+       picture, "↑ Next" (a newer note, quoted above) or "↓ Previous" (an older
+       one, quoted below) with its date, and its label. Takes: page (the
+       quoted note), dir ("next" or "prev"), newTab (on the wall,
+       where links to notes open in a new tab, like the date). */ -}}
+{{- $p := .page -}}
+<a class="quote {{ .dir }}" href="{{ $p.RelPermalink }}"{{ if .newTab }} target="_blank" rel="noopener"{{ end }}>
+  {{- with partial "thumb.html" $p }}<img src="{{ (.Fill "68x68 top").RelPermalink }}" width="34" height="34" alt="">{{ end }}
+  <span class="q-txt"><span class="q-dir">{{ cond (eq .dir "next") "↑ Next" "↓ Previous" }} · {{ partial "date-short.html" $p | replaceRE `, \d\d:\d\d$` "" }}</span>
+    <span class="q-label" lang="{{ partial "lang.html" $p }}">{{ partial "label.html" $p }}</span></span>
+</a>

@@ -1,0 +1,16 @@
+{{- /* Every note of the thread this note belongs to, oldest first; just the note
+       itself when it isn't in one. A thread is a chain: back to the note that
+       continues nothing, then forward along the oldest continuation. */ -}}
+{{- $first := . -}}
+{{- range seq 1000 -}}
+  {{- $prev := partial "thread-prev.html" $first -}}
+  {{- if not $prev }}{{ break }}{{ end -}}
+  {{- $first = $prev -}}
+{{- end -}}
+{{- $thread := slice $first -}}
+{{- range seq 1000 -}}
+  {{- $next := partial "thread-next.html" (index $thread (sub (len $thread) 1)) -}}
+  {{- if not $next }}{{ break }}{{ end -}}
+  {{- $thread = $thread | append (index $next 0) -}}
+{{- end -}}
+{{- return $thread -}}

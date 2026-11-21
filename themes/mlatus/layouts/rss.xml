@@ -26,8 +26,13 @@
       <guid>{{ .Permalink }}</guid>
       {{- if eq .Kind "page" }}
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      {{- /* A note that continues another starts with a link to it (SPEC.md, "Threads"). */}}
+      {{- $content := .Content }}
+      {{- with partial "thread-prev.html" . }}
+      {{- $content = printf "<p><a href=\"%s\">Previous: %s</a></p>%s" .RelPermalink (partial "label.html" . | htmlEscape) $content }}
+      {{- end }}
       {{- /* Pictures and links need full addresses in feed readers. */}}
-      <description>{{ .Content | replaceRE `(src|href|data-full)="/` (printf "$1=\"%s/" $site) | transform.XMLEscape | safeHTML }}</description>
+      <description>{{ $content | replaceRE `(src|href|data-full)="/` (printf "$1=\"%s/" $site) | transform.XMLEscape | safeHTML }}</description>
       {{- end }}
     </item>
     {{- end }}

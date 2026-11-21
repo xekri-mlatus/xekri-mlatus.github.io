@@ -127,6 +127,52 @@ works, every page matches the mockups, and no note title shows anywhere.
 - No title, breadcrumbs, reading time, table of contents, share buttons or
   "edit" link.
 
+### Threads
+
+(Added 2026-11-21. Mockups: `mockups/threads.html` and
+`mockups/thread-note.html?slug=mi-klama-le-zarci`.) A note can continue an
+earlier one; notes linked this way form a **thread**. As everywhere on the
+site, newer notes are above and older ones below (changed 2026-11-21: the
+first version put the older note above).
+
+- **Writing one.** The new note says which note it continues, by slug, in its
+  front matter: `continues: toaq`. Nothing changes in the earlier note: the
+  link back to the new one is worked out when the site is built. A thread is a
+  chain; if two notes ever continue the same note, both are linked from it, and
+  the thread view follows the older one.
+- **Quotes, both ways.** Like a reply in Telegram, a note in a thread
+  **quotes** its neighbours in the thread: a blue bar on the left, a light
+  blue background, the direction and date in blue, then the other note's label
+  in grey on one line, and its small square picture (if it has one) on the
+  left. The whole quote is a link. A note that has been continued starts with
+  a quote of the newer note, "↑ Next · 29 Nov 2025"; a note that continues
+  another ends, just above its footer, with a quote of the older one,
+  "↓ Previous · 22 Nov 2025".
+- **On the wall** the quotes open the linked note's own page **in a new tab**,
+  like the date. The wall does not scroll to the linked tile.
+- **On a note's page** the quotes are in the same places in the tile and open
+  the linked note's page in the same tab. "← Newer" and "Older →" under the
+  tile stay as they are: they go by time, the quotes by thread.
+- **The whole thread at once.** At the bottom of a note in a thread, a
+  rounded button "Show whole thread · 3 notes" shows every part of the thread
+  on the same page instead of the one note: "Thread · 3 notes" and a "Show this
+  note only" button above, then each part as its own tile, newest first,
+  joined by a thin vertical line, with the long date, "2 of 3" and the
+  hashtags at the top (parts are numbered in reading order, so the top one is
+  "3 of 3"). The note whose page it is has a blue outline and says
+  "2 of 3 · this note"; the other parts' dates lead to their pages. The quotes
+  aren't shown in this view (the line already says what comes before and
+  after). "Show this note only" again at the bottom. "← Newer" and "Older →"
+  stay under it.
+- The thread view's address is the note's address with `#thread`
+  (`/notes/mi-klama-le-zarci/#thread`), so it can be shared, and the browser's
+  Back button returns to the one note. It needs no JavaScript: every part is
+  in the page from the start, shown by CSS when the address ends in `#thread`.
+  No new pages or addresses.
+- **Feeds:** a continuation's item starts with a "Previous: <label>" link to
+  the note it continues.
+- Link previews, search and tag pages don't change.
+
 ### Tags: `/tags/`
 
 - Heading "Tags", then "22 tags, most used first", then every tag as a
@@ -298,7 +344,9 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - every `<img>` has a width, a height and an `alt`;
   - `/index.xml` holds exactly the 73 notes, and `/index.json` the notes only;
   - every artifact has its bar back to the site, loads nothing from another
-    site, and every file it loads is there.
+    site, and every file it loads is there;
+  - every `continues:` names another, older note, and the two notes' pages
+    and tiles link to each other.
 - **In the browser** (`hugo server`, the `hugo` entry in `launch.json`), at
   1440px, 1100px and 375px, light and dark: the wall, a note with a gallery
   (`mob-control`), an old note (`welcome`), a note with a video

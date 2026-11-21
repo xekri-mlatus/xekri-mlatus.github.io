@@ -1,21 +1,46 @@
 {{- /* A note's own page: one wide tile with the whole note, no title, then the
-       neighbouring notes. Other plain pages get just a tile with their text. */ -}}
+       neighbouring notes. Other plain pages get just a tile with their text.
+
+       A note in a thread quotes the notes after and before it (newer above,
+       as on the wall), and the page
+       also holds the whole thread, shown instead of the one note when the
+       address ends in #thread (SPEC.md, "Threads"). */ -}}
 {{ define "main" }}
 <main class="page">
 {{- if eq .Section "notes" }}
-  <article class="card note">
-    <div class="note-meta">
-      <span>{{ partial "date-long.html" . }}</span>
-      <span class="tags">{{ range .GetTerms "tags" }}<a href="{{ .RelPermalink }}">#{{ partial "hashtag.html" .Title }}</a>{{ end }}</span>
-    </div>
+  {{- $thread := partial "thread.html" . }}
+  {{- $count := len $thread }}
+  <article class="card note single">
+    {{- partial "note-meta.html" (dict "page" .) }}
+    {{- partial "quotes.html" (dict "page" . "where" "above") }}
     <div class="body" lang="{{ partial "lang.html" . }}">{{ .Content }}</div>
+    {{- partial "quotes.html" (dict "page" . "where" "below") }}
     {{- if lt .Date.Year site.Params.oldNoteYear }}
     <aside class="old-note">
       <p lang="en">This is an old note. It may not reflect what I think and feel now.</p>
       <p lang="ru">Это старая заметка. Она может не отражать того, что я думаю и чувствую сейчас.</p>
     </aside>
     {{- end }}
+    {{- if gt $count 1 }}
+    <div class="thread-toggle"><a href="#thread">Show whole thread <span class="n">· {{ $count }} notes</span></a></div>
+    {{- end }}
   </article>
+  {{- if gt $count 1 }}
+  <section id="thread" class="thread">
+    <div class="thread-head"><span class="what">Thread · {{ $count }} notes</span>
+      <span class="thread-toggle"><a href="#">Show this note only</a></span></div>
+    <div class="parts">
+      {{- /* Newest first, as on the wall; the parts keep their numbers in reading order. */}}
+      {{- range $i, $p := collections.Reverse $thread }}
+      <article class="card note{{ if eq $p $ }} here{{ end }}">
+        {{- partial "note-meta.html" (dict "page" $p "here" (eq $p $) "part" (printf "%d of %d" (sub $count $i) $count)) }}
+        <div class="body" lang="{{ partial "lang.html" $p }}">{{ $p.Content }}</div>
+      </article>
+      {{- end }}
+    </div>
+    <div class="thread-toggle"><a href="#">Show this note only</a></div>
+  </section>
+  {{- end }}
   {{- $notes := partial "notes.html" . }}
   {{- /* In Hugo, Next is the page before this one in the list, which is newest first. */}}
   {{- $newer := $notes.Next . }}

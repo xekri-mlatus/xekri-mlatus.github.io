@@ -45,6 +45,10 @@ note:
     and the small square in search results and under neighbouring notes. A
     note with one image uses it as the cover, with the same alt text as in
     the text.
+  - `continues`: only for a note that continues an earlier one, forming a
+    thread: the earlier note's slug (`continues: toaq`). Put it after
+    `tags`. The site links the two both ways and can show the whole thread
+    (SPEC.md, "Threads"); the earlier note isn't touched.
   - Older notes have `cover.hiddenInSingle`, `description` or `<!--more-->`
     from the previous theme. The new theme ignores them; don't add them.
 - **Images.** Rename them to short descriptive names (`gehen.jpg`,

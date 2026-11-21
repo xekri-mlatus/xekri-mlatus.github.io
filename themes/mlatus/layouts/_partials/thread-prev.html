@@ -1,0 +1,8 @@
+{{- /* The note this note continues (its front matter says `continues: <slug>`),
+       or nothing. See SPEC.md, "Threads". */ -}}
+{{- $prev := "" -}}
+{{- with .Params.continues -}}
+  {{- range first 1 (where (partial "notes.html" $) "Slug" .) -}}{{- $prev = . -}}{{- end -}}
+  {{- if not $prev -}}{{- warnf "%s: continues %q, but no note has that slug" $.File.Path . -}}{{- end -}}
+{{- end -}}
+{{- return $prev -}}

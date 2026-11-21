@@ -154,6 +154,51 @@ a:hover { text-decoration: underline; }
   .pager .older { grid-column: 1; }
 }
 
+/* ---------- threads (SPEC.md, "Threads") ---------- */
+/* A quote of the newer note after this one (above it, as on the wall) or the
+   older note before it (below), as in a Telegram reply. */
+.quote { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 5px 10px 5px 9px;
+  border-left: 3px solid var(--link); border-radius: 0 8px 8px 0;
+  background: color-mix(in srgb, var(--link) 8%, transparent); color: var(--text); }
+.quote:hover { text-decoration: none; background: color-mix(in srgb, var(--link) 14%, transparent); }
+.quote.next { margin: 0 0 10px; }
+.quote.prev { margin: 10px 0 2px; }
+.quote + .quote { margin-top: 6px; }
+.quote img { flex: none; width: 34px; height: 34px; object-fit: cover; border-radius: 5px; }
+.q-txt { min-width: 0; display: flex; flex-direction: column; line-height: 1.35; }
+.q-dir { color: var(--link); font-size: 12.5px; font-weight: 600; }
+.q-label { color: var(--muted); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* "Show whole thread" / "Show this note only" */
+.thread-toggle { display: flex; justify-content: center; margin: 14px 0 4px; }
+.thread-toggle a { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--chip); color: var(--text); font-size: 13.5px; }
+.thread-toggle a:hover { border-color: var(--link); text-decoration: none; }
+.thread-toggle .n { color: var(--meta); }
+
+/* The whole thread is in the page from the start and replaces the one note
+   when the address ends in #thread: no JavaScript, and it can be shared. */
+.thread { display: none; scroll-margin-top: 100px; }
+.thread:target { display: block; }
+.page:has(.thread:target) > .single { display: none; }
+.thread-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; }
+.thread-head .what { color: var(--muted); font-size: 14px; }
+.thread-head .thread-toggle { margin: 0; }
+/* The parts, newest first, joined by a thin line down the left. */
+.parts { position: relative; display: flex; flex-direction: column; gap: 18px; }
+.parts::before { content: ""; position: absolute; left: 34px; top: 24px; bottom: 24px;
+  border-left: 2px solid color-mix(in srgb, var(--meta) 55%, transparent); }
+.parts > .card { position: relative; padding: 22px 26px 16px; }
+.parts > .here { border-color: var(--link); outline: 1px solid var(--link); }
+.note-meta .part { color: var(--meta); }
+.here .note-meta .part { color: var(--link); }
+.note-meta a.date { color: var(--meta); }
+.note-meta a.date:hover { color: var(--link); text-decoration: underline; }
+@media (max-width: 700px) {
+  .parts::before { left: 24px; }
+  .parts > .card { padding: 16px 16px 12px; }
+}
+
 /* Tags */
 /* ---------- /artifacts/: one card per artifact ---------- */
 .artifacts { display: grid; gap: 12px; }

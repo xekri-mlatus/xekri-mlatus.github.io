@@ -13,7 +13,9 @@ temporary folder and checks that:
 - every picture has a width, a height and an alt text;
 - the main feeds and the search index hold exactly the notes;
 - every artifact has its page with the bar back to the site, loads nothing
-  from another site, and every file it loads is there.
+  from another site, and every file it loads is there;
+- every `continues:` names another, older note, and the two notes link to
+  each other on their pages and tiles (SPEC.md, "Threads").
 
 Exits with 1 and lists the problems if anything fails.
 """
@@ -34,12 +36,31 @@ SITE = "https://xekri-mlatus.github.io"
 
 def notes():
     """(title, Markdown text, slug) of every note."""
+    for meta, body in notes_meta():
+        yield str(meta["title"]), body, meta["slug"]
+
+
+def notes_meta():
+    """(front matter, Markdown text) of every note."""
     for path in sorted((ROOT / "content" / "notes").glob("**/*.md")):
         if path.name == "_index.md":
             continue
         _, fm, body = path.read_text(encoding="utf-8").split("---\n", 2)
-        meta = yaml.safe_load(fm)
-        yield str(meta["title"]), body, meta["slug"]
+        yield yaml.safe_load(fm), body
+
+
+def threads():
+    """{slug: the slugs of every note in its thread}, for notes in threads."""
+    prev = {m["slug"]: m["continues"] for m, _ in notes_meta() if m.get("continues")}
+    groups = {}
+    for slug in {*prev, *prev.values()}:
+        first = slug
+        for _ in range(1000):  # a loop of notes is reported below, not followed forever
+            if first not in prev:
+                break
+            first = prev[first]
+        groups.setdefault(first, set()).add(slug)
+    return {slug: group for group in groups.values() for slug in group}
 
 
 def refresh_target(text):
@@ -96,9 +117,12 @@ def main():
             r"(<item>.*?<link>([^<]+)</link>.*?</item>)", (out / "index.xml").read_text(encoding="utf-8"), re.S)}
         index = {e["url"]: json.dumps(e, ensure_ascii=False).lower()
                  for e in json.loads((out / "index.json").read_text(encoding="utf-8"))}
+        bodies = {slug: body.lower() for _, body, slug in notes()}
+        thread = threads()
         for title, body, slug in notes():
             t = title.lower()
-            if t in body.lower():
+            # A note in a thread shows the others' labels and text too.
+            if any(t in bodies[s] for s in thread.get(slug, {slug})):
                 continue
             url = f"/notes/{slug}/"
             places = {
@@ -153,8 +177,30 @@ def main():
                 elif not ref.startswith(("#", "data:", "/")) and not (page.parent / ref.split("#")[0].split("?")[0]).exists():
                     problems.append(f"/artifacts/{name}/ loads a missing file: {ref}")
 
-        print(f"Checked {checked} addresses, {count} notes' titles, every picture, the feeds "
-              f"and {len(artifacts)} artifact(s).")
+        # 6. Threads: each continuation names another, older note, and the two
+        # link to each other on their pages and tiles.
+        metas = {m["slug"]: m for m, _ in notes_meta()}
+        for slug, m in metas.items():
+            prev = m.get("continues")
+            if not prev:
+                continue
+            if prev not in metas or prev == slug:
+                problems.append(f"/notes/{slug}/ continues {prev!r}, which is no other note")
+                continue
+            if str(metas[prev]["date"]) >= str(m["date"]):
+                problems.append(f"/notes/{slug}/ continues /notes/{prev}/, which isn't older")
+            a, b = f"/notes/{slug}/", f"/notes/{prev}/"
+            for here, there, kind in ((a, b, "prev"), (b, a, "next")):
+                page = (out / here.lstrip("/") / "index.html").read_text(encoding="utf-8")
+                if not re.search(rf'<a class="?quote {kind}"? href="?{re.escape(there)}"?', page):
+                    problems.append(f"{here} doesn't quote {there}")
+                if not re.search(r'id="?thread"?', page):
+                    problems.append(f"{here} has no whole-thread view")
+                if here in tiles and f'href={there}' not in tiles[here].replace('"', ""):
+                    problems.append(f"{here}'s tile doesn't link to {there}")
+
+        print(f"Checked {checked} addresses, {count} notes' titles, every picture, the feeds, "
+              f"{len(artifacts)} artifact(s) and {len(threads())} notes in threads.")
     return report(problems)
 
 
@@ -169,4 +215,6 @@ def report(problems):
 
 
 if __name__ == "__main__":
+    # Hugo's messages and the notes' text aren't all in the Windows console's code page.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sys.exit(main())

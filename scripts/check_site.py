@@ -15,7 +15,8 @@ temporary folder and checks that:
 - every artifact has its page with the bar back to the site, loads nothing
   from another site, and every file it loads is there;
 - every `continues:` names another, older note, and the two notes link to
-  each other on their pages and tiles (SPEC.md, "Threads").
+  each other on their pages and tiles (SPEC.md, "Threads");
+- the site's icon is there, and every page (artifacts too) links it.
 
 Exits with 1 and lists the problems if anything fails.
 """
@@ -199,8 +200,20 @@ def main():
                 if here in tiles and f'href={there}' not in tiles[here].replace('"', ""):
                     problems.append(f"{here}'s tile doesn't link to {there}")
 
+        # 7. The icon: its files at the root, linked from every page that isn't a redirect.
+        icons = ("favicon.ico", "favicon.svg", "apple-touch-icon.png")
+        for name in icons:
+            if not (out / name).exists():
+                problems.append(f"missing: /{name} (run python scripts/make_favicons.py)")
+        for f in out.rglob("*.html"):
+            text = f.read_text(encoding="utf-8")
+            if refresh_target(text):
+                continue
+            if not re.search(r'<link rel="?icon"? href="?/favicon\.svg', text):
+                problems.append(f"{f.relative_to(out).as_posix()} doesn't link the site's icon")
+
         print(f"Checked {checked} addresses, {count} notes' titles, every picture, the feeds, "
-              f"{len(artifacts)} artifact(s) and {len(threads())} notes in threads.")
+              f"{len(artifacts)} artifact(s), {len(threads())} notes in threads and the icon.")
     return report(problems)
 
 

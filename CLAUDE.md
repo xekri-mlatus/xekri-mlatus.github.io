@@ -138,6 +138,9 @@ or in search. To add one:
 
 - Templates, CSS and JavaScript are in `themes/mlatus/`; `SPEC.md` says how
   every page should look and behave. Keep the two in step.
+- The icon in browser tabs is the header's avatar, drawn by
+  `python scripts/make_favicons.py` into `static/`. Run it again if the
+  avatar changes.
 - `content_test/` holds formatting samples (the Markdown field guide). Preview
   them with the `hugo-test-content` entry in `.claude/launch.json`, which
   renders in memory so it can't overwrite the main preview's `public/`.

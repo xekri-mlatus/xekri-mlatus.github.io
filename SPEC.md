@@ -74,6 +74,12 @@ works, every page matches the mockups, and no note title shows anywhere.
   the right: **Notes · Tags · Artifacts · Search · About**, the current one
   in bold, and the theme button.
 - Below 640px the links move to their own row under the name.
+- **Icon** (added 2026-11-21): browser tabs, search results and phone home
+  screens show the avatar, the purple-to-pink circle with a white "M" (drawn
+  as lines, not in a font). `scripts/make_favicons.py` draws
+  `static/favicon.svg`, `favicon.ico` (16, 32 and 48 px) and
+  `apple-touch-icon.png` (180 px, on the light background); every page links
+  them, artifacts too unless they have an icon of their own.
 - Footer, centred and grey: `Mlatus · RSS`. "Mlatus" leads to About, "RSS"
   to `/notes/index.xml`.
 
@@ -346,7 +352,8 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - every artifact has its bar back to the site, loads nothing from another
     site, and every file it loads is there;
   - every `continues:` names another, older note, and the two notes' pages
-    and tiles link to each other.
+    and tiles link to each other;
+  - the icon's three files are at the root, and every page links it.
 - **In the browser** (`hugo server`, the `hugo` entry in `launch.json`), at
   1440px, 1100px and 375px, light and dark: the wall, a note with a gallery
   (`mob-control`), an old note (`welcome`), a note with a video

@@ -11,9 +11,19 @@ current address must keep working: `scripts/check_site.py` checks this.
 
 ## Publishing a note
 
-The author drops a draft into a dated folder, `content/notes/YYYY-MM-DD-name/`.
-It can be any mix of text, Markdown, images and other files with arbitrary
-names. Preparing it for publication means turning the folder into a finished
+A note arrives in one of two ways:
+
+- **A draft folder.** The author drops a draft into a dated folder,
+  `content/notes/YYYY-MM-DD-name/`. It can be any mix of text, Markdown,
+  images and other files with arbitrary names.
+- **In the chat.** The author writes the note in the chat and asks to publish
+  it. Create the note yourself: the text goes in as written; the date is when
+  they asked (or the date they give), and the name is a short English slug
+  for what the note is about. Pictures can't be saved from the chat itself:
+  if the note should have any, ask where the files are (or to drop them into
+  the note's folder) and copy them in.
+
+Either way, preparing it for publication means turning it into a finished
 note:
 
 - **Layout.** A note with images is a folder with `index.md` next to its
@@ -70,10 +80,13 @@ note:
   block already). Tiles keep the top of each picture; list images whose
   middle should show in `collageCentre: [name.jpg]`. Look at the resulting
   `collage.jpg`.
-- **Text.** Fix typos, grammar and punctuation (em dashes `—`, `т. п.`), but
-  keep the author's wording and voice, including the English phrases mixed
-  into Russian text. Splitting a long paragraph to make room for an image is
-  fine; rewriting is not.
+- **Text.** Check it for typos and grammar and punctuation mistakes, but
+  **never fix them yourself**: list what you found (the passage and the
+  suggested fix) and ask the author, then change only what they approve.
+  Never suggest `ё` where the note writes `е`; use it only where the note
+  already has it. Keep the author's wording and voice, including the English
+  phrases mixed into Russian text. Splitting a long paragraph to make room
+  for an image is fine; rewriting is not.
 - **Check.** Run `hugo server` (the `hugo` entry in `.claude/launch.json`)
   and look at the note on the wall at `/` and on its page at
   `/notes/<slug>/`. Then run the site checks:

@@ -23,6 +23,13 @@ A note arrives in one of two ways:
   if the note should have any, ask where the files are (or to drop them into
   the note's folder) and copy them in.
 
+Either kind of request may hold instructions for you rather than text of the
+note, usually in ALL CAPS, often in square brackets, such as
+`[ВСТАВЬ СЮДА ССЫЛКУ НА ЗАМЕТКУ ПРО ПИНГВИНОВ]`. Notes about the note can also
+come outside the text, such as "Эта заметка — продолжение заметки про…"
+after it (that one means `continues:`). Carry them out and leave them out of
+the note; ask if one is unclear.
+
 Either way, preparing it for publication means turning it into a finished
 note:
 

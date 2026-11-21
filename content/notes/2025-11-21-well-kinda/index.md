@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: absence.jpg
   alt: "Парень в наушниках: «My sexual fantasy is to have someone notice my absence and wonder about me»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Парень в наушниках: «My sexual fantasy is to have someone notice my absence and wonder about me»](absence.jpg)

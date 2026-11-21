@@ -5,7 +5,6 @@ tags: [memes, cats]
 cover:
   image: collage.jpg
   alt: "Коллаж из 5 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Ну что ж, начнем с котиков. Беспроигрышный вариант.

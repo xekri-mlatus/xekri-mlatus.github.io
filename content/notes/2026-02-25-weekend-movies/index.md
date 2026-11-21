@@ -5,7 +5,6 @@ tags: [movies, "Long reads"]
 cover:
   image: still.jpg
   alt: "Кадр из фильма: заплаканная женщина говорит «You didn’t do anything.»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Устроил в выходные просмотр кино, что со мной бывает редко в последние годы.

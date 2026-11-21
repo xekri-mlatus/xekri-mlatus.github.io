@@ -5,7 +5,6 @@ tags: [memes, cats]
 cover:
   image: cat-lovers.jpg
   alt: "Пост о том, что кошатники каждый раз радуются коту так, будто видят его впервые"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Пост о том, что кошатники каждый раз радуются коту так, будто видят его впервые](cat-lovers.jpg)

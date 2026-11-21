@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: tweet.jpg
   alt: "Твит о BDSM как идеальном социальном взаимодействии для нейроотличных людей"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Твит о BDSM как идеальном социальном взаимодействии для нейроотличных людей](tweet.jpg)

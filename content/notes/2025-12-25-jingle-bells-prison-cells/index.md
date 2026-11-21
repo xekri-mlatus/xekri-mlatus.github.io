@@ -5,7 +5,6 @@ tags: [politics]
 cover:
   image: video.jpg
   alt: "Санта и эльф, которого задерживают агенты ICE"
-  hiddenInSingle: true  # the video is embedded in the text
 ---
 
 {{< youtube jLJ7hxLG0q8 >}}

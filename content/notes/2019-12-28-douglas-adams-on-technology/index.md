@@ -5,7 +5,6 @@ tags: ["Old posts"]
 cover:
   image: rules.jpg
   alt: "Три правила Дугласа Адамса о том, как мы воспринимаем технологии"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Три правила Дугласа Адамса о том, как мы воспринимаем технологии, из книги The Salmon of Doubt](rules.jpg)

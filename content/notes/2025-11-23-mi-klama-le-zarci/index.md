@@ -6,7 +6,6 @@ continues: toaq
 cover:
   image: fa-ji-jeariaq.jpg
   alt: "Разбор фразы «fa jí jéaríaq» на тоаке: go — me — the market"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 mi klama le zarci, только на тоанге. Йей.

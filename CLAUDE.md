@@ -64,8 +64,6 @@ note:
     thread: the earlier note's slug (`continues: toaq`). Put it after
     `tags`. The site links the two both ways and can show the whole thread
     (SPEC.md, "Threads"); the earlier note isn't touched.
-  - Older notes have `cover.hiddenInSingle`, `description` or `<!--more-->`
-    from the previous theme. The new theme ignores them; don't add them.
 - **Images.** Rename them to short descriptive names (`gehen.jpg`,
   `tablet.jpg`), and give each alt text in the note's language that says
   what it shows (search finds notes by these descriptions too). Use

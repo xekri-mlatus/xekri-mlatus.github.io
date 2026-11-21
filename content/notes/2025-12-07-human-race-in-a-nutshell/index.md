@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: zebras.jpg
   alt: "Комикс: две зебры играют в людей и спорят, белые они в черную полоску или черные в белую"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Комикс: две зебры играют в людей и спорят, белые они в черную полоску или черные в белую](zebras.jpg)

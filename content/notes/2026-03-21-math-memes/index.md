@@ -5,7 +5,6 @@ tags: [memes, math]
 cover:
   image: collage.jpg
   alt: "Коллаж из 12 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Небольшая подборка (около)математических мемов

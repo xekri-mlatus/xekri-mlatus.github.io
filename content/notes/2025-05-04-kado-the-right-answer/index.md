@@ -5,7 +5,6 @@ tags: [anime]
 cover:
   image: collage.jpg
   alt: "Collage of the 2 images in this note"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 It's hard to accept that things I used to love have no appeal to me anymore. A few years ago, I could name Kado: The Right Answer among my favorite anime, though I had already noticed its many imperfections even then. Now, watching it, I mostly feel bored — partly because I remember it so well, but mostly because my perception has changed even more. The plot feels crude and logically flawed, the characters shallow, and the story full of clichés.

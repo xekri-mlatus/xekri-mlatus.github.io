@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: sweatshirts.jpg
   alt: "«Свитшоты это лучшая одежда в мире. Типа, откуда вы узнаете, есть на мне лифчик или нет?»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Вспомнился один баян. Одобряю!

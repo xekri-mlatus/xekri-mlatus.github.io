@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: performance-review.jpg
   alt: "Дисковод с наклейкой «Works, but makes Sad Noises»: «Got my performance review.»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Дисковод с наклейкой «Works, but makes Sad Noises»: «Got my performance review.»](performance-review.jpg)

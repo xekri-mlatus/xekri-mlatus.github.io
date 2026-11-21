@@ -5,7 +5,6 @@ tags: [philosophy, art]
 cover:
   image: collage.jpg
   alt: "Collage of the 2 images in this note"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 SEP provides a neat illustrative example that helps to grasp the notion of supervenience.

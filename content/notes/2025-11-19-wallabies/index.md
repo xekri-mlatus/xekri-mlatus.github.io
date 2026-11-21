@@ -5,7 +5,6 @@ tags: [animals]
 cover:
   image: wallaby.jpg
   alt: "Валлаби с детенышем в сумке на траве"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Мне нравятся валлаби

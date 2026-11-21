@@ -5,7 +5,6 @@ tags: ["Old posts"]
 cover:
   image: cara.jpg
   alt: "Кадр из «Легенды об Искателе»: Кара целует другую морд-сит"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Если бы я был женщиной, я был бы Карой Мейсон 😆\

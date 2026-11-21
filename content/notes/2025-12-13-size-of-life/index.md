@@ -5,7 +5,6 @@ tags: [science]
 cover:
   image: collage.jpg
   alt: "Коллаж из 2 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 <https://neal.fun/size-of-life/>

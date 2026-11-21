@@ -5,7 +5,6 @@ tags: [movies]
 cover:
   image: other-candy.jpg
   alt: "Willy Wonka smiling: “There's other candy too besides chocolate.”"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Things I’ve just learned from watching Charlie and the Chocolate Factory:

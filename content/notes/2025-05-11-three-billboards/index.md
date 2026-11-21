@@ -5,7 +5,6 @@ tags: [movies]
 cover:
   image: swings.jpg
   alt: "Two people sitting on swings in a park, with the three billboards in the distance"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 At last, a movie that wasn’t a total waste of time. I got interested in Three Billboards Outside Ebbing, Missouri when it came out two years ago… Wait, what, it was released in 2017? Never mind — I didn’t watch it then because I wasn’t in the right mood.

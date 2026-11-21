@@ -5,7 +5,6 @@ tags: ["Old posts", "Long reads"]
 cover:
   image: collage.jpg
   alt: "Коллаж из 3 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Barns Courtney](barns-courtney-1.jpg)

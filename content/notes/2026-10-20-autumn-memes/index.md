@@ -5,7 +5,6 @@ tags: [memes, cats, languages]
 cover:
   image: collage.jpg
   alt: "Коллаж из 4 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Череп кошки, чудовище, каким его восстановили бы инопланетяне, и настоящий белый кот](skull.jpg)

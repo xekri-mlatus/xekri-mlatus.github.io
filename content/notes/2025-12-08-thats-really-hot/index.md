@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: there-their.jpg
   alt: "Переписка: «That’s so hot» — «Huh?» — «You knew the difference between there, their, and they’re»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Переписка: «That’s so hot» — «Huh?» — «You knew the difference between there, their, and they’re»](there-their.jpg)

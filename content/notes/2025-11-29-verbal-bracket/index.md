@@ -5,7 +5,6 @@ tags: [languages]
 cover:
   image: verbal-bracket.jpg
   alt: "Учебник немецкого о рамочной конструкции и о том, как Марк Твен жаловался на глагол в конце предложения"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Das ist amüsant. Another idiosyncrasy of natural languages.

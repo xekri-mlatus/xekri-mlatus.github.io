@@ -2,16 +2,12 @@
 slug: sommer-fur-gotter
 date: 2026-10-28T00:00:00+03:00
 tags: [art, "Long reads"]
-description: "Wie gut, wenn die Menschen entschlafen."
 cover:
   image: violets-and-ruins.png
   alt: "An abandoned post-apocalyptic city at sunset"
-  hiddenInSingle: true
 ---
 
 Сегодня я впервые опубликовал видео на YouTube, хотя канал завел очень много лет назад. Изначально предполагалось, что он будет на социальную тематику, но в итоге первым опубликованным видео стала песня. Музыка для нее была создана еще летом с помощью Suno, а текст - это немецкий перевод одного из стихов научно-фантастической поэмы Aniara шведского писателя Харри Мартинсона, который я нашел в книге 1961 года.
-
-<!--more-->
 
 Текст:
 

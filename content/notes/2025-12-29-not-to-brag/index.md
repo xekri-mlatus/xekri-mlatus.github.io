@@ -5,7 +5,6 @@ tags: [memes, cats]
 cover:
   image: enough-money.jpg
   alt: "Довольный кот: «Not to brag, but I have enough money to not work for the rest of 2025.»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Довольный кот: «Not to brag, but I have enough money to not work for the rest of 2025.»](enough-money.jpg)

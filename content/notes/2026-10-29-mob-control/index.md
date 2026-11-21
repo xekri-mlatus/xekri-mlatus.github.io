@@ -5,7 +5,6 @@ tags: [games, "Long reads"]
 cover:
   image: collage.jpg
   alt: "Коллаж из 4 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Получил необычный геймерский опыт. Я поиграл около недели в Mob Control — мобильный казуальный экшн с элементами tower defense. Поддался рекламе в Twitter, которую он мне подсовывал на протяжении длительного времени. У игры более 100 миллионов скачиваний и рейтинг 4.5 в Google Play.

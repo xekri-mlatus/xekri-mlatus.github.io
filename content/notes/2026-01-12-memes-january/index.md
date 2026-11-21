@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: collage.jpg
   alt: "Коллаж из 10 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Аниме-персонаж: «lets normalize meowing randomly»](meowing.jpg)

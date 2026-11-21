@@ -5,7 +5,6 @@ tags: [politics]
 cover:
   image: video.jpg
   alt: "Моржи и белые медведи с гарпунами в кузове пикапа под флагом Гренландии"
-  hiddenInSingle: true  # the video is embedded in the text
 ---
 
 {{< youtube hS0wFiWpU4U >}}

@@ -5,7 +5,6 @@ tags: [memes, cats]
 cover:
   image: push-2025.jpg
   alt: "Комикс: черный кот сталкивает цифры 2025 со стола"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Комикс: черный кот сталкивает цифры 2025 со стола](push-2025.jpg)

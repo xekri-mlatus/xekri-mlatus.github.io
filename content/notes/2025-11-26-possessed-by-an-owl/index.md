@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: owl.jpg
   alt: "Мем с Дуэйном Джонсоном в машине: «Someone we know is possessed by an owl!» — «Who»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Мем с Дуэйном Джонсоном в машине: «Someone we know is possessed by an owl!» — «Who»](owl.jpg)

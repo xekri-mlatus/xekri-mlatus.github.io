@@ -6,7 +6,6 @@ continues: penguins-for-greenland
 cover:
   image: video.jpg
   alt: "Пингвин и белый медведь в военной форме с оружием на фоне флагов Гренландии"
-  hiddenInSingle: true  # the video is embedded in the text
 ---
 
 Вот это эскалация! DPR посылает войска на помощь Гренландии и начинает поставки оружия. Весь цивилизованный мир должен поддержать NADA.

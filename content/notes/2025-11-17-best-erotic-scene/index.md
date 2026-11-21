@@ -5,7 +5,6 @@ tags: [anime]
 cover:
   image: collage.jpg
   alt: "Коллаж из 4 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Перейдем к действительно важным вещам. Behold: лучшая эротическая сцена года 🍆

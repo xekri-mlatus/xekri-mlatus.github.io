@@ -5,7 +5,6 @@ tags: [memes, cats]
 cover:
   image: want-to-say.jpg
   alt: "Кот смотрит в камеру: «я не знаю что хочу сказать но очень хочу сказать»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 Я и мои попытки в блогерство. (Продолжаем щитпостинга ночь)

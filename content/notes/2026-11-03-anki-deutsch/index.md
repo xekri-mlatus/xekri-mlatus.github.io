@@ -5,7 +5,6 @@ tags: [languages, learning]
 cover:
   image: collage.jpg
   alt: "Коллаж из 5 картинок заметки"
-  hiddenInSingle: true  # already shown in the text
 collageCentre: [dictionary.jpg]  # show the title, not the top stripes
 ---
 

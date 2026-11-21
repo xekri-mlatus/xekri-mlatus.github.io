@@ -5,7 +5,6 @@ tags: [memes]
 cover:
   image: new-day.jpg
   alt: "Девушка с кофе: «New day — New Mental Issues»"
-  hiddenInSingle: true  # already shown in the text
 ---
 
 ![Девушка с кофе: «New day — New Mental Issues»](new-day.jpg)

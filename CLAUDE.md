@@ -94,6 +94,13 @@ note:
   already has it. Keep the author's wording and voice, including the English
   phrases mixed into Russian text. Splitting a long paragraph to make room
   for an image is fine; rewriting is not.
+- **Links to this site.** A link to another page of the site (a note, a tag,
+  an artifact) is never a bare address: the link is words of the note's
+  text, as in `[Пример](/notes/2026-01-11-penguins-for-greenland/)`. Point a
+  link to a note at its folder or file under `content/` (Hugo turns that into
+  the note's address). Never use a note's title as the link text, since
+  titles aren't shown; if no words of the text fit, ask the author which to
+  use.
 - **Check.** Run `hugo server` (the `hugo` entry in `.claude/launch.json`)
   and look at the note on the wall at `/` and on its page at
   `/notes/<slug>/`. Then run the site checks:

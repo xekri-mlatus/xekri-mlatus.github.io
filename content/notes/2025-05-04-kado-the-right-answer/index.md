@@ -1,5 +1,4 @@
 ---
-title: "Kado: The Right Answer, revisited"
 slug: kado-the-right-answer
 date: 2025-05-04T19:40:32+03:00
 tags: [anime]

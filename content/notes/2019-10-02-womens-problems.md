@@ -1,5 +1,4 @@
 ---
-title: "«Женские проблемы»"
 slug: womens-problems
 date: 2019-10-02T22:22:10+03:00
 tags: ["Old posts", "Long reads"]

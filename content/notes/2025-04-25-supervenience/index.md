@@ -1,5 +1,4 @@
 ---
-title: "Supervenience"
 slug: supervenience
 date: 2025-04-25T04:20:42+03:00
 tags: [philosophy, art]

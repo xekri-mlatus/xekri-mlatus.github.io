@@ -1,5 +1,4 @@
 ---
-title: "Валлаби"
 slug: wallabies
 date: 2025-11-19T03:24:36+03:00
 tags: [animals]

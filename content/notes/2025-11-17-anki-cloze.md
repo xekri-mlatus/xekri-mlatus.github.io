@@ -1,5 +1,4 @@
 ---
-title: "Anki и карточки с пропусками"
 slug: anki-cloze
 date: 2025-11-17T00:41:27+03:00
 tags: [learning]

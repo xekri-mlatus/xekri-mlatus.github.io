@@ -1,5 +1,4 @@
 ---
-title: "Эа-Насир"
 slug: ea-nasir
 date: 2026-03-27T16:29:11+03:00
 tags: [history]

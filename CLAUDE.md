@@ -4,9 +4,9 @@ A Hugo site with its own theme (`themes/mlatus`, specified in `SPEC.md`),
 published to https://xekri-mlatus.github.io/ by GitHub Actions on every push
 to `main`. Notes are mostly in Russian, sometimes in English or German.
 
-The site is a wall of whole notes, like a Telegram channel. Note titles are
-never shown anywhere (pages, browser tabs, feeds, link previews); where
-something needs a name, the theme uses the start of the note's text. Every
+The site is a wall of whole notes, like a Telegram channel. Notes have no
+titles; where something needs a name (browser tabs, feeds, link previews),
+the theme uses the start of the note's text. Every
 current address must keep working: `scripts/check_site.py` checks this.
 
 ## Publishing a note
@@ -41,7 +41,6 @@ note:
 
   ```yaml
   ---
-  title: "Название заметки"   # in the note's language; never shown on the site
   slug: name                  # the folder name without the date
   date: 2026-11-03T04:45:00+03:00
   tags: [languages, learning]
@@ -51,8 +50,7 @@ note:
   ---
   ```
 
-  - `title`: still required (the collage script and commit messages use
-    it), but readers never see it.
+  - No `title`: notes have none, and `check_site.py` fails if one has.
   - `date`: when the note was written (the draft's file times are a good
     guide), always `+03:00`. The site shows it as written.
   - `tags`: reuse the existing ones (`grep -rh "^tags:" content/notes`). Add
@@ -98,8 +96,7 @@ note:
   an artifact) is never a bare address: the link is words of the note's
   text, as in `[Пример](/notes/2026-01-11-penguins-for-greenland/)`. Point a
   link to a note at its folder or file under `content/` (Hugo turns that into
-  the note's address). Never use a note's title as the link text, since
-  titles aren't shown; if no words of the text fit, ask the author which to
+  the note's address). If no words of the text fit, ask the author which to
   use.
 - **Check.** Run `hugo server` (the `hugo` entry in `.claude/launch.json`)
   and look at the note on the wall at `/` and on its page at
@@ -149,6 +146,6 @@ or in search. To add one:
 
 ## Git
 
-Commit straight to `main`. A new note's subject is `Add note "<title>"`,
+Commit straight to `main`. A new note's subject is `Add note "<slug>"`,
 with a short body on what the note is and anything else that changed.
 Pushing publishes the site within a minute.

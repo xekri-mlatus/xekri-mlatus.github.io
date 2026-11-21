@@ -1,5 +1,4 @@
 ---
-title: "Киновыходные"
 slug: weekend-movies
 date: 2026-02-25T17:05:27+03:00
 tags: [movies, "Long reads"]

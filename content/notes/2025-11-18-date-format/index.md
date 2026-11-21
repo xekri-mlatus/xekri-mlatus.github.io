@@ -1,5 +1,4 @@
 ---
-title: "YYYY-MM-DD"
 slug: date-format
 date: 2025-11-18T00:15:24+03:00
 tags: [memes]

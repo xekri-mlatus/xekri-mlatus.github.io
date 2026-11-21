@@ -1,5 +1,4 @@
 ---
-title: "Personhood: A Game for Two or More Players"
 slug: personhood
 date: 2017-06-10T01:40:00+03:00
 tags: ["Old posts"]

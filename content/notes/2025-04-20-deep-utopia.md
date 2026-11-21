@@ -1,5 +1,4 @@
 ---
-title: "Deep Utopia"
 slug: deep-utopia
 date: 2025-04-20T04:59:05+03:00
 tags: [reading]

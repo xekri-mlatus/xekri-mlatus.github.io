@@ -1,5 +1,4 @@
 ---
-title: "Isomorphic with the complex field"
 slug: complex-field
 date: 2025-12-23T14:38:49+03:00
 tags: [memes, math]

@@ -1,5 +1,4 @@
 ---
-title: "(Около)математические мемы"
 slug: math-memes
 date: 2026-03-21T15:27:27+03:00
 tags: [memes, math]

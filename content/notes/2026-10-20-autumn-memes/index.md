@@ -1,5 +1,4 @@
 ---
-title: "Осенние мемы"
 slug: autumn-memes
 date: 2026-10-20T16:00:50+03:00
 tags: [memes, cats, languages]

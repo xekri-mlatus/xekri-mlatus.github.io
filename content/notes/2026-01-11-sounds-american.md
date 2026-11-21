@@ -1,5 +1,4 @@
 ---
-title: "Sounds American"
 slug: sounds-american
 date: 2026-01-11T04:18:15+03:00
 tags: [languages]

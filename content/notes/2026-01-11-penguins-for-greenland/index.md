@@ -1,5 +1,4 @@
 ---
-title: "Пингвины за Гренландию"
 slug: penguins-for-greenland
 date: 2026-01-11T07:11:10+03:00
 tags: [politics]

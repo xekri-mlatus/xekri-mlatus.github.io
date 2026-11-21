@@ -1,5 +1,4 @@
 ---
-title: "Карточки Anki стали отдельным проектом"
 slug: anki-deutsch-project
 date: 2026-11-21T04:02:00+03:00
 tags: [languages, learning]

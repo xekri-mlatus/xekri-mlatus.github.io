@@ -1,5 +1,4 @@
 ---
-title: "Обесценивание и симуляция"
 slug: devaluation-and-simulation
 date: 2021-02-13T07:18:12+03:00
 lastmod: 2021-02-13T07:18:27+03:00

@@ -65,7 +65,6 @@ def main():
             date = fm["date"]
             notes.append({
                 "slug": slug,
-                "title": fm["title"],
                 "date": date.isoformat() if hasattr(date, "isoformat") else str(date),
                 "tags": [hashtag(t) for t in fm.get("tags") or []],
                 "html": body,

@@ -1,5 +1,4 @@
 ---
-title: "Боги не ведают боли"
 slug: sommer-fur-gotter
 date: 2026-10-28T00:00:00+03:00
 tags: [art, "Long reads"]

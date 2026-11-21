@@ -1,5 +1,4 @@
 ---
-title: "Альфа-самец"
 slug: alpha-male
 date: 2025-11-19T03:17:15+03:00
 tags: [memes]

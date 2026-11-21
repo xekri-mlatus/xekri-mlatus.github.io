@@ -108,9 +108,11 @@ def centred_images(front):
 
 
 def collage_alt(front, body, count):
-    """Alt text in the note's language: Russian if its title or text (not image captions) has Cyrillic."""
-    title = re.search(r'^title: (.*)$', front, re.M).group(1)
-    text = title + re.sub(r'!\[[^\]]*\]\([^)]*\)', '', body)
+    """Alt text in the note's language: Russian if its text has Cyrillic. Image
+    captions count only when the note has no text of its own (a meme collection)."""
+    text = re.sub(r'!\[[^\]]*\]\([^)]*\)|\{\{<[^>]*>\}\}', '', body)
+    if not re.search(r'[^\W\d_]', text):
+        text = body
     if re.search('[а-яё]', text, re.I):
         return f'Коллаж из {count} картинок заметки'
     return f'Collage of the {count} images in this note'

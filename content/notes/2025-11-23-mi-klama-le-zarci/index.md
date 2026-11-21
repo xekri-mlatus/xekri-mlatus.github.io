@@ -1,5 +1,4 @@
 ---
-title: "mi klama le zarci"
 slug: mi-klama-le-zarci
 date: 2025-11-23T05:46:49+03:00
 tags: [languages]

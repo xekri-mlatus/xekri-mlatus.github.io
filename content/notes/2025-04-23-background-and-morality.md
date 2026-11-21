@@ -1,5 +1,4 @@
 ---
-title: "Background is not a norm"
 slug: background-and-morality
 date: 2025-04-23T19:02:30+03:00
 tags: [philosophy, gender]

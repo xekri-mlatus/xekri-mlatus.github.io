@@ -1,5 +1,4 @@
 ---
-title: "Быть собой"
 slug: being-yourself
 date: 2019-10-14T15:42:42+03:00
 tags: ["Old posts", "Long reads"]

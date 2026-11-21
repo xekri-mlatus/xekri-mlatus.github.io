@@ -1,5 +1,4 @@
 ---
-title: "Romantischer Kurzfilm"
 slug: romantischer-kurzfilm
 date: 2025-12-19T04:57:35+03:00
 tags: [movies]

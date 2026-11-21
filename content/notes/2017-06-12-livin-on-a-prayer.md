@@ -1,5 +1,4 @@
 ---
-title: "Livin' on a Prayer"
 slug: livin-on-a-prayer
 date: 2017-06-12T03:32:00+03:00
 tags: ["Old posts"]

@@ -1,5 +1,4 @@
 ---
-title: "Скоро"
 slug: soon
 date: 2025-12-12T13:56:30+03:00
 tags: [memes]

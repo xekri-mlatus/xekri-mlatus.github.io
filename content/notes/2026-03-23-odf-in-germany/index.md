@@ -1,5 +1,4 @@
 ---
-title: "ODF в Германии"
 slug: odf-in-germany
 date: 2026-03-23T23:41:02+03:00
 tags: [tech]

@@ -1,5 +1,4 @@
 ---
-title: "Social Cooling"
 slug: social-cooling
 date: 2017-06-19T17:39:00+03:00
 tags: ["Old posts"]

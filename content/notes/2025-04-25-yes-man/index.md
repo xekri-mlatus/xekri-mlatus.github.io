@@ -1,5 +1,4 @@
 ---
-title: "Yes Man"
 slug: yes-man
 date: 2025-04-25T02:46:59+03:00
 tags: [movies]

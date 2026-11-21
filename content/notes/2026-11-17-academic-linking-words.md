@@ -1,5 +1,4 @@
 ---
-title: "Academic Linking Words"
 slug: academic-linking-words
 date: 2026-11-17T11:50:00+03:00
 tags: [languages, learning, tech]

@@ -1,5 +1,4 @@
 ---
-title: "Я и мои попытки в блогерство"
 slug: blogging-attempts
 date: 2025-11-17T00:48:14+03:00
 tags: [memes, cats]

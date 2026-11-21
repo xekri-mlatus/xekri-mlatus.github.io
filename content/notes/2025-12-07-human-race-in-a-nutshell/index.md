@@ -1,5 +1,4 @@
 ---
-title: "The human race in a nutshell"
 slug: human-race-in-a-nutshell
 date: 2025-12-07T16:30:46+03:00
 tags: [memes]

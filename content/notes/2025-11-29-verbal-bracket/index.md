@@ -1,5 +1,4 @@
 ---
-title: "Das ist amüsant"
 slug: verbal-bracket
 date: 2025-11-29T02:51:21+03:00
 tags: [languages]

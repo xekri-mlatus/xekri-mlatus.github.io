@@ -1,5 +1,4 @@
 ---
-title: "Из добродетелей вы цепи мне сковали"
 slug: chains-of-virtue
 date: 2017-07-16T01:36:00+03:00
 tags: ["Old posts"]

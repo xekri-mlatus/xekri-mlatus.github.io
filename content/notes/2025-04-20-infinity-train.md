@@ -1,5 +1,4 @@
 ---
-title: "Infinity Train, season two"
 slug: infinity-train
 date: 2025-04-20T03:42:41+03:00
 tags: [series]

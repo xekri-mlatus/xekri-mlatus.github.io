@@ -1,5 +1,4 @@
 ---
-title: "О наболевшем"
 slug: sore-subject
 date: 2026-03-25T22:56:54+03:00
 tags: [memes]

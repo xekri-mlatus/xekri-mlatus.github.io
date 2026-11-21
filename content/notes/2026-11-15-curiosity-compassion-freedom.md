@@ -1,5 +1,4 @@
 ---
-title: "Curiosity, compassion & freedom"
 slug: curiosity-compassion-freedom
 date: 2026-11-15T07:34:00+03:00
 tags: [philosophy, politics, "Long reads"]

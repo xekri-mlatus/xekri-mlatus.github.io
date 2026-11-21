@@ -1,5 +1,4 @@
 ---
-title: "Toaq и немецкий в 6 утра"
 slug: toaq-and-german
 date: 2025-11-29T06:13:49+03:00
 tags: [languages]

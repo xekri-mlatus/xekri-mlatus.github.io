@@ -1,5 +1,4 @@
 ---
-title: "Начнем с котиков"
 slug: cats-to-start
 date: 2025-11-16T23:47:41+03:00
 tags: [memes, cats]

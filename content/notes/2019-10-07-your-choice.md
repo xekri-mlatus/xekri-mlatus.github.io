@@ -1,5 +1,4 @@
 ---
-title: "Твой выбор"
 slug: your-choice
 date: 2019-10-07T16:39:13+03:00
 tags: ["Old posts", "Long reads"]

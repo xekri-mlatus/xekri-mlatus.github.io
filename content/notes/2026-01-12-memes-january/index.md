@@ -1,5 +1,4 @@
 ---
-title: "Подборка мемов"
 slug: memes-january
 date: 2026-01-12T17:46:12+03:00
 tags: [memes]

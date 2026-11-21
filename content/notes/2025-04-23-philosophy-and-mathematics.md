@@ -1,5 +1,4 @@
 ---
-title: "Philosophy and mathematics"
 slug: philosophy-and-mathematics
 date: 2025-04-23T16:08:01+03:00
 tags: [philosophy]

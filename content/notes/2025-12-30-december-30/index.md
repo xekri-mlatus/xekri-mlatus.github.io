@@ -1,5 +1,4 @@
 ---
-title: "December 30th"
 slug: december-30
 date: 2025-12-30T12:30:49+03:00
 tags: [memes, cats]

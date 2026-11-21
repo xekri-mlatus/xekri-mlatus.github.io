@@ -1,5 +1,4 @@
 ---
-title: "А что с этим не так?"
 slug: something-wrong
 date: 2026-01-06T19:00:30+03:00
 tags: [memes]

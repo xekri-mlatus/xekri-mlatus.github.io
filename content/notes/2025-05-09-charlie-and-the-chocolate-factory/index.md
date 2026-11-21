@@ -1,5 +1,4 @@
 ---
-title: "Lessons from Charlie and the Chocolate Factory"
 slug: charlie-and-the-chocolate-factory
 date: 2025-05-09T23:55:33+03:00
 tags: [movies]

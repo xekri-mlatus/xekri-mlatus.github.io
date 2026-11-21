@@ -1,5 +1,4 @@
 ---
-title: "Size of Life и Пандо"
 slug: size-of-life
 date: 2025-12-13T07:28:32+03:00
 tags: [science]

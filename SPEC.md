@@ -19,6 +19,7 @@ of articles you click into.
 
 Done means: the site builds and deploys as today, every current address still
 works, every page matches the mockups, and no note title shows anywhere.
+(Since 2026-11-21 notes have no titles at all.)
 
 ### In scope
 
@@ -30,8 +31,8 @@ works, every page matches the mockups, and no note title shows anywhere.
 
 ### Out of scope
 
-- Changing any note's text or front matter. Titles stay in the notes for now;
-  the theme just never shows them.
+- Changing any note's text or front matter. (Done later, on 2026-11-21: notes
+  lost their `title` field, which nothing showed.)
 - Comments, reactions, share buttons, a Telegram link under notes, analytics.
 - An Archive page.
 - Changing how notes are written and published (`CLAUDE.md`), except where
@@ -48,7 +49,7 @@ works, every page matches the mockups, and no note title shows anywhere.
   header switches it; the choice is remembered in the browser and applies
   on every page.
 - **No titles, anywhere.** Not on pages, not in browser tabs, link previews,
-  feeds or the search index. Where something needs a name, use the start of
+  feeds or the search index; notes don't have them. Where something needs a name, use the start of
   the note's text (about 60 characters, cut at a word, with "…"), else the
   first picture's description, else the date. This is called the
   **note's label** below.
@@ -345,8 +346,8 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - every address in `mockups/current-urls.txt` exists (except `/public/`),
     as a page or as a redirect; `/archives/` and page numbers past the last
     page redirect where this spec says;
-  - no note's title appears in any built page, feed or `index.json`, unless
-    those words are also in the note's own text (as with "Mob Control");
+  - no note has a `title` in its front matter, and every note has its page,
+    tile, feed item and search entry;
   - every `<img>` has a width, a height and an `alt`;
   - `/index.xml` holds exactly the 73 notes, and `/index.json` the notes only;
   - every artifact has its bar back to the site, loads nothing from another

@@ -1,5 +1,4 @@
 ---
-title: "Ну правда же"
 slug: isnt-it-true
 date: 2026-03-01T03:50:09+03:00
 tags: [memes]

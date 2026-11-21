@@ -2,7 +2,6 @@
 window.NOTES = [
  {
   "slug": "anki-deutsch",
-  "title": "Колода Anki для немецкого",
   "date": "2026-11-03T04:45:00+03:00",
   "tags": [
    "languages",
@@ -21,7 +20,6 @@ window.NOTES = [
  },
  {
   "slug": "mob-control",
-  "title": "Mob Control",
   "date": "2026-10-29T03:37:00+03:00",
   "tags": [
    "games",
@@ -39,7 +37,6 @@ window.NOTES = [
  },
  {
   "slug": "sommer-fur-gotter",
-  "title": "Боги не ведают боли",
   "date": "2026-10-28T00:00:00+03:00",
   "tags": [
    "art",
@@ -52,7 +49,6 @@ window.NOTES = [
  },
  {
   "slug": "autumn-memes",
-  "title": "Осенние мемы",
   "date": "2026-10-20T16:00:50+03:00",
   "tags": [
    "memes",
@@ -71,7 +67,6 @@ window.NOTES = [
  },
  {
   "slug": "bayan",
-  "title": "Вспомнился один баян",
   "date": "2026-03-30T03:46:59+03:00",
   "tags": [
    "memes"
@@ -85,7 +80,6 @@ window.NOTES = [
  },
  {
   "slug": "ea-nasir",
-  "title": "Эа-Насир",
   "date": "2026-03-27T16:29:11+03:00",
   "tags": [
    "history"
@@ -99,7 +93,6 @@ window.NOTES = [
  },
  {
   "slug": "sore-subject",
-  "title": "О наболевшем",
   "date": "2026-03-25T22:56:54+03:00",
   "tags": [
    "memes"
@@ -113,7 +106,6 @@ window.NOTES = [
  },
  {
   "slug": "odf-in-germany",
-  "title": "ODF в Германии",
   "date": "2026-03-23T23:41:02+03:00",
   "tags": [
    "tech"
@@ -127,7 +119,6 @@ window.NOTES = [
  },
  {
   "slug": "math-memes",
-  "title": "(Около)математические мемы",
   "date": "2026-03-21T15:27:27+03:00",
   "tags": [
    "memes",
@@ -153,7 +144,6 @@ window.NOTES = [
  },
  {
   "slug": "isnt-it-true",
-  "title": "Ну правда же",
   "date": "2026-03-01T03:50:09+03:00",
   "tags": [
    "memes"
@@ -167,7 +157,6 @@ window.NOTES = [
  },
  {
   "slug": "weekend-movies",
-  "title": "Киновыходные",
   "date": "2026-02-25T17:05:27+03:00",
   "tags": [
    "movies",
@@ -182,7 +171,6 @@ window.NOTES = [
  },
  {
   "slug": "new-day",
-  "title": "New day, new mental issues",
   "date": "2026-02-24T05:44:07+03:00",
   "tags": [
    "memes"
@@ -196,7 +184,6 @@ window.NOTES = [
  },
  {
   "slug": "penguins-escalation",
-  "title": "Эскалация",
   "date": "2026-01-20T15:50:20+03:00",
   "tags": [
    "politics"
@@ -208,7 +195,6 @@ window.NOTES = [
  },
  {
   "slug": "memes-january",
-  "title": "Подборка мемов",
   "date": "2026-01-12T17:46:12+03:00",
   "tags": [
    "memes"
@@ -231,7 +217,6 @@ window.NOTES = [
  },
  {
   "slug": "penguins-for-greenland",
-  "title": "Пингвины за Гренландию",
   "date": "2026-01-11T07:11:10+03:00",
   "tags": [
    "politics"
@@ -243,7 +228,6 @@ window.NOTES = [
  },
  {
   "slug": "sounds-american",
-  "title": "Sounds American",
   "date": "2026-01-11T04:18:15+03:00",
   "tags": [
    "languages"
@@ -255,7 +239,6 @@ window.NOTES = [
  },
  {
   "slug": "something-wrong",
-  "title": "А что с этим не так?",
   "date": "2026-01-06T19:00:30+03:00",
   "tags": [
    "memes"
@@ -269,7 +252,6 @@ window.NOTES = [
  },
  {
   "slug": "goodbye-2025",
-  "title": "Прощай, 2025",
   "date": "2026-01-01T08:09:34+03:00",
   "tags": [
    "memes",
@@ -284,7 +266,6 @@ window.NOTES = [
  },
  {
   "slug": "december-30",
-  "title": "December 30th",
   "date": "2025-12-30T12:30:49+03:00",
   "tags": [
    "memes",
@@ -299,7 +280,6 @@ window.NOTES = [
  },
  {
   "slug": "cat-lovers",
-  "title": "Cat lovers",
   "date": "2025-12-30T11:17:58+03:00",
   "tags": [
    "memes",
@@ -314,7 +294,6 @@ window.NOTES = [
  },
  {
   "slug": "not-to-brag",
-  "title": "Not to brag",
   "date": "2025-12-29T20:27:50+03:00",
   "tags": [
    "memes",
@@ -329,7 +308,6 @@ window.NOTES = [
  },
  {
   "slug": "jingle-bells-prison-cells",
-  "title": "Jingle bells, prison cells",
   "date": "2025-12-25T17:02:13+03:00",
   "tags": [
    "politics"
@@ -341,7 +319,6 @@ window.NOTES = [
  },
  {
   "slug": "alice-and-bob",
-  "title": "Alice and Bob",
   "date": "2025-12-25T14:07:10+03:00",
   "tags": [
    "memes"
@@ -355,7 +332,6 @@ window.NOTES = [
  },
  {
   "slug": "complex-field",
-  "title": "Isomorphic with the complex field",
   "date": "2025-12-23T14:38:49+03:00",
   "tags": [
    "memes",
@@ -370,7 +346,6 @@ window.NOTES = [
  },
  {
   "slug": "romantischer-kurzfilm",
-  "title": "Romantischer Kurzfilm",
   "date": "2025-12-19T04:57:35+03:00",
   "tags": [
    "movies"
@@ -382,7 +357,6 @@ window.NOTES = [
  },
  {
   "slug": "sperm-racing",
-  "title": "Sperm Racing",
   "date": "2025-12-13T20:48:29+03:00",
   "tags": [
    "life"
@@ -394,7 +368,6 @@ window.NOTES = [
  },
  {
   "slug": "size-of-life",
-  "title": "Size of Life и Пандо",
   "date": "2025-12-13T07:28:32+03:00",
   "tags": [
    "science"
@@ -409,7 +382,6 @@ window.NOTES = [
  },
  {
   "slug": "soon",
-  "title": "Скоро",
   "date": "2025-12-12T13:56:30+03:00",
   "tags": [
    "memes"
@@ -423,7 +395,6 @@ window.NOTES = [
  },
  {
   "slug": "thats-really-hot",
-  "title": "That’s really hot",
   "date": "2025-12-08T17:08:14+03:00",
   "tags": [
    "memes"
@@ -437,7 +408,6 @@ window.NOTES = [
  },
  {
   "slug": "human-race-in-a-nutshell",
-  "title": "The human race in a nutshell",
   "date": "2025-12-07T16:30:46+03:00",
   "tags": [
    "memes"
@@ -451,7 +421,6 @@ window.NOTES = [
  },
  {
   "slug": "toaq-and-german",
-  "title": "Toaq и немецкий в 6 утра",
   "date": "2025-11-29T06:13:49+03:00",
   "tags": [
    "languages"
@@ -466,7 +435,6 @@ window.NOTES = [
  },
  {
   "slug": "verbal-bracket",
-  "title": "Das ist amüsant",
   "date": "2025-11-29T02:51:21+03:00",
   "tags": [
    "languages"
@@ -480,7 +448,6 @@ window.NOTES = [
  },
  {
   "slug": "possessed-by-an-owl",
-  "title": "I’m possessed by an owl",
   "date": "2025-11-26T04:43:40+03:00",
   "tags": [
    "memes"
@@ -494,7 +461,6 @@ window.NOTES = [
  },
  {
   "slug": "german-thematic-dictionary",
-  "title": "Тематический словарь немецкого",
   "date": "2025-11-23T19:44:45+03:00",
   "tags": [
    "languages"
@@ -510,7 +476,6 @@ window.NOTES = [
  },
  {
   "slug": "mi-klama-le-zarci",
-  "title": "mi klama le zarci",
   "date": "2025-11-23T05:46:49+03:00",
   "tags": [
    "languages"
@@ -524,7 +489,6 @@ window.NOTES = [
  },
  {
   "slug": "toaq",
-  "title": "Toaq",
   "date": "2025-11-22T16:37:57+03:00",
   "tags": [
    "languages"
@@ -536,7 +500,6 @@ window.NOTES = [
  },
  {
   "slug": "well-kinda",
-  "title": "Well, kinda",
   "date": "2025-11-21T03:16:31+03:00",
   "tags": [
    "memes"
@@ -550,7 +513,6 @@ window.NOTES = [
  },
  {
   "slug": "song-from-1977",
-  "title": "Песня 1977 года, клип 2025-го",
   "date": "2025-11-20T18:14:50+03:00",
   "tags": [
    "music"
@@ -562,7 +524,6 @@ window.NOTES = [
  },
  {
   "slug": "wallabies",
-  "title": "Валлаби",
   "date": "2025-11-19T03:24:36+03:00",
   "tags": [
    "animals"
@@ -576,7 +537,6 @@ window.NOTES = [
  },
  {
   "slug": "alpha-male",
-  "title": "Альфа-самец",
   "date": "2025-11-19T03:17:15+03:00",
   "tags": [
    "memes"
@@ -590,7 +550,6 @@ window.NOTES = [
  },
  {
   "slug": "spaniel",
-  "title": "Спаниель",
   "date": "2025-11-19T03:13:11+03:00",
   "tags": [
    "life"
@@ -602,7 +561,6 @@ window.NOTES = [
  },
  {
   "slug": "date-format",
-  "title": "YYYY-MM-DD",
   "date": "2025-11-18T00:15:24+03:00",
   "tags": [
    "memes"
@@ -616,7 +574,6 @@ window.NOTES = [
  },
  {
   "slug": "best-erotic-scene",
-  "title": "Лучшая эротическая сцена года",
   "date": "2025-11-17T01:22:57+03:00",
   "tags": [
    "anime"
@@ -633,7 +590,6 @@ window.NOTES = [
  },
  {
   "slug": "blogging-attempts",
-  "title": "Я и мои попытки в блогерство",
   "date": "2025-11-17T00:48:14+03:00",
   "tags": [
    "memes",
@@ -648,7 +604,6 @@ window.NOTES = [
  },
  {
   "slug": "anki-cloze",
-  "title": "Anki и карточки с пропусками",
   "date": "2025-11-17T00:41:27+03:00",
   "tags": [
    "learning"
@@ -660,7 +615,6 @@ window.NOTES = [
  },
  {
   "slug": "cats-to-start",
-  "title": "Начнем с котиков",
   "date": "2025-11-16T23:47:41+03:00",
   "tags": [
    "memes",
@@ -679,7 +633,6 @@ window.NOTES = [
  },
  {
   "slug": "three-billboards",
-  "title": "Three Billboards Outside Ebbing, Missouri",
   "date": "2025-05-11T16:26:04+03:00",
   "tags": [
    "movies"
@@ -693,7 +646,6 @@ window.NOTES = [
  },
  {
   "slug": "charlie-and-the-chocolate-factory",
-  "title": "Lessons from Charlie and the Chocolate Factory",
   "date": "2025-05-09T23:55:33+03:00",
   "tags": [
    "movies"
@@ -707,7 +659,6 @@ window.NOTES = [
  },
  {
   "slug": "kado-the-right-answer",
-  "title": "Kado: The Right Answer, revisited",
   "date": "2025-05-04T19:40:32+03:00",
   "tags": [
    "anime"
@@ -722,7 +673,6 @@ window.NOTES = [
  },
  {
   "slug": "supervenience",
-  "title": "Supervenience",
   "date": "2025-04-25T04:20:42+03:00",
   "tags": [
    "philosophy",
@@ -738,7 +688,6 @@ window.NOTES = [
  },
  {
   "slug": "yes-man",
-  "title": "Yes Man",
   "date": "2025-04-25T02:46:59+03:00",
   "tags": [
    "movies"
@@ -754,7 +703,6 @@ window.NOTES = [
  },
  {
   "slug": "background-and-morality",
-  "title": "Background is not a norm",
   "date": "2025-04-23T19:02:30+03:00",
   "tags": [
    "philosophy",
@@ -767,7 +715,6 @@ window.NOTES = [
  },
  {
   "slug": "philosophy-and-mathematics",
-  "title": "Philosophy and mathematics",
   "date": "2025-04-23T16:08:01+03:00",
   "tags": [
    "philosophy"
@@ -779,7 +726,6 @@ window.NOTES = [
  },
  {
   "slug": "sizzling-like-a-snare",
-  "title": "Sizzling like a snare",
   "date": "2025-04-21T19:14:51+03:00",
   "tags": [
    "music"
@@ -791,7 +737,6 @@ window.NOTES = [
  },
  {
   "slug": "jumpy-rat",
-  "title": "A jumpy rat",
   "date": "2025-04-20T05:21:19+03:00",
   "tags": [
    "life"
@@ -803,7 +748,6 @@ window.NOTES = [
  },
  {
   "slug": "deep-utopia",
-  "title": "Deep Utopia",
   "date": "2025-04-20T04:59:05+03:00",
   "tags": [
    "reading"
@@ -815,7 +759,6 @@ window.NOTES = [
  },
  {
   "slug": "infinity-train",
-  "title": "Infinity Train, season two",
   "date": "2025-04-20T03:42:41+03:00",
   "tags": [
    "series"
@@ -827,7 +770,6 @@ window.NOTES = [
  },
  {
   "slug": "devaluation-and-simulation",
-  "title": "Обесценивание и симуляция",
   "date": "2021-02-13T07:18:12+03:00",
   "tags": [
    "oldposts",
@@ -840,7 +782,6 @@ window.NOTES = [
  },
  {
   "slug": "music-update-2020",
-  "title": "Music update: февраль–сентябрь 2020",
   "date": "2020-10-19T01:21:14+03:00",
   "tags": [
    "oldposts"
@@ -852,7 +793,6 @@ window.NOTES = [
  },
  {
   "slug": "barns-courtney",
-  "title": "Barns Courtney",
   "date": "2020-01-23T01:10:07+03:00",
   "tags": [
    "oldposts",
@@ -869,7 +809,6 @@ window.NOTES = [
  },
  {
   "slug": "tonsky",
-  "title": "Две статьи Никиты Прокопова",
   "date": "2019-12-30T00:16:03+03:00",
   "tags": [
    "oldposts"
@@ -881,7 +820,6 @@ window.NOTES = [
  },
  {
   "slug": "douglas-adams-on-technology",
-  "title": "Дуглас Адамс о технологиях",
   "date": "2019-12-28T22:39:52+03:00",
   "tags": [
    "oldposts"
@@ -895,7 +833,6 @@ window.NOTES = [
  },
  {
   "slug": "being-yourself",
-  "title": "Быть собой",
   "date": "2019-10-14T15:42:42+03:00",
   "tags": [
    "oldposts",
@@ -908,7 +845,6 @@ window.NOTES = [
  },
  {
   "slug": "your-choice",
-  "title": "Твой выбор",
   "date": "2019-10-07T16:39:13+03:00",
   "tags": [
    "oldposts",
@@ -921,7 +857,6 @@ window.NOTES = [
  },
  {
   "slug": "womens-problems",
-  "title": "«Женские проблемы»",
   "date": "2019-10-02T22:22:10+03:00",
   "tags": [
    "oldposts",
@@ -934,7 +869,6 @@ window.NOTES = [
  },
  {
   "slug": "welcome",
-  "title": "Добро пожаловать",
   "date": "2019-10-02T01:14:06+03:00",
   "tags": [
    "oldposts",
@@ -947,7 +881,6 @@ window.NOTES = [
  },
  {
   "slug": "chains-of-virtue",
-  "title": "Из добродетелей вы цепи мне сковали",
   "date": "2017-07-16T01:36:00+03:00",
   "tags": [
    "oldposts"
@@ -959,7 +892,6 @@ window.NOTES = [
  },
  {
   "slug": "social-cooling",
-  "title": "Social Cooling",
   "date": "2017-06-19T17:39:00+03:00",
   "tags": [
    "oldposts"
@@ -971,7 +903,6 @@ window.NOTES = [
  },
  {
   "slug": "kanizsa-triangle",
-  "title": "Треугольник Канижа",
   "date": "2017-06-13T18:23:00+03:00",
   "tags": [
    "oldposts"
@@ -983,7 +914,6 @@ window.NOTES = [
  },
  {
   "slug": "livin-on-a-prayer",
-  "title": "Livin' on a Prayer",
   "date": "2017-06-12T03:32:00+03:00",
   "tags": [
    "oldposts"
@@ -995,7 +925,6 @@ window.NOTES = [
  },
  {
   "slug": "personhood",
-  "title": "Personhood: A Game for Two or More Players",
   "date": "2017-06-10T01:40:00+03:00",
   "tags": [
    "oldposts"
@@ -1007,7 +936,6 @@ window.NOTES = [
  },
  {
   "slug": "parkour",
-  "title": "Паркур",
   "date": "2017-06-10T01:07:00+03:00",
   "tags": [
    "oldposts"
@@ -1019,7 +947,6 @@ window.NOTES = [
  },
  {
   "slug": "cara-mason",
-  "title": "Кара Мейсон",
   "date": "2017-06-10T01:02:00+03:00",
   "tags": [
    "oldposts"

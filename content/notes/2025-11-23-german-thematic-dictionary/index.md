@@ -1,5 +1,4 @@
 ---
-title: "Тематический словарь немецкого"
 slug: german-thematic-dictionary
 date: 2025-11-23T19:44:45+03:00
 tags: [languages]

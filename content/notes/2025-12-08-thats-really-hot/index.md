@@ -1,5 +1,4 @@
 ---
-title: "That’s really hot"
 slug: thats-really-hot
 date: 2025-12-08T17:08:14+03:00
 tags: [memes]

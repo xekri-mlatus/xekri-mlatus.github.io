@@ -1,5 +1,4 @@
 ---
-title: "Not to brag"
 slug: not-to-brag
 date: 2025-12-29T20:27:50+03:00
 tags: [memes, cats]

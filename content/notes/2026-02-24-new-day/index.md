@@ -1,5 +1,4 @@
 ---
-title: "New day, new mental issues"
 slug: new-day
 date: 2026-02-24T05:44:07+03:00
 tags: [memes]

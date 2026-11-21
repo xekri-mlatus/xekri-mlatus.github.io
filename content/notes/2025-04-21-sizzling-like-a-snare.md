@@ -1,5 +1,4 @@
 ---
-title: "Sizzling like a snare"
 slug: sizzling-like-a-snare
 date: 2025-04-21T19:14:51+03:00
 tags: [music]

@@ -1,5 +1,4 @@
 ---
-title: "Дуглас Адамс о технологиях"
 slug: douglas-adams-on-technology
 date: 2019-12-28T22:39:52+03:00
 tags: ["Old posts"]

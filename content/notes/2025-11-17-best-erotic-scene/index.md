@@ -1,5 +1,4 @@
 ---
-title: "Лучшая эротическая сцена года"
 slug: best-erotic-scene
 date: 2025-11-17T01:22:57+03:00
 tags: [anime]

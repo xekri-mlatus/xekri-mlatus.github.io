@@ -1,5 +1,4 @@
 ---
-title: "Well, kinda"
 slug: well-kinda
 date: 2025-11-21T03:16:31+03:00
 tags: [memes]

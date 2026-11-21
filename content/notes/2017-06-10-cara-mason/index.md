@@ -1,5 +1,4 @@
 ---
-title: "Кара Мейсон"
 slug: cara-mason
 date: 2017-06-10T01:02:00+03:00
 tags: ["Old posts"]

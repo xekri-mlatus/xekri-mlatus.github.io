@@ -1,5 +1,4 @@
 ---
-title: "Mob Control"
 slug: mob-control
 date: 2026-10-29T03:37:00+03:00
 tags: [games, "Long reads"]

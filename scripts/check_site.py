@@ -8,8 +8,8 @@ temporary folder and checks that:
 - every address in mockups/current-urls.txt still exists (except the junk
   under /public/), as a page or a redirect, and redirects go where the spec
   says: /archives/ to the home page, retired page numbers to their list;
-- no note's title appears on its page, tile, feed item or search entry,
-  unless those words are in the note itself;
+- notes have no titles (nothing would show them), and every note has its
+  page, its tile, its feed item and its search entry;
 - every picture has a width, a height and an alt text;
 - the main feeds and the search index hold exactly the notes;
 - every artifact has its page with the bar back to the site, loads nothing
@@ -33,12 +33,6 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 URLS = ROOT / "mockups" / "current-urls.txt"
 SITE = "https://xekri-mlatus.github.io"
-
-
-def notes():
-    """(title, Markdown text, slug) of every note."""
-    for meta, body in notes_meta():
-        yield str(meta["title"]), body, meta["slug"]
 
 
 def notes_meta():
@@ -102,11 +96,9 @@ def main():
                 if not m or target != SITE + m.group(1):
                     problems.append(f"{url} redirects to {target}")
 
-        # 2. No note's title anywhere, unless its words are in the note itself.
-        # Titles can only leak through the theme's templates, so each note is
-        # checked where those put it: its page, its tile, its feed item and its
-        # search entry. (Searching every file would trip over titles that are
-        # ordinary words, like "Скоро", in other notes.)
+        # 2. Notes have no titles: the site never shows them, and a note is named
+        # by the start of its text instead. Every note is in each place the
+        # theme puts it: its page, its tile, its feed item and its search entry.
         def flat(s):
             return html.unescape(html.unescape(s)).lower()
         tiles = {}
@@ -118,13 +110,10 @@ def main():
             r"(<item>.*?<link>([^<]+)</link>.*?</item>)", (out / "index.xml").read_text(encoding="utf-8"), re.S)}
         index = {e["url"]: json.dumps(e, ensure_ascii=False).lower()
                  for e in json.loads((out / "index.json").read_text(encoding="utf-8"))}
-        bodies = {slug: body.lower() for _, body, slug in notes()}
-        thread = threads()
-        for title, body, slug in notes():
-            t = title.lower()
-            # A note in a thread shows the others' labels and text too.
-            if any(t in bodies[s] for s in thread.get(slug, {slug})):
-                continue
+        for meta, _ in notes_meta():
+            slug = meta["slug"]
+            if "title" in meta:
+                problems.append(f"/notes/{slug}/ has a title in its front matter (notes have none)")
             url = f"/notes/{slug}/"
             places = {
                 "its page": flat((out / url.lstrip("/") / "index.html").read_text(encoding="utf-8")),
@@ -132,9 +121,6 @@ def main():
                 "its feed item": feed.get(SITE + url, ""),
                 "its search entry": index.get(url, ""),
             }
-            hits = [where for where, text in places.items() if t in text]
-            if hits:
-                problems.append(f'title "{title}" shows in {", ".join(hits)}')
             missing = [where for where, text in places.items() if not text]
             if missing:
                 problems.append(f"{url} has no {', '.join(missing)}")
@@ -147,7 +133,7 @@ def main():
                     problems.append(f"{f.relative_to(out)}: picture without {', '.join(missing)}: {img[:120]}")
 
         # 4. The main feeds hold exactly the notes.
-        count = sum(1 for _ in notes())
+        count = sum(1 for _ in notes_meta())
         for feed in ("index.xml", "notes/index.xml"):
             items = re.findall(r"<item>.*?<link>([^<]+)</link>", (out / feed).read_text(encoding="utf-8"), re.S)
             if len(items) != count or any("/notes/" not in link for link in items):
@@ -212,7 +198,7 @@ def main():
             if not re.search(r'<link rel="?icon"? href="?/favicon\.svg', text):
                 problems.append(f"{f.relative_to(out).as_posix()} doesn't link the site's icon")
 
-        print(f"Checked {checked} addresses, {count} notes' titles, every picture, the feeds, "
+        print(f"Checked {checked} addresses, {count} notes, every picture, the feeds, "
               f"{len(artifacts)} artifact(s), {len(threads())} notes in threads and the icon.")
     return report(problems)
 

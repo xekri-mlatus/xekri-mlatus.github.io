@@ -1,5 +1,4 @@
 ---
-title: "Jingle bells, prison cells"
 slug: jingle-bells-prison-cells
 date: 2025-12-25T17:02:13+03:00
 tags: [politics]

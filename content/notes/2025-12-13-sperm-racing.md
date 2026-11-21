@@ -1,5 +1,4 @@
 ---
-title: "Sperm Racing"
 slug: sperm-racing
 date: 2025-12-13T20:48:29+03:00
 tags: [life]

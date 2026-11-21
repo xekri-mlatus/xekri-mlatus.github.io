@@ -1,5 +1,4 @@
 ---
-title: "Three Billboards Outside Ebbing, Missouri"
 slug: three-billboards
 date: 2025-05-11T16:26:04+03:00
 tags: [movies]

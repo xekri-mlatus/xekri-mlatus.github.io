@@ -1,5 +1,4 @@
 ---
-title: "Alice and Bob"
 slug: alice-and-bob
 date: 2025-12-25T14:07:10+03:00
 tags: [memes]

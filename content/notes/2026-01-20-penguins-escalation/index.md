@@ -1,5 +1,4 @@
 ---
-title: "Эскалация"
 slug: penguins-escalation
 date: 2026-01-20T15:50:20+03:00
 tags: [politics]

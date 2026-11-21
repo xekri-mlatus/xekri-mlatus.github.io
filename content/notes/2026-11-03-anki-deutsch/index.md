@@ -1,5 +1,4 @@
 ---
-title: "Колода Anki для немецкого"
 slug: anki-deutsch
 date: 2026-11-03T04:45:00+03:00
 tags: [languages, learning]

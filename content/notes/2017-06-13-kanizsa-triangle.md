@@ -1,5 +1,4 @@
 ---
-title: "Треугольник Канижа"
 slug: kanizsa-triangle
 date: 2017-06-13T18:23:00+03:00
 tags: ["Old posts"]

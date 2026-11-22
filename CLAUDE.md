@@ -133,6 +133,11 @@ or in search. To add one:
 
 - Templates, CSS and JavaScript are in `themes/mlatus/`; `SPEC.md` says how
   every page should look and behave. Keep the two in step.
+- Visits are counted by GoatCounter (https://mlatus.goatcounter.com/,
+  cookieless): the `goatcounter.html` partial adds its script to every page
+  and artifact, only in the published build, so `hugo server` previews
+  aren't counted. Its code is `params.goatcounter` in `hugo.yaml`. It's the
+  one script from another site that `check_site.py` allows in artifacts.
 - The icon in browser tabs is the header's avatar, drawn by
   `python scripts/make_favicons.py` into `static/`. Run it again if the
   avatar changes.

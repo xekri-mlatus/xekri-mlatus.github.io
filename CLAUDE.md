@@ -147,8 +147,28 @@ or in search. To add one:
 - `mockups/` holds the design mockups the theme was built from, and
   `mockups/current-urls.txt` the addresses `check_site.py` keeps working.
 
+## Telegram
+
+After each deploy, the workflow posts the notes that the push added to the
+author's Telegram channel, whole: `scripts/post_to_telegram.py` reads them
+from the built site and sends text, pictures (albums of up to 10) and
+hashtags through the author's bot. Edits to a note after that don't reach
+Telegram. The bot's token is the `TELEGRAM_BOT_TOKEN` secret and the channel
+the `TELEGRAM_CHANNEL` variable, both in the repository's Actions settings;
+never put either in a file.
+
+To post notes by hand (an older note, or a test), run the workflow from the
+Actions tab with their slugs in "notes", and a test channel in "channel" if
+wanted. To see what would be sent without sending it:
+
+```bash
+hugo --gc --minify -d <dir>
+python scripts/post_to_telegram.py --notes <slug> --public <dir> --dry-run
+```
+
 ## Git
 
 Commit straight to `main`. A new note's subject is `Add note "<slug>"`,
 with a short body on what the note is and anything else that changed.
-Pushing publishes the site within a minute.
+Pushing publishes the site within a minute and posts new notes to Telegram,
+so push a note only once the author has approved it.

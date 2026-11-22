@@ -1,10 +1,21 @@
-# Builds the site with Hugo and publishes it to GitHub Pages on every push to main.
+# Builds the site with Hugo and publishes it to GitHub Pages on every push to
+# main, then posts the notes that push added to the Telegram channel
+# (scripts/post_to_telegram.py). Run by hand, it can post any notes.
 name: Deploy site to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      notes:
+        description: "Post these notes to Telegram (slugs, separated by spaces). Leave empty to only deploy."
+        required: false
+        default: ""
+      channel:
+        description: "Post to this channel instead of the TELEGRAM_CHANNEL variable (for a test channel)."
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -61,3 +72,45 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  # Only after the site is live, so links in the posts already work. It builds
+  # the site again to read the notes as the site shows them.
+  telegram:
+    needs: deploy
+    if: github.event_name == 'push' || inputs.notes != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      HUGO_VERSION: 0.169.0
+      HUGO_ENVIRONMENT: production
+    steps:
+      - name: Install Hugo
+        run: |
+          wget -O "${{ runner.temp }}/hugo.deb" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+
+      - name: Check out the site and its theme
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Build
+        run: hugo --gc --minify
+
+      - name: Post to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ inputs.channel || vars.TELEGRAM_CHANNEL }}
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          set -f  # the slugs are words, not file patterns
+          if [ "$EVENT" = push ]; then
+            python3 scripts/post_to_telegram.py --since "$BEFORE"
+          else
+            python3 scripts/post_to_telegram.py --notes $NOTES
+          fi

@@ -1,0 +1,9 @@
+{{- /* The avatar (assets/images/avatar.jpg) as a round picture, size px across:
+       42 in the header, 96 on the About page. Served at twice that size for
+       sharp screens. Decorative: the name next to it says whose it is.
+       Takes: size, and optionally class (added to "avatar"). */ -}}
+{{- $px := .size -}}
+{{- with resources.Get "images/avatar.jpg" -}}
+  {{- $img := .Fill (printf "%dx%d q90" (mul $px 2) (mul $px 2)) -}}
+<img class="avatar{{ with $.class }} {{ . }}{{ end }}" src="{{ $img.RelPermalink }}" width="{{ $px }}" height="{{ $px }}" alt="">
+{{- end -}}

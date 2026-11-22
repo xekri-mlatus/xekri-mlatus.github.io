@@ -3,7 +3,7 @@
 {{- $notes := partial "notes.html" . }}
 <main class="page">
   <section class="card profile">
-    <span class="avatar big" aria-hidden="true">M</span>
+    {{ partial "avatar.html" (dict "size" 96 "class" "big") }}
     <h1>{{ site.Title }}</h1>
     <p class="stats">{{ len $notes }} notes since {{ (index $notes (sub (len $notes) 1)).Date.Year }} · {{ len site.Taxonomies.tags }} tags</p>
     <div class="body">{{ .Content }}</div>

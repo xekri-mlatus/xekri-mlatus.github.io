@@ -40,8 +40,7 @@ a:hover { text-decoration: underline; }
 .brand:hover { text-decoration: none; }
 .brand .name { display: block; font-weight: 700; font-size: 16px; line-height: 1.3; }
 .brand .sub { display: block; color: var(--muted); font-size: 13px; }
-.avatar { flex: none; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #7b6cf6, #e46fa7);
-  color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 18px; }
+.avatar { flex: none; display: block; width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background: var(--chip); }
 .top nav { display: flex; gap: 16px; font-size: 14px; }
 .top nav a { color: var(--muted); }
 .top nav a.cur { color: var(--text); font-weight: 600; }
@@ -233,7 +232,7 @@ kbd { font: 12px var(--font); border: 1px solid var(--border); border-bottom-wid
 
 /* About */
 .profile { text-align: center; padding-top: 30px !important; }
-.avatar.big { width: 96px; height: 96px; font-size: 40px; margin: 0 auto 12px; }
+.avatar.big { width: 96px; height: 96px; margin: 0 auto 12px; }
 .profile h1 { font-size: 24px; margin: 0; }
 .profile .stats { color: var(--meta); font-size: 13.5px; margin: 4px 0 22px; }
 .profile .body { text-align: left; font-size: 16px; line-height: 1.6; }

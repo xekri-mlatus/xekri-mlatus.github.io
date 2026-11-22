@@ -138,9 +138,11 @@ or in search. To add one:
   and artifact, only in the published build, so `hugo server` previews
   aren't counted. Its code is `params.goatcounter` in `hugo.yaml`. It's the
   one script from another site that `check_site.py` allows in artifacts.
-- The icon in browser tabs is the header's avatar, drawn by
-  `python scripts/make_favicons.py` into `static/`. Run it again if the
-  avatar changes.
+- The header's avatar (and the big one on About) is
+  `themes/mlatus/assets/images/avatar.jpg`; replace that file to change it.
+  The icon in browser tabs is separate on purpose: the "M" circle, drawn by
+  `python scripts/make_favicons.py` into `static/`. Changing the avatar
+  doesn't change the icon.
 - `content_test/` holds formatting samples (the Markdown field guide). Preview
   them with the `hugo-test-content` entry in `.claude/launch.json`, which
   renders in memory so it can't overwrite the main preview's `public/`.

@@ -70,14 +70,17 @@ works, every page matches the mockups, and no note title shows anywhere.
 
 ## Header and footer (every page)
 
-- Sticky header with a thin line under it: avatar (the "M" circle, for now)
-  and "Mlatus' notes" with "73 notes" under it, both leading to the wall. On
+- Sticky header with a thin line under it: avatar and "Mlatus' notes" with
+  "73 notes" under it, both leading to the wall. The avatar (since
+  2026-11-22) is a round picture, `themes/mlatus/assets/images/avatar.jpg`,
+  42px across, served at twice that for sharp screens. On
   the right: **Notes · Tags · Artifacts · Search · About**, the current one
   in bold, and the theme button.
 - Below 640px the links move to their own row under the name.
 - **Icon** (added 2026-11-21): browser tabs, search results and phone home
-  screens show the avatar, the purple-to-pink circle with a white "M" (drawn
-  as lines, not in a font). `scripts/make_favicons.py` draws
+  screens show the purple-to-pink circle with a white "M" (drawn as lines,
+  not in a font). It was the avatar until 2026-11-22 and stayed the icon
+  when the avatar became a picture. `scripts/make_favicons.py` draws
   `static/favicon.svg`, `favicon.ico` (16, 32 and 48 px) and
   `apple-touch-icon.png` (180 px, on the light background); every page links
   them, artifacts too unless they have an icon of their own.
@@ -210,7 +213,7 @@ first version put the older note above).
 
 ### About: `/about/`
 
-- One tile like a Telegram channel's info: a large avatar, "Mlatus' notes",
+- One tile like a Telegram channel's info: a large avatar (96px), "Mlatus' notes",
   "73 notes since 2017 · 22 tags" (counted at build time), then the text of
   `content/about.md` as written, then an RSS chip.
 
@@ -395,7 +398,8 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
 
 Answered on 2026-11-15:
 
-1. **Avatar:** keep the "M" circle for now.
+1. **Avatar:** keep the "M" circle for now. (On 2026-11-22 the avatar became
+   a picture; the "M" circle stayed as the icon.)
 2. **`/notes/`:** the same wall as `/`.
 3. **Pictures:** resized copies, at most 1200px wide; the original when
    enlarged.

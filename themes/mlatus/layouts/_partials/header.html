@@ -10,7 +10,7 @@
 <header class="top">
   <div class="top-inner">
     <a class="brand" href="{{ "" | relURL }}">
-      <span class="avatar" aria-hidden="true">M</span>
+      {{ partial "avatar.html" (dict "size" 42) }}
       <span><span class="name">{{ site.Title }}</span><span class="sub">{{ len (partial "notes.html" .) }} notes</span></span>
     </a>
     <nav>

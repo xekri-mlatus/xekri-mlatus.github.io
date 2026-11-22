@@ -1,6 +1,7 @@
 """Draw the site's icon for browser tabs, search results and phone home
-screens: the header's avatar, a purple-to-pink circle with a white "M".
-Run from the repository root after changing the avatar:
+screens: a purple-to-pink circle with a white "M" (the header's avatar until
+2026-11-22, when the header got a picture; the icon stayed). Run from the
+repository root after changing it:
 
     python scripts/make_favicons.py
 
@@ -22,8 +23,7 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "static"
 
-# The avatar's colours (themes/mlatus/assets/css/main.css, .avatar) and the
-# light background (--bg).
+# The circle's colours (the old "M" avatar's) and the light background (--bg).
 FROM, TO = (0x7B, 0x6C, 0xF6), (0xE4, 0x6F, 0xA7)
 BACKGROUND = (0xF3, 0xF2, 0xEE)
 

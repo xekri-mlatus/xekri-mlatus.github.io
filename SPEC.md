@@ -298,6 +298,12 @@ own design. Unlike notes, they have names, and the site shows them.
 - One CSS file and one small JavaScript file of our own (theme switch,
   masonry, galleries, enlarged pictures, "Load older notes", search, the `/`
   key), processed with Hugo Pipes (minified, fingerprinted).
+- Visit statistics: GoatCounter (`params.goatcounter` in `hugo.yaml`, the
+  `goatcounter.html` partial), cookieless, so no consent banner. Its script
+  loads from `gc.zgo.at` and reports to `<code>.goatcounter.com`, only in the
+  published build (`hugo.IsProduction`), so `hugo server` previews aren't
+  counted. Every page built on `baseof.html` and every artifact is counted;
+  redirect pages aren't. (Added 2026-11-22.)
 
 ## Project structure
 
@@ -312,7 +318,7 @@ themes/mlatus/                 the new theme (in this repo, not a submodule)
     artifacts/                 /artifacts/ (section.html) and an artifact (page.html)
     404.html
     home.rss.xml, …            feeds;  home.json for /index.json
-    _partials/                 header, footer, tile, date, label, head/meta
+    _partials/                 header, footer, tile, date, label, head/meta, goatcounter
     _markup/render-image.html  pictures
     _shortcodes/figure.html    figures, same output as pictures
   assets/css/main.css
@@ -351,7 +357,7 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   - every `<img>` has a width, a height and an `alt`;
   - `/index.xml` holds exactly the 73 notes, and `/index.json` the notes only;
   - every artifact has its bar back to the site, loads nothing from another
-    site, and every file it loads is there;
+    site (the visit counter aside), and every file it loads is there;
   - every `continues:` names another, older note, and the two notes' pages
     and tiles link to each other;
   - the icon's three files are at the root, and every page links it.
@@ -375,7 +381,8 @@ tokens from the mockups; JavaScript is plain, no build step. For example:
   removing the PaperMod submodule; touching any note; changing the deploy
   workflow or `CLAUDE.md`; adding any dependency.
 - **Never:** show a note's title; load anything from another site (fonts,
-  scripts, trackers), YouTube embeds aside; break or rename an address.
+  scripts, trackers), YouTube embeds and the GoatCounter counter aside;
+  break or rename an address.
 
 ## Success criteria
 

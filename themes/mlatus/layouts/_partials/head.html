@@ -1,4 +1,4 @@
-{{- /* <head>: tab name, link previews, feeds, styles, and the remembered theme. */ -}}
+{{- /* <head>: tab name, link previews, feeds, styles, the remembered theme, and visit statistics. */ -}}
 {{- $isNote := and .IsPage (eq .Section "notes") -}}
 {{- $isWall := or .IsHome (and (eq .Kind "section") (eq .Section "notes")) -}}
 {{- $name := .Title -}}
@@ -47,3 +47,4 @@
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{- $js := resources.Get "js/main.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ partial "goatcounter.html" . }}

@@ -155,7 +155,9 @@ def main():
                 problems.append(f"/artifacts/{name}/ has no bar back to the site")
             refs = re.findall(r"""url\(\s*["']?([^"')\s]+)""", text)
             for tag in re.findall(r"<(?:script|link|img|iframe|source|video|audio|embed)\b[^>]*>", text):
-                if not re.search(r"rel=\"?canonical", tag):
+                # The canonical link and the site's visit counter (added by the
+                # theme, see SPEC.md) are the only addresses elsewhere allowed.
+                if not re.search(r"rel=\"?canonical|data-goatcounter=", tag):
                     refs += re.findall(r"""\b(?:src|href)=["']?([^"'\s>]+)""", tag)
             refs += [f"@import {m}" for m in re.findall(r"@import\s+([^;]+)", text)]
             for ref in refs:

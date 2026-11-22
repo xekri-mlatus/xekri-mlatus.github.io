@@ -1,8 +1,8 @@
 {{- /* An artifact (content/artifacts/<name>/): a page made elsewhere, served as it
        is, in its own design. Its HTML file sits next to index.md. The site adds
        only a description for link previews, the visitor's light / dark choice,
-       the site's icon (unless the page has its own), and a thin bar at the
-       top leading back to the site. No baseof: the artifact is a whole page
+       the site's icon (unless the page has its own), the visit counter, and a
+       thin bar at the top leading back to the site. No baseof: the artifact is a whole page
        of its own. */ -}}
 {{- $page := .Resources.GetMatch "*.html" -}}
 {{- if not $page }}{{ errorf "%s: the artifact's HTML file is missing" .File.Path }}{{ end -}}
@@ -22,8 +22,8 @@
 .mlatus-bar a:hover{opacity:1;text-decoration:underline}
 .mlatus-bar span{opacity:.4}
 @media (max-width:700px){.mlatus-bar{padding:8px 16px}}
-</style>
-</head>` .Description .Permalink site.Title .Permalink .Title .Description $icons -}}
+</style>%s
+</head>` .Description .Permalink site.Title .Permalink .Title .Description $icons (partial "goatcounter.html" .) -}}
 {{- $bar := printf `${0}
 <nav class="mlatus-bar" aria-label="%s"><a href="%s">← %s</a><span>/</span><a href="%s">Artifacts</a></nav>` site.Title ("" | relURL) site.Title (.Parent.RelPermalink) -}}
 {{- $html := replace $page.RawContent "</head>" $head 1 -}}
